@@ -1,23 +1,23 @@
-# FresherNote
+# Campdoor
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://quiet-inlet-69267.herokuapp.com/
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
+Campdoor is a web application inspired by Glassdoor built using Ruby on Rails
+and React.js. Bootcamp allows users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags
-- [ ] Apply complex styling to notes while editing
+- [ ] Create, read, edit, and delete reviews
+- [ ] Search for web dev Bootcamps
+- [ ] Tag reviews with multiple tags
+- [ ] Like / Favorite reviews and Bootcamps
 
 ## Design Docs
 * [View Wireframes][views]
@@ -26,7 +26,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 * [API endpoints][api-endpoints]
 * [DB schema][schema]
 
-[views]: ./docs/views.md
+[views]: ./docs/Wireframes.pdf
 [components]: ./docs/components.md
 [stores]: ./docs/stores.md
 [api-endpoints]: ./docs/api-endpoints.md
@@ -34,100 +34,77 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and User Authentication (0.5 days)
+### Phase 1: Backend (0.5 days)
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create new project
+- [ ] create rails app
 - [ ] create `User` model
-- [ ] authentication
+- [ ] auth
 - [ ] user signup/signin pages
-- [ ] blank landing page after signin
+- [ ] blank landing page
 
-### Phase 2: Notes Model, API, and basic APIUtil (1.5 days)
+### Phase 2: Backend cont'd. (0.5 days)
 
-**Objective:** Notes can be created, read, edited and destroyed through
-the API.
+**Objective:** reviews can be created and accessed through a Bootcamp.
 
-- [ ] create `Note` model
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
-- [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [ ] create Bootcamp model
+- [ ] create reviews model
+- [ ] seed database
+- [ ] add CRUD functionality for the reviews
 
-### Phase 3: Flux Architecture and Router (1.5 days)
+### Phase 3: Routers and Flux cycle (1.5 days)
 
-**Objective:** Notes can be created, read, edited and destroyed with the
-user interface.
+**Objective:** Integrate database with the flux cycle.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle
-  after editing.
+- [ ] setup the flux loop
+- [ ] jbuilder api views
+- [ ] build api util
+- [ ] test util functions
 
-### Phase 4: Start Styling (0.5 days)
+### Phase 4: React (0.5 days)
 
-**Objective:** Existing pages (including singup/signin) will look good.
+**Objective:** Make a functioning frontend.
 
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
+- [ ] build out components
+- [ ] create react Router
 
-### Phase 5: Notebooks (1 day)
+### Phase 5: Styling (1 day)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+**Objective:** Site should look good.
 
-- [ ] create `Notebook` model
-- build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
-- Use CSS to style new views
+- [ ] position elements on page
+- [ ] review bootcamp docs
+- [ ] develop basic styling guide
 
 Phase 3 adds organization to the Notes. Notes belong to a Notebook,
 which has its own `Index` view.
 
-### Phase 6: Tags (1.5 days)
+### Phase 6: Expand app functionality (1.5 days)
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
+**Objective:** Integrate admin rights.
 
-- [ ] create `Tag` model and join table
-- build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
-- [ ] Style new elements
+- [ ] allow admins to change bootcamp details
+- [ ] add rating system
 
-### Phase 7: Allow Complex Styling in Notes (0.5 days)
+### Phase 7: Tags (0.5 days)
 
-**objective:** Enable complex styling of notes.
+**objective:** Add tagging and search.
 
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
+- [ ] create Tag model
+- [ ] searching based on tags
 
-### Phase 8: Styling Cleanup and Seeding (1 day)
+### Phase 8: Refactoring (1 day)
 
-**objective:** Make the site feel more cohesive and awesome.
+**objective:**
 
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
+- [ ] Get feedback on my app
+- [ ] Refactor necessary changes
 
 ### Bonus Features (TBD)
 - [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
-- [ ] Multiple sessions
+- [ ] Pagination
+- [ ] Webscraping for data?
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
