@@ -1,6 +1,6 @@
 var ReactDOM = require('react-dom'),
     React = require('react'),
-    BenchStore = require('./stores/bench.js');
+    NavBarMain = require('./components/navbar_main');
 
 var Router = require('react-router').Router;
 var IndexRoute = require('react-router').IndexRoute;
@@ -8,10 +8,10 @@ var Route = require('react-router').Route;
 var Link = require('react-router').Link;
 
 var App = React.createClass({
+
   render: function(){
     return (
         <div>
-          <header><h1>Bench BnB</h1></header>
           {this.props.children}
         </div>
     );
@@ -20,6 +20,7 @@ var App = React.createClass({
 
 var routes = (
     <Route path="/" component={App}>
+      <IndexRoute component={NavBarMain} />
     </Route>
 );
 
