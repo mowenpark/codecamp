@@ -10,9 +10,7 @@ var NavBarMain = React.createClass({
     return (
       <div className="navbarmain">
         <Logo />
-        <HeaderMenu>
-          {this.props.children}
-        </HeaderMenu>
+        <HeaderMenu />
         <UserMenu />
       </div>
     );
