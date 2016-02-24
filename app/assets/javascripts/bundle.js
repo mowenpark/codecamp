@@ -24366,7 +24366,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'logo' },
-	      React.createElement('img', { src: 'http://i.imgur.com/uREdD8Q.png' })
+	      React.createElement('img', { src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_245,w_350/v1456276672/codecamp-logo_uyckba.png' })
 	    );
 	  }
 
@@ -24517,8 +24517,8 @@
 
 	var ApiUtil = {
 		fetchPrograms: function (params) {
-			$.get("api/programs", params, function (e) {
-				console.log(e);
+			$.get("api/programs", params, function (programs) {
+				ApiActions.receivePrograms(programs);
 			});
 		}
 
@@ -24528,9 +24528,22 @@
 
 /***/ },
 /* 214 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	
+	var AppDispatcher = __webpack_require__(234);
+
+	var ApiActions = {
+
+	  receivePrograms: function (programs) {
+	    AppDispatcher.dispatch({
+	      actionType: "RECEIVE_PROGRAMS",
+	      programs: programs
+	    });
+	  }
+
+	};
+
+	module.exports = ApiActions;
 
 /***/ },
 /* 215 */
@@ -24539,28 +24552,28 @@
 	var AppDispatcher = __webpack_require__(234);
 	var Store = __webpack_require__(216).Store;
 
-	var SearchParamsStore = new Store(AppDispatcher);
+	var SearchStore = new Store(AppDispatcher);
 
 	var _params = { name: "", location: "" };
 
-	SearchParamsStore.params = function () {
+	SearchStore.params = function () {
 	  return Object.assign({}, _params);
 	};
 
-	SearchParamsStore.__onDispatch = function (payload) {
+	SearchStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
 	    case "UPDATE_NAME":
 	      _params.name = payload.name;
-	      SearchParamsStore.__emitChange();
+	      SearchStore.__emitChange();
 	      break;
 	    case "UPDATE_LOCATION":
 	      _params.location = payload.location;
-	      SearchParamsStore.__emitChange();
+	      SearchStore.__emitChange();
 	      break;
 	  }
 	};
 
-	module.exports = SearchParamsStore;
+	module.exports = SearchStore;
 
 /***/ },
 /* 216 */
