@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+5.times do
+  location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
+  title = Faker::Company.name
+  description = Faker::Lorem.paragraphs
+  Program.create({
+    title: title,
+    description: description,
+    location: location
+    })
+  end

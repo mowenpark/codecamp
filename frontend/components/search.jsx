@@ -36,19 +36,20 @@ var Search = React.createClass({
 
   render: function() {
     return (
-      <form className="searchform" onSubmit={this.handleSearch}>
-        <label>Program Name:
-        <input type="text" name="program"
-          onChange={this.nameChanged}
-          value={this.state.name} />
-        </label>
-        <br></br>
-        <label>Location:
-        <input type="text"
-          onChange={this.locationChanged}
-          value={this.state.location} />
-        </label>
-        <input type="submit" value="Search" />
+      <form className="navbar-form navbar-left" onSubmit={this.handleSearch}>
+        <div className="form-group">
+          <input type="text" name="program"
+            onChange={this.nameChanged}
+            placeholder="Program Title or Keywords"
+            value={this.state.name} />
+        </div>
+        <div className="form-group">
+          <input type="text"
+            onChange={this.locationChanged}
+            value={this.state.location}
+            placeholder="Location" />
+        </div>
+        <input type="submit" className="btn btn-success" value="Search" />
       </form>
     );
   }

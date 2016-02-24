@@ -6,14 +6,15 @@ var HeaderMenu = React.createClass({
 
   render: function() {
     return (
-      <div className="headermenu">
-        <ul className="headermenu-items">
+        <ul className="nav navbar-nav navbar-left">
           <li className="">Programs</li>
           <li className="">Companies</li>
           <li className="">Salaries</li>
+          <br>
+            <Search />
+          </br>
         </ul>
-        <Search />
-      </div>
+
     );
   }
 

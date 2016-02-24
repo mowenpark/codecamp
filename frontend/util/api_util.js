@@ -1,6 +1,6 @@
 var ApiActions = require('../actions/api_actions');
 
-var SearchParamsStore = require('../stores/search_params');
+var SearchParamsStore = require('../stores/program');
 
 var ApiUtil = {
 	fetchPrograms: function(params) {

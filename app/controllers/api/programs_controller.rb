@@ -1,7 +1,9 @@
 class Api::ProgramsController < ApplicationController
 
   def index
-    @programs = Program.where("title LIKE ?", "%#{params["name"]}%")
+    t = Program.arel_table
+    title = params["name"].downcase
+    @programs = Program.where(t[:title].matches("%#{title}%"))
     render :index
   end
 

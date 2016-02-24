@@ -3,7 +3,7 @@ var Store = require('flux/utils').Store;
 
 var ProgramsStore = new Store(AppDispatcher);
 
-var _programs = [];
+var _programs = [{title: '', description: '', location: ''}];
 
 var resetPrograms = function(programs){
   _programs = programs.slice(0);
