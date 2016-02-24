@@ -3,9 +3,8 @@ var ApiActions = require('../actions/api_actions');
 var SearchParamsStore = require('../stores/search_params');
 
 var ApiUtil = {
-	fetchAllPrograms: function() {
-    var query = SearchParamsStore.params();
-		$.get("api/programs", query, function (e) {
+	fetchPrograms: function(params) {
+		$.get("api/programs", params, function (e) {
 			console.log(e);
 		});
 	}

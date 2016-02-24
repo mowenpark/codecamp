@@ -24443,25 +24443,61 @@
 	var React = __webpack_require__(147);
 	var PropTypes = React.PropTypes;
 
-	var ApiUtil = __webpack_require__(213);
+	var ApiUtil = __webpack_require__(213),
+	    SearchActions = __webpack_require__(237);
 
 	var Search = React.createClass({
 	  displayName: 'Search',
 
 
+	  getInitialState: function () {
+	    return {
+	      name: "",
+	      location: ""
+	    };
+	  },
+
+	  handleSearch: function (event) {
+	    event.preventDefault();
+	    var programs = Object.assign({}, this.state);
+	    ApiUtil.fetchPrograms(programs);
+	    this.navigateToSearch();
+	  },
+
+	  navigateToSearch: function () {
+	    // this.props.history.pushState(null, "/");
+	  },
+
+	  nameChanged: function (e) {
+	    this.setState({ name: e.target.value });
+	    //render list
+	    //SearchActions.updateName(e.target.value);
+	  },
+
+	  locationChanged: function (e) {
+	    this.setState({ location: e.target.value });
+	  },
+
 	  render: function () {
 	    return React.createElement(
 	      'form',
-	      { className: 'searchform', onSubmit: ApiUtil.fetchAllPrograms },
+	      { className: 'searchform', onSubmit: this.handleSearch },
 	      React.createElement(
-	        'input',
-	        { type: 'text', name: 'program[:name]' },
-	        'Program Name'
+	        'label',
+	        null,
+	        'Program Name:',
+	        React.createElement('input', { type: 'text', name: 'program',
+	          onChange: this.nameChanged,
+	          value: this.state.name })
 	      ),
+	      React.createElement('br', null),
 	      React.createElement(
-	        'input',
-	        { type: 'text', name: 'program[:location]' },
-	        'Program Location'
+	        'label',
+	        null,
+	        'Location:',
+	        React.createElement('input', { type: 'text',
+	          onChange: this.locationChanged,
+	          value: this.state.location })
 	      ),
 	      React.createElement('input', { type: 'submit', value: 'Search' })
 	    );
@@ -24480,9 +24516,8 @@
 	var SearchParamsStore = __webpack_require__(215);
 
 	var ApiUtil = {
-		fetchAllPrograms: function () {
-			var query = SearchParamsStore.params();
-			$.get("api/programs", query, function (e) {
+		fetchPrograms: function (params) {
+			$.get("api/programs", params, function (e) {
 				console.log(e);
 			});
 		}
@@ -24503,7 +24538,29 @@
 
 	var AppDispatcher = __webpack_require__(234);
 	var Store = __webpack_require__(216).Store;
+
 	var SearchParamsStore = new Store(AppDispatcher);
+
+	var _params = { name: "", location: "" };
+
+	SearchParamsStore.params = function () {
+	  return Object.assign({}, _params);
+	};
+
+	SearchParamsStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case "UPDATE_NAME":
+	      _params.name = payload.name;
+	      SearchParamsStore.__emitChange();
+	      break;
+	    case "UPDATE_LOCATION":
+	      _params.location = payload.location;
+	      SearchParamsStore.__emitChange();
+	      break;
+	  }
+	};
+
+	module.exports = SearchParamsStore;
 
 /***/ },
 /* 216 */
@@ -31266,6 +31323,32 @@
 
 	module.exports = Dispatcher;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(234);
+
+	var SearchActions = {
+
+	  updateName: function (name) {
+	    AppDispatcher.dispatch({
+	      actionType: "UPDATE_NAME",
+	      name: name
+	    });
+	  },
+
+	  updateLocation: function (locaiton) {
+	    AppDispatcher.dispatch({
+	      actionType: "UPDATE_LOCATION",
+	      locaiton: locaiton
+	    });
+	  }
+
+	};
+
+	module.exports = SearchActions;
 
 /***/ }
 /******/ ]);

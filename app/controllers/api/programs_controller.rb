@@ -1,8 +1,7 @@
 class Api::ProgramsController < ApplicationController
 
   def index
-    debugger
-    @programs = Program.where("title LIKE ?", "%#{params[:programs][:title]}%")
+    @programs = Program.where("title LIKE ?", "%#{params["name"]}%")
     render :index
   end
 
