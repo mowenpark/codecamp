@@ -71,7 +71,8 @@
 	var routes = React.createElement(
 	  Route,
 	  { path: '/', component: App },
-	  React.createElement(IndexRoute, { component: NavBarMain })
+	  React.createElement(IndexRoute, { component: NavBarMain }),
+	  React.createElement(Route, { path: 'user/:id', component: NavBarMain })
 	);
 
 	document.addEventListener("DOMContentLoaded", function () {
@@ -26741,68 +26742,104 @@
 	var PropTypes = React.PropTypes;
 
 	var UserMenu = React.createClass({
-	  displayName: "UserMenu",
+	  displayName: 'UserMenu',
 
+
+	  logoutUser: function () {
+	    $.ajax({
+	      url: '/session',
+	      type: 'post',
+	      data: { _method: 'delete' },
+	      success: function () {
+	        window.location.replace("/session/new");
+	      }
+	    });
+	  },
 
 	  render: function () {
-	    return React.createElement(
-	      "ul",
-	      { className: "nav navbar-nav navbar-right" },
-	      React.createElement(
-	        "li",
-	        null,
+	    if (this.props.user !== undefined) {
+	      return React.createElement(
+	        'ul',
+	        { className: 'nav navbar-nav navbar-right' },
 	        React.createElement(
-	          "a",
-	          { href: "#" },
-	          "Notifications"
-	        )
-	      ),
-	      React.createElement(
-	        "li",
-	        { className: "dropdown clean" },
-	        React.createElement(
-	          "a",
-	          { href: "#", className: "dropdown-toggle",
-	            "data-toggle": "dropdown",
-	            role: "button",
-	            "aria-expanded": "false" },
-	          "User ",
-	          React.createElement("i", { className: "ion-ios-arrow-down" })
+	          'li',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: '/session/new' },
+	            'login'
+	          )
 	        ),
 	        React.createElement(
-	          "ul",
-	          { className: "dropdown-menu", role: "menu" },
+	          'li',
+	          null,
 	          React.createElement(
-	            "li",
-	            null,
-	            React.createElement(
-	              "a",
-	              { href: "/users/:id" },
-	              "Profile"
-	            )
+	            'a',
+	            { href: '/users/new' },
+	            'sign up'
+	          )
+	        )
+	      );
+	    } else {
+	      return React.createElement(
+	        'ul',
+	        { className: 'nav navbar-nav navbar-right' },
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: '#' },
+	            'Notifications'
+	          )
+	        ),
+	        React.createElement(
+	          'li',
+	          { className: 'dropdown clean' },
+	          React.createElement(
+	            'a',
+	            { href: '#', className: 'dropdown-toggle',
+	              'data-toggle': 'dropdown',
+	              role: 'button',
+	              'aria-expanded': 'false' },
+	            'User ',
+	            React.createElement('i', { className: 'ion-ios-arrow-down' })
 	          ),
 	          React.createElement(
-	            "li",
-	            null,
+	            'ul',
+	            { className: 'dropdown-menu', role: 'menu' },
 	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "Settings"
-	            )
-	          ),
-	          React.createElement("li", { className: "divider" }),
-	          React.createElement(
-	            "li",
-	            null,
+	              'li',
+	              null,
+	              React.createElement(
+	                'a',
+	                { href: '/users/:id' },
+	                'Profile'
+	              )
+	            ),
 	            React.createElement(
-	              "a",
-	              { href: "/session/new" },
-	              "Logout"
+	              'li',
+	              null,
+	              React.createElement(
+	                'a',
+	                { href: '#' },
+	                'Settings'
+	              )
+	            ),
+	            React.createElement('li', { className: 'divider' }),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                'a',
+	                { onClick: this.logoutUser },
+	                'Logout'
+	              )
 	            )
 	          )
 	        )
-	      )
-	    );
+	      );
+	    }
 	  }
 
 	});
