@@ -6,7 +6,10 @@
 @import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 
 .search-panel {
+  list-style-type: none;
   margin-left: 20px;
+  flex:2;
+  position: fixed;
 }
 
 .search-results {
@@ -15,4 +18,17 @@
 
 img {
   padding:10px;
+}
+
+.auto-location {
+  position: absolute;
+  list-style-type: none;
+}
+
+.tabs-pane {
+  flex:1;
+}
+
+.thumbnail.active {
+  background-color: #e3e3e3;
 }

@@ -36,31 +36,35 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 ### Phase 1: Backend (0.5 days)
 
-**Objective:** Functioning rails project with Authentication
+**Objective:** Create basic rails app with auth
 
-- [ ] create rails app
-- [ ] create `User` model
-- [ ] auth
-- [ ] user signup/signin pages
-- [ ] blank landing page
+- [ ] Create basic rails app
+- [ ] Create a 'Program' model
+- [ ] Implement working auth with session_token
+- [ ] Create user Sign Up/Sign In pages
+- [ ] add CRUD functionality for Program
+- [ ] Seed database
 
-### Phase 2: Backend cont'd. (0.5 days)
+### Phase 2: Flux (1.5 days)
 
-**Objective:** reviews can be created and accessed through a Bootcamp.
+**Objective:** Create search functionality
 
-- [ ] create Bootcamp model
-- [ ] create reviews model
-- [ ] seed database
-- [ ] add CRUD functionality for the reviews
+- [ ] Create static pages root
+- [ ] Add navbar components: user_menu, search, logo
+- [ ] Create api_util and api_actions
+- [ ] Add jbuilder api views
+- [ ] Create dispatcher
+- [ ] Create program store
+- [ ] Add basic styling
 
-### Phase 3: Routers and Flux cycle (1.5 days)
+### Phase 3: Moar flux cycle (1.5 days)
 
 **Objective:** Integrate database with the flux cycle.
 
-- [ ] setup the flux loop
-- [ ] jbuilder api views
-- [ ] build api util
-- [ ] test util functions
+- [ ] Create database query for 'like' program_name matches
+- [ ] Create database query for 'like' location matches
+- [ ] Add autocomplete functionality to location search
+- [ ] Add basic styling
 
 ### Phase 4: React (0.5 days)
 

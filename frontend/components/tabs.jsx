@@ -1,6 +1,7 @@
 var React = require('react');
 
-var ProgramsStore = require('../stores/program');
+var ProgramsStore = require('../stores/program'),
+    SearchPanel = require('./search_panel');
 
 var Headers = React.createClass({
   render: function () {
@@ -8,24 +9,30 @@ var Headers = React.createClass({
     var that = this;
     var headers = this.props.panes.map(function (pane, index) {
       var title = pane.title;
+      var short = pane.description.slice(0,50);
+      var logo = pane.logo;
       var klass = "";
       if (index === selected) {
         klass = "active";
       }
 
       return (
-        <li
-          key={ index }
-          className="nav nav-pills nav-item nav-link"
-          onClick={that.props.onTabChosen.bind(null, index)}>
-          {title}{' '}
-        </li>
+            <div
+              key={ index }
+              className={klass + " thumbnail"}
+              onClick={that.props.onTabChosen.bind(null, index)}>
+              <img src={logo} alt="..." />
+              <div className="caption" >
+                <h3>{title}</h3>
+                <p>{short}</p>
+              </div>
+            </div>
       );
     });
     return (
-      <ul className="nav nav-pills nav-stacked">
+      <div className="col-sm-6 col-md-3">
         {headers}
-      </ul>
+      </div>
 
     );
  }
@@ -64,10 +71,15 @@ var Tabs = React.createClass({
             onTabChosen={this.selectTab}
             panes={this.state.panes}>
           </Headers>
-          <ul className="nav navbar-right search-panel">
+          <div className="search-panel">
             <li className="">{pane.location}</li>
             <li className="">{pane.description}</li>
-          </ul>
+            <SearchPanel
+              location={pane.location}
+              description={pane.description}>
+
+            </SearchPanel>
+          </div>
         </div>
       );
     } else {
