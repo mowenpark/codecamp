@@ -16,5 +16,15 @@
     description: description,
     location: location,
     logo: logo
-    })
+  })
+end
+
+Program.all.each do |program|
+  rand(1..5).times do
+    user_id = rand(20)
+    program_id = program.id
+    title = Faker::Hipster.sentence
+    body = Faker::Hacker.say_something_smart
+    Review.create(title: title, body: body, program_id: program_id, user_id: user_id)
   end
+end

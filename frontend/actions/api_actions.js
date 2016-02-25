@@ -7,6 +7,21 @@ var ApiActions = {
       actionType: "RECEIVE_PROGRAMS",
       programs: programs
     });
+  },
+
+  receiveLocations: function (locations) {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_LOCATIONS",
+      locations: locations
+    });
+  },
+
+  receiveReviews: function (reviews) {
+    debugger;
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_REVIEWS",
+      reviews: reviews
+    });
   }
 
 };

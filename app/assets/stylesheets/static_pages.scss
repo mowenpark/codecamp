@@ -10,6 +10,8 @@
   margin-left: 20px;
   flex:2;
   position: fixed;
+  overflow:auto;
+  height: 500px;
 }
 
 .search-results {
@@ -23,10 +25,14 @@ img {
 .auto-location {
   position: absolute;
   list-style-type: none;
+  padding: inherit;
+  padding-top: 10px;
 }
 
 .tabs-pane {
   flex:1;
+  overflow:auto;
+  height: 500px;
 }
 
 .thumbnail.active {

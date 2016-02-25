@@ -21,7 +21,7 @@ var Headers = React.createClass({
               key={ index }
               className={klass + " thumbnail"}
               onClick={that.props.onTabChosen.bind(null, index)}>
-              <img src={logo} alt="..." />
+              <img className="media-object" src={logo} alt="..." />
               <div className="caption" >
                 <h3>{title}</h3>
                 <p>{short}</p>
@@ -72,12 +72,11 @@ var Tabs = React.createClass({
             panes={this.state.panes}>
           </Headers>
           <div className="search-panel">
-            <li className="">{pane.location}</li>
-            <li className="">{pane.description}</li>
             <SearchPanel
               location={pane.location}
-              description={pane.description}>
-
+              description={pane.description}
+              title={pane.title}
+              id={pane.id}>
             </SearchPanel>
           </div>
         </div>

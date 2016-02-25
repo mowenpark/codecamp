@@ -3,7 +3,7 @@ var React = require('react'),
 var PropTypes = React.PropTypes;
 
 var ApiUtil = require('../util/api_util'),
-    SearchActions = require('../actions/search_actions');
+    ProgramsStore = require('../stores/program');
 
 var Search = React.createClass({
 
@@ -11,19 +11,16 @@ var Search = React.createClass({
     return{
       name: "",
       location: "",
-      locations: ["cali", "fornia", "germany"]
+      locations: ProgramsStore.locations()
     };
   },
 
   locationMatches: function () {
     var locationMatches = [];
-    if(this.state.location.length === 0){
-      return this.state.locations;
-    }
 
     this.state.locations.forEach(function (location) {
-      var sub = location.slice(0, this.state.location.length);
-      if(sub.toLowerCase() === this.state.location.toLowerCase()){
+      var newLocation = location.toLowerCase();
+      if(newLocation.indexOf(this.state.location.toLowerCase()) > -1) {
         locationMatches.push(location);
       }
     }.bind(this));
@@ -41,7 +38,7 @@ var Search = React.createClass({
   },
 
   selectLocation: function (event) {
-    var location = event.currentTarget.innerText;
+    var location = event.currentTarget.innerHTML;
     this.setState({ location: location });
   },
 
@@ -51,12 +48,26 @@ var Search = React.createClass({
     ApiUtil.fetchPrograms(programs);
   },
 
+  updateLocations: function () {
+    this.setState({locations: ProgramsStore.locations()});
+  },
+
+  componentDidMount: function () {
+    this.token = ProgramsStore.addListener(this.updateLocations);
+    ApiUtil.fetchLocations();
+  },
+
+  componentWillUnmount: function () {
+    this.token.remove();
+  },
+
   nameChanged: function (e) {
     this.setState({name: e.target.value});
   },
 
   locationChanged: function (e) {
     this.setState({location: e.target.value});
+    this.locationMatches();
   },
 
   render: function() {
@@ -80,7 +91,10 @@ var Search = React.createClass({
             value={this.state.location}
             placeholder="Location" />
           <ul className="auto-location">
-            <ReactCSSTransitionGroup transitionName="auto" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+            <ReactCSSTransitionGroup
+              transitionName="auto"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500}>
               {locations}
             </ReactCSSTransitionGroup>
           </ul>
