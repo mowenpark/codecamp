@@ -10,9 +10,9 @@ var HeaderMenu = React.createClass({
           <li className="">Programs</li>
           <li className="">Companies</li>
           <li className="">Salaries</li>
-          <br>
+          <div>
             <Search />
-          </br>
+          </div>
         </ul>
 
     );

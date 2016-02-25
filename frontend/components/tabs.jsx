@@ -14,18 +14,18 @@ var Headers = React.createClass({
       }
 
       return (
-        <span
+        <li
           key={ index }
-          className="panel panel-default"
+          className="nav nav-pills nav-item nav-link"
           onClick={that.props.onTabChosen.bind(null, index)}>
           {title}{' '}
-        </span>
+        </li>
       );
     });
     return (
-      <div>
+      <ul className="nav nav-pills nav-stacked">
         {headers}
-      </div>
+      </ul>
 
     );
  }
@@ -56,25 +56,23 @@ var Tabs = React.createClass({
   },
   render: function () {
     var pane = this.state.panes[this.state.selectedPane];
-    if (pane === undefined) {
-      pane = {};
-      pane["description"] = " ";
-      pane["location"] = " ";
+    if (pane !== undefined) {
+      return (
+        <div className="container-fluid search-results">
+          <Headers
+            selectedPane={this.state.selectedPane}
+            onTabChosen={this.selectTab}
+            panes={this.state.panes}>
+          </Headers>
+          <ul className="nav navbar-right search-panel">
+            <li className="">{pane.location}</li>
+            <li className="">{pane.description}</li>
+          </ul>
+        </div>
+      );
+    } else {
+      return <div />;
     }
-    return (
-      <div className="panel-body">
-        <div class="panel-footer">Panel footer</div>
-        <Headers
-          selectedPane={this.state.selectedPane}
-          onTabChosen={this.selectTab}
-          panes={this.state.panes}>
-        </Headers>
-        <ul>
-          <li>{pane.location}</li>
-          <li>{pane.description}</li>
-        </ul>
-      </div>
-    );
   }
 });
 

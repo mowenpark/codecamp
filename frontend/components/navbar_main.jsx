@@ -19,27 +19,13 @@ var NavBarMain = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a href="#"><img alt="Brand" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png" /></a>
+            <a href="/#"><img alt="Brand" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png" /></a>
           </div>
 
           {/* Collect the nav links, forms, and other content for toggling -*/}
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <HeaderMenu />
-            <ul className="nav navbar-nav navbar-right">
-              <li><a href="#">Notifications</a></li>
-              <li className="dropdown clean">
-                <a href="#" className="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false">User <i className="ion-ios-arrow-down"></i></a>
-                <ul className="dropdown-menu" role="menu">
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Settings</a></li>
-                  <li className="divider"></li>
-                  <li><a href="#">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
+            <UserMenu />
           </div>{/* /.navbar-collapse -->*/}
         </div>{/* /.container-fluid -->*/}
       </nav>

@@ -46,7 +46,8 @@
 
 	var ReactDOM = __webpack_require__(1),
 	    React = __webpack_require__(147),
-	    NavBarMain = __webpack_require__(159);
+	    NavBarMain = __webpack_require__(159),
+	    Tabs = __webpack_require__(189);
 
 	var Router = __webpack_require__(190).Router;
 	var IndexRoute = __webpack_require__(190).IndexRoute;
@@ -61,7 +62,8 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.props.children
+	      this.props.children,
+	      React.createElement(Tabs, null)
 	    );
 	  }
 	});
@@ -19721,7 +19723,7 @@
 	          ),
 	          React.createElement(
 	            'a',
-	            { href: '#' },
+	            { href: '/#' },
 	            React.createElement('img', { alt: 'Brand', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png' })
 	          )
 	        ),
@@ -19729,64 +19731,7 @@
 	          'div',
 	          { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
 	          React.createElement(HeaderMenu, null),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav navbar-right' },
-	            React.createElement(
-	              'li',
-	              null,
-	              React.createElement(
-	                'a',
-	                { href: '#' },
-	                'Notifications'
-	              )
-	            ),
-	            React.createElement(
-	              'li',
-	              { className: 'dropdown clean' },
-	              React.createElement(
-	                'a',
-	                { href: '#', className: 'dropdown-toggle',
-	                  'data-toggle': 'dropdown',
-	                  role: 'button',
-	                  'aria-expanded': 'false' },
-	                'User ',
-	                React.createElement('i', { className: 'ion-ios-arrow-down' })
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'dropdown-menu', role: 'menu' },
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'Profile'
-	                  )
-	                ),
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'Settings'
-	                  )
-	                ),
-	                React.createElement('li', { className: 'divider' }),
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    { href: '#' },
-	                    'Logout'
-	                  )
-	                )
-	              )
-	            )
-	          )
+	          React.createElement(UserMenu, null)
 	        )
 	      )
 	    );
@@ -19851,7 +19796,7 @@
 	        'Salaries'
 	      ),
 	      React.createElement(
-	        'br',
+	        'div',
 	        null,
 	        React.createElement(Search, null)
 	      )
@@ -20295,7 +20240,7 @@
 
 	var ProgramsStore = new Store(AppDispatcher);
 
-	var _programs = [{ title: '', description: '', location: '' }];
+	var _programs = [];
 
 	var resetPrograms = function (programs) {
 	  _programs = programs.slice(0);
@@ -26814,23 +26759,26 @@
 	      ),
 	      React.createElement(
 	        "li",
-	        { className: "dropdown" },
+	        { className: "dropdown clean" },
 	        React.createElement(
 	          "a",
-	          { href: "#", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false" },
+	          { href: "#", className: "dropdown-toggle",
+	            "data-toggle": "dropdown",
+	            role: "button",
+	            "aria-expanded": "false" },
 	          "User ",
-	          React.createElement("span", { className: "caret" })
+	          React.createElement("i", { className: "ion-ios-arrow-down" })
 	        ),
 	        React.createElement(
 	          "ul",
-	          { className: "dropdown-menu" },
+	          { className: "dropdown-menu", role: "menu" },
 	          React.createElement(
 	            "li",
 	            null,
 	            React.createElement(
 	              "a",
-	              { href: "#" },
-	              "Action"
+	              { href: "/users/:id" },
+	              "Profile"
 	            )
 	          ),
 	          React.createElement(
@@ -26839,40 +26787,17 @@
 	            React.createElement(
 	              "a",
 	              { href: "#" },
-	              "Another action"
+	              "Settings"
 	            )
 	          ),
+	          React.createElement("li", { className: "divider" }),
 	          React.createElement(
 	            "li",
 	            null,
 	            React.createElement(
 	              "a",
-	              { href: "#" },
-	              "Something else here"
-	            )
-	          ),
-	          React.createElement("li", { role: "separator", className: "divider" }),
-	          React.createElement(
-	            "li",
-	            { className: "dropdown-header" },
-	            "Nav header"
-	          ),
-	          React.createElement(
-	            "li",
-	            null,
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "Separated link"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            null,
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "One more separated link"
+	              { href: "/session/new" },
+	              "Logout"
 	            )
 	          )
 	        )
@@ -26906,18 +26831,18 @@
 	      }
 
 	      return React.createElement(
-	        'span',
+	        'li',
 	        {
 	          key: index,
-	          className: 'panel panel-default',
+	          className: 'nav nav-pills nav-item nav-link',
 	          onClick: that.props.onTabChosen.bind(null, index) },
 	        title,
 	        ' '
 	      );
 	    });
 	    return React.createElement(
-	      'div',
-	      null,
+	      'ul',
+	      { className: 'nav nav-pills nav-stacked' },
 	      headers
 	    );
 	  }
@@ -26950,38 +26875,32 @@
 	  },
 	  render: function () {
 	    var pane = this.state.panes[this.state.selectedPane];
-	    if (pane === undefined) {
-	      pane = {};
-	      pane["description"] = " ";
-	      pane["location"] = " ";
-	    }
-	    return React.createElement(
-	      'div',
-	      { className: 'panel-body' },
-	      React.createElement(
+	    if (pane !== undefined) {
+	      return React.createElement(
 	        'div',
-	        { 'class': 'panel-footer' },
-	        'Panel footer'
-	      ),
-	      React.createElement(Headers, {
-	        selectedPane: this.state.selectedPane,
-	        onTabChosen: this.selectTab,
-	        panes: this.state.panes }),
-	      React.createElement(
-	        'ul',
-	        null,
+	        { className: 'container-fluid search-results' },
+	        React.createElement(Headers, {
+	          selectedPane: this.state.selectedPane,
+	          onTabChosen: this.selectTab,
+	          panes: this.state.panes }),
 	        React.createElement(
-	          'li',
-	          null,
-	          pane.location
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          pane.description
+	          'ul',
+	          { className: 'nav navbar-right search-panel' },
+	          React.createElement(
+	            'li',
+	            { className: '' },
+	            pane.location
+	          ),
+	          React.createElement(
+	            'li',
+	            { className: '' },
+	            pane.description
+	          )
 	        )
-	      )
-	    );
+	      );
+	    } else {
+	      return React.createElement('div', null);
+	    }
 	  }
 	});
 

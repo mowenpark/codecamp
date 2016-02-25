@@ -1,6 +1,7 @@
 var ReactDOM = require('react-dom'),
     React = require('react'),
-    NavBarMain = require('./components/navbar_main');
+    NavBarMain = require('./components/navbar_main'),
+    Tabs = require('./components/tabs');
 
 var Router = require('react-router').Router;
 var IndexRoute = require('react-router').IndexRoute;
@@ -13,6 +14,7 @@ var App = React.createClass({
     return (
         <div>
           {this.props.children}
+          <Tabs />
         </div>
     );
   }
