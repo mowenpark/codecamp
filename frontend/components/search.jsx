@@ -11,7 +11,8 @@ var Search = React.createClass({
     return{
       name: "",
       location: "",
-      locations: ProgramsStore.locations()
+      locations: ProgramsStore.locations(),
+      locFocus: false
     };
   },
 
@@ -70,12 +71,19 @@ var Search = React.createClass({
     this.locationMatches();
   },
 
+  toggleFocus: function () {
+    this.setState({locFocus: !this.state.locFocus});
+  },
+
   render: function() {
-    var locations = this.locationMatches().map(function (location, i) {
-      return (
-          <li key={i} onClick={this.selectLocation}>{location}</li>
-      );
-    }.bind(this));
+    var locations = [];
+    if (this.state.locFocus) {
+      locations = this.locationMatches().map(function (location, i) {
+        return (
+            <li key={i} onClick={this.selectLocation}>{location}</li>
+          );
+        }.bind(this));
+      }
 
     return (
       <form className="navbar-form navbar-left" onSubmit={this.handleSearch}>
@@ -89,7 +97,9 @@ var Search = React.createClass({
           <input type="text"
             onChange={this.locationChanged}
             value={this.state.location}
-            placeholder="Location" />
+            placeholder="Location"
+            onBlur={this.toggleFocus}
+            onFocus={this.toggleFocus}/>
           <ul className="auto-location"
             id="toggle-trigger">
             <ReactCSSTransitionGroup

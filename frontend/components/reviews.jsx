@@ -1,34 +1,25 @@
 var React = require('react');
-var ReviewsStore = require('../stores/reviews'),
-    ApiUtil = require('../util/api_util');
 
 var Reviews = React.createClass({
-  getInitialState: function () {
-    return {
-      reviews: ReviewsStore.all()
-    };
-  },
-
-  componentDidMount: function () {
-    this.token = ReviewsStore.addListener(this.renderReviews);
-    var id = this.props.programID;
-    ApiUtil.fetchReviews(id);
-  },
-
-  renderReviews: function () {
-    this.setState({reviews: ReviewsStore.all()});
-  },
-
-  componentWillUnmount: function () {
-    this.token.remove();
-  },
 
   render: function() {
-    var reviews = this.state.reviews.map( function (review, index) {
+    var reviews = this.props.reviews.map( function (review, index) {
       return (
         <div key={index} className="panel panel-default">
-          <div className="panel-heading">{review.title}</div>
-          <div className="panel-body">{review.body}</div>
+          <div className="panel-heading">
+            {review.title}
+            <small class="text-muted">{review.username} {review.dateCreated}</small>
+          </div>
+          <div className="panel-body">
+            <p><strong>Pros:</strong></p>
+            <div>{review.pros}</div>
+            <br></br>
+            <p><strong>Cons:</strong></p>
+            <div>{review.cons}</div>
+            <br></br>
+            <p><strong>How they can improve:</strong></p>
+            <div>{review.comments}</div>
+          </div>
         </div>
       );
     });

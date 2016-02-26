@@ -21,7 +21,7 @@ var Headers = React.createClass({
               key={ index }
               className={klass + " thumbnail"}
               onClick={that.props.onTabChosen.bind(null, index)}>
-              <img className="media-object" src={logo} alt="..." />
+              <img className="media-object" src={logo} />
               <div className="caption" >
                 <h3>{title}</h3>
                 <p>{short}</p>

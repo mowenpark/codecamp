@@ -13,7 +13,7 @@
 
 class Review < ActiveRecord::Base
 
-  validates :title, :body, presence: true
+  validates :title, :pros, :cons, :comments, :rating, :years_worked, presence: true
 
   belongs_to :user,
     class_name: "User",

@@ -22,9 +22,17 @@ var ApiUtil = {
 	},
 
 	addReview: function (results) {
-		$.post( "/api/reviews", results, function( data ) {
-			ApiActions.updateReviews(data);
-		});
+		$.ajax({
+			  type: "POST",
+			  url: "/api/reviews",
+			  data: results,
+			  success: function( data ) {
+					ApiActions.updateReviews(data);
+				},
+				error: function ( error ) {
+					debugger;
+				},
+			});
 	}
 
 };
