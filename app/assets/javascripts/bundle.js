@@ -19915,7 +19915,8 @@
 	          placeholder: 'Location' }),
 	        React.createElement(
 	          'ul',
-	          { className: 'auto-location' },
+	          { className: 'auto-location',
+	            id: 'toggle-trigger' },
 	          React.createElement(
 	            ReactCSSTransitionGroup,
 	            {
@@ -27823,7 +27824,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var Reviews = __webpack_require__(197);
+
+	var Reviews = __webpack_require__(197),
+	    ReviewForm = __webpack_require__(248);
 
 	var SearchPanel = React.createClass({
 	  displayName: 'SearchPanel',
@@ -27832,7 +27835,7 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'container' },
+	      null,
 	      React.createElement(
 	        'div',
 	        { className: 'blog-header' },
@@ -27876,11 +27879,7 @@
 	              'Reviews'
 	            ),
 	            React.createElement(Reviews, { programID: this.props.id }),
-	            React.createElement(
-	              'button',
-	              { type: 'button', className: 'btn btn-primary' },
-	              'Create Review'
-	            )
+	            React.createElement(ReviewForm, { programID: this.props.id })
 	          )
 	        )
 	      )
@@ -32620,6 +32619,53 @@
 
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(147);
+	var PropTypes = React.PropTypes;
+
+	var ReviewForm = React.createClass({
+	  displayName: "ReviewForm",
+
+
+	  render: function () {
+	    return React.createElement(
+	      "form",
+	      { onSubmit: "" },
+	      React.createElement(
+	        "fieldset",
+	        { className: "form-group" },
+	        React.createElement(
+	          "label",
+	          { "for": "exampleTextarea" },
+	          "Example textarea"
+	        ),
+	        React.createElement("textarea", { className: "form-control", id: "exampleTextarea", rows: "1" })
+	      ),
+	      React.createElement(
+	        "fieldset",
+	        { className: "form-group" },
+	        React.createElement(
+	          "label",
+	          { "for": "exampleTextarea" },
+	          "Example textarea"
+	        ),
+	        React.createElement("textarea", { className: "form-control", id: "exampleTextarea", rows: "3" })
+	      ),
+	      React.createElement(
+	        "button",
+	        { type: "submit", className: "btn btn-primary" },
+	        "Submit"
+	      )
+	    );
+	  }
+
+	});
+
+	module.exports = ReviewForm;
 
 /***/ }
 /******/ ]);

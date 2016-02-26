@@ -1,11 +1,13 @@
 var React = require('react');
-var Reviews = require('./reviews');
+
+var Reviews = require('./reviews'),
+    ReviewForm = require('./review_form');
 
 var SearchPanel = React.createClass({
 
   render: function() {
     return (
-        <div className="container">
+        <div >
 
           <div className="blog-header">
             <h1 className="blog-title">{this.props.title}</h1>
@@ -21,7 +23,7 @@ var SearchPanel = React.createClass({
               <div className="blog-post">
                 <h2 className="blog-post-title">Reviews</h2>
                 <Reviews programID={this.props.id}/>
-                <button type="button" className="btn btn-primary">Create Review</button>
+                <ReviewForm programID={this.props.id}/>
               </div>
             </div>
           </div>

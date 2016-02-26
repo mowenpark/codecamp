@@ -90,7 +90,8 @@ var Search = React.createClass({
             onChange={this.locationChanged}
             value={this.state.location}
             placeholder="Location" />
-          <ul className="auto-location">
+          <ul className="auto-location"
+            id="toggle-trigger">
             <ReactCSSTransitionGroup
               transitionName="auto"
               transitionEnterTimeout={500}
