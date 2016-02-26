@@ -21,6 +21,13 @@ var ApiActions = {
       actionType: "RECEIVE_REVIEWS",
       reviews: reviews
     });
+  },
+
+  updateReviews: function (review) {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_REVIEW",
+      review: review
+    });
   }
 
 };

@@ -19,6 +19,12 @@ var ApiUtil = {
 		$.get("/api/reviews", {program_id: params}, function (reviews) {
 			ApiActions.receiveReviews(reviews);
 		});
+	},
+
+	addReview: function (results) {
+		$.post( "/api/reviews", results, function( data ) {
+			ApiActions.updateReviews(data);
+		});
 	}
 
 };

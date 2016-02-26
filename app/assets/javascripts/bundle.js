@@ -20754,6 +20754,12 @@
 			$.get("/api/reviews", { program_id: params }, function (reviews) {
 				ApiActions.receiveReviews(reviews);
 			});
+		},
+
+		addReview: function (results) {
+			$.post("/api/reviews", results, function (data) {
+				ApiActions.updateReviews(data);
+			});
 		}
 
 	};
@@ -20786,6 +20792,13 @@
 	    AppDispatcher.dispatch({
 	      actionType: "RECEIVE_REVIEWS",
 	      reviews: reviews
+	    });
+	  },
+
+	  updateReviews: function (review) {
+	    AppDispatcher.dispatch({
+	      actionType: "RECEIVE_REVIEW",
+	      review: review
 	    });
 	  }
 
@@ -27964,6 +27977,10 @@
 	  _reviews = reviews.slice(0);
 	};
 
+	var addReview = function (review) {
+	  _reviews.push(review);
+	};
+
 	ReviewsStore.all = function () {
 	  return _reviews.slice(0);
 	};
@@ -27972,6 +27989,10 @@
 	  switch (payload.actionType) {
 	    case "RECEIVE_REVIEWS":
 	      resetReviews(payload.reviews);
+	      ReviewsStore.__emitChange();
+	      break;
+	    case "RECEIVE_REVIEW":
+	      addReview(payload.review);
 	      ReviewsStore.__emitChange();
 	      break;
 	  }
@@ -32625,40 +32646,65 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var PropTypes = React.PropTypes;
+	var ApiUtil = __webpack_require__(170);
 
 	var ReviewForm = React.createClass({
-	  displayName: "ReviewForm",
+	  displayName: 'ReviewForm',
 
+	  getInitialState: function () {
+	    return {
+	      title: "",
+	      body: "",
+	      program_id: this.props.programID
+	    };
+	  },
+
+	  titleChanged: function (e) {
+	    this.setState({ title: e.target.value });
+	  },
+
+	  bodyChanged: function (e) {
+	    this.setState({ body: e.target.value });
+	  },
+
+	  handleSubmit: function (event) {
+	    event.preventDefault();
+	    var review = Object.assign({}, this.state);
+	    ApiUtil.addReview(review);
+	  },
 
 	  render: function () {
 	    return React.createElement(
-	      "form",
-	      { onSubmit: "" },
+	      'form',
+	      { onSubmit: this.handleSubmit },
 	      React.createElement(
-	        "fieldset",
-	        { className: "form-group" },
+	        'fieldset',
+	        { className: 'form-group' },
 	        React.createElement(
-	          "label",
-	          { "for": "exampleTextarea" },
-	          "Example textarea"
+	          'label',
+	          { 'for': 'exampleTextarea' },
+	          'Review Title'
 	        ),
-	        React.createElement("textarea", { className: "form-control", id: "exampleTextarea", rows: "1" })
+	        React.createElement('textarea', { onChange: this.titleChanged, className: 'form-control',
+	          rows: '1',
+	          placeholder: 'Title' })
 	      ),
 	      React.createElement(
-	        "fieldset",
-	        { className: "form-group" },
+	        'fieldset',
+	        { className: 'form-group' },
 	        React.createElement(
-	          "label",
-	          { "for": "exampleTextarea" },
-	          "Example textarea"
+	          'label',
+	          { 'for': 'exampleTextarea' },
+	          'Review Body'
 	        ),
-	        React.createElement("textarea", { className: "form-control", id: "exampleTextarea", rows: "3" })
+	        React.createElement('textarea', { onChange: this.bodyChanged, className: 'form-control',
+	          rows: '3',
+	          placeholder: 'Enter your review here!' })
 	      ),
 	      React.createElement(
-	        "button",
-	        { type: "submit", className: "btn btn-primary" },
-	        "Submit"
+	        'button',
+	        { type: 'submit', className: 'btn btn-primary' },
+	        'Submit'
 	      )
 	    );
 	  }
