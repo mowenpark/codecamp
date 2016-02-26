@@ -15,7 +15,7 @@ var Reviews = React.createClass({
     ApiUtil.fetchReviews(id);
   },
 
-  renderPanes: function () {
+  renderReviews: function () {
     this.setState({reviews: ReviewsStore.all()});
   },
 
@@ -24,8 +24,18 @@ var Reviews = React.createClass({
   },
 
   render: function() {
+    var reviews = this.state.reviews.map( function (review, index) {
+      return (
+        <div key={index} className="panel panel-default">
+          <div className="panel-heading">{review.title}</div>
+          <div className="panel-body">{review.body}</div>
+        </div>
+      );
+    });
     return (
-      <div />
+      <div>
+        {reviews}
+      </div>
     );
   }
 

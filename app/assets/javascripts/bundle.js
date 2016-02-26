@@ -20782,7 +20782,6 @@
 	  },
 
 	  receiveReviews: function (reviews) {
-	    debugger;
 	    AppDispatcher.dispatch({
 	      actionType: "RECEIVE_REVIEWS",
 	      reviews: reviews
@@ -27915,7 +27914,7 @@
 	    ApiUtil.fetchReviews(id);
 	  },
 
-	  renderPanes: function () {
+	  renderReviews: function () {
 	    this.setState({ reviews: ReviewsStore.all() });
 	  },
 
@@ -27924,7 +27923,27 @@
 	  },
 
 	  render: function () {
-	    return React.createElement('div', null);
+	    var reviews = this.state.reviews.map(function (review, index) {
+	      return React.createElement(
+	        'div',
+	        { key: index, className: 'panel panel-default' },
+	        React.createElement(
+	          'div',
+	          { className: 'panel-heading' },
+	          review.title
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'panel-body' },
+	          review.body
+	        )
+	      );
+	    });
+	    return React.createElement(
+	      'div',
+	      null,
+	      reviews
+	    );
 	  }
 
 	});

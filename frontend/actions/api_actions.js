@@ -17,7 +17,6 @@ var ApiActions = {
   },
 
   receiveReviews: function (reviews) {
-    debugger;
     AppDispatcher.dispatch({
       actionType: "RECEIVE_REVIEWS",
       reviews: reviews
