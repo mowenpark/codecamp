@@ -8,7 +8,8 @@ var Reviews = React.createClass({
         <div key={index} className="panel panel-default">
           <div className="panel-heading">
             {review.title}
-            <small class="text-muted">{review.username} {review.dateCreated}</small>
+            <br></br>
+            <small className="text-muted">{review.username} {review.dateCreated}</small>
           </div>
           <div className="panel-body">
             <p><strong>Pros:</strong></p>

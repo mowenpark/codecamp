@@ -22,6 +22,7 @@ var ApiUtil = {
 	},
 
 	addReview: function (results) {
+		debugger
 		$.ajax({
 			  type: "POST",
 			  url: "/api/reviews",

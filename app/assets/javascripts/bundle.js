@@ -20767,6 +20767,7 @@
 		},
 	
 		addReview: function (results) {
+			debugger;
 			$.ajax({
 				type: "POST",
 				url: "/api/reviews",
@@ -27988,9 +27989,10 @@
 	          "div",
 	          { className: "panel-heading" },
 	          review.title,
+	          React.createElement("br", null),
 	          React.createElement(
 	            "small",
-	            { "class": "text-muted" },
+	            { className: "text-muted" },
 	            review.username,
 	            " ",
 	            review.dateCreated
@@ -28069,9 +28071,13 @@
 	
 	  getInitialState: function () {
 	    return {
-	      title: "",
-	      body: "",
-	      program_id: this.props.programID
+	      title: null,
+	      pros: null,
+	      cons: null,
+	      rating: null,
+	      program_id: this.props.programID,
+	      enrollment_status: null,
+	      comments: null
 	    };
 	  },
 	
@@ -28079,20 +28085,24 @@
 	    this.setState({ title: e.target.value });
 	  },
 	
-	  bodyChanged: function (e) {
-	    this.setState({ body: e.target.value });
+	  prosChanged: function (e) {
+	    this.setState({ pros: e.target.value });
 	  },
 	
-	  bodyChanged: function (e) {
-	    this.setState({ body: e.target.value });
+	  consChanged: function (e) {
+	    this.setState({ cons: e.target.value });
 	  },
 	
-	  bodyChanged: function (e) {
-	    this.setState({ body: e.target.value });
+	  commentsChanged: function (e) {
+	    this.setState({ comments: e.target.value });
 	  },
 	
-	  bodyChanged: function (e) {
-	    this.setState({ body: e.target.value });
+	  ratingChanged: function (e) {
+	    this.setState({ rating: parseInt(e.target.value) });
+	  },
+	
+	  enrollmentChanged: function (e) {
+	    this.setState({ enrollment_status: e.target.value });
 	  },
 	
 	  handleSubmit: function (event) {
@@ -28113,47 +28123,93 @@
 	          { htmlFor: 'exampleTextarea' },
 	          'Review Title'
 	        ),
-	        React.createElement(
-	          'small',
-	          { 'class': 'text-muted' },
-	          'Enter an exciting and fun review'
-	        ),
 	        React.createElement('textarea', { onChange: this.titleChanged, className: 'form-control',
 	          rows: '1',
 	          placeholder: 'Title' })
 	      ),
 	      React.createElement(
-	        'div',
-	        { 'class': 'radio' },
+	        'fieldset',
+	        { className: 'form-group' },
 	        React.createElement(
 	          'label',
-	          null,
-	          React.createElement('input', { type: 'radio',
-	            name: 'optionsRadios',
-	            id: 'optionsRadios1',
-	            value: 'option1' })
+	          { htmlFor: 'exampleTextarea' },
+	          'Rating'
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'radio' },
+	          React.createElement(
+	            'label',
+	            { className: 'radio-inline' },
+	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	              id: 'inlineRadio1',
+	              onClick: this.ratingChanged,
+	              value: '1' }),
+	            '1'
+	          ),
+	          React.createElement(
+	            'label',
+	            { className: 'radio-inline' },
+	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	              id: 'inlineRadio2',
+	              onClick: this.ratingChanged,
+	              value: '2' }),
+	            '2'
+	          ),
+	          React.createElement(
+	            'label',
+	            { className: 'radio-inline' },
+	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	              onClick: this.ratingChanged,
+	              id: 'inlineRadio3', value: '3' }),
+	            '3'
+	          ),
+	          React.createElement(
+	            'label',
+	            { className: 'radio-inline' },
+	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	              onClick: this.ratingChanged,
+	              id: 'inlineRadio4', value: '4' }),
+	            '4'
+	          ),
+	          React.createElement(
+	            'label',
+	            { className: 'radio-inline' },
+	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	              onClick: this.ratingChanged,
+	              id: 'inlineRadio5', value: '5' }),
+	            '5'
+	          )
 	        )
 	      ),
 	      React.createElement(
 	        'fieldset',
-	        { 'class': 'form-group' },
+	        { className: 'form-group' },
 	        React.createElement(
 	          'label',
-	          { 'for': 'exampleSelect1' },
-	          'Enrollment Status'
+	          { htmlFor: 'exampleTextarea' },
+	          'Enrollment'
 	        ),
 	        React.createElement(
-	          'select',
-	          { 'class': 'form-control', id: 'exampleSelect1' },
+	          'div',
+	          { className: 'radio' },
 	          React.createElement(
-	            'option',
-	            null,
+	            'label',
+	            { className: 'radio-inline' },
+	            React.createElement('input', { type: 'radio', name: 'enrollment-radio',
+	              id: 'inlineRadio1',
+	              onClick: this.enrollmentChanged,
+	              value: 'true' }),
 	            'Currently Enrolled'
 	          ),
 	          React.createElement(
-	            'option',
-	            null,
-	            'Previously Enrolled'
+	            'label',
+	            { className: 'radio-inline' },
+	            React.createElement('input', { type: 'radio', name: 'enrollment-radio',
+	              id: 'inlineRadio2',
+	              onClick: this.enrollmentChanged,
+	              value: 'false' }),
+	            'Former Student'
 	          )
 	        )
 	      ),
@@ -28171,7 +28227,7 @@
 	      ),
 	      React.createElement(
 	        'fieldset',
-	        null,
+	        { className: 'form-group' },
 	        React.createElement(
 	          'label',
 	          { htmlFor: 'exampleTextarea' },
@@ -28183,7 +28239,7 @@
 	      ),
 	      React.createElement(
 	        'fieldset',
-	        null,
+	        { className: 'form-group' },
 	        React.createElement(
 	          'label',
 	          { htmlFor: 'exampleTextarea' },
