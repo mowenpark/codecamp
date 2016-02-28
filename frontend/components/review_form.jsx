@@ -41,7 +41,9 @@ var ReviewForm = React.createClass({
   handleSubmit: function (event) {
     event.preventDefault();
     var review = Object.assign({}, this.state);
-    ApiUtil.addReview(review);
+    ApiUtil.addReview(review, function (errors) {
+      debugger;
+    });
   },
 
   render: function() {

@@ -19776,31 +19776,53 @@
 	var HeaderMenu = React.createClass({
 	  displayName: 'HeaderMenu',
 	
+	  getInitialState: function () {
+	    return {
+	      param: "programs"
+	    };
+	  },
+	
+	  handleClick: function (e) {
+	    this.setState({ param: e.target.value });
+	  },
 	
 	  render: function () {
 	    return React.createElement(
-	      'ul',
-	      { className: 'nav navbar-nav navbar-left' },
-	      React.createElement(
-	        'li',
-	        { className: '' },
-	        'Programs'
-	      ),
-	      React.createElement(
-	        'li',
-	        { className: '' },
-	        'Companies'
-	      ),
-	      React.createElement(
-	        'li',
-	        { className: '' },
-	        'Salaries'
-	      ),
+	      'div',
+	      null,
 	      React.createElement(
 	        'div',
-	        null,
-	        React.createElement(Search, null)
-	      )
+	        { className: 'btn-group btn-group-justified', role: 'group' },
+	        React.createElement(
+	          'div',
+	          { className: 'btn-group', role: 'group' },
+	          React.createElement(
+	            'button',
+	            { type: 'button', onClick: this.handleClick, className: 'btn btn-success-outline' },
+	            'Programs'
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'btn-group', role: 'group' },
+	          React.createElement(
+	            'button',
+	            { type: 'button', onClick: this.handleClick, className: 'btn btn-success-outline' },
+	            'Companies'
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'btn-group', role: 'group' },
+	          React.createElement(
+	            'button',
+	            { type: 'button', onClick: this.handleClick, className: 'btn btn-success-outline' },
+	            'Languages'
+	          )
+	        )
+	      ),
+	      React.createElement('br', null),
+	      React.createElement(Search, { searchParam: this.state.param })
 	    );
 	  }
 	
@@ -20743,9 +20765,9 @@
 /* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ApiActions = __webpack_require__(171);
-	
-	var SearchParamsStore = __webpack_require__(176);
+	var React = __webpack_require__(147);
+	var ApiActions = __webpack_require__(171),
+	    ApplicationErrors = __webpack_require__(249);
 	
 	var ApiUtil = {
 		fetchPrograms: function (params) {
@@ -20766,8 +20788,7 @@
 			});
 		},
 	
-		addReview: function (results) {
-			debugger;
+		addReview: function (results, callback) {
 			$.ajax({
 				type: "POST",
 				url: "/api/reviews",
@@ -20775,8 +20796,8 @@
 				success: function (data) {
 					ApiActions.updateReviews(data);
 				},
-				error: function (error) {
-					debugger;
+				error: function (errors) {
+					callback(errors);
 				}
 			});
 		}
@@ -28108,7 +28129,9 @@
 	  handleSubmit: function (event) {
 	    event.preventDefault();
 	    var review = Object.assign({}, this.state);
-	    ApiUtil.addReview(review);
+	    ApiUtil.addReview(review, function (errors) {
+	      debugger;
+	    });
 	  },
 	
 	  render: function () {
@@ -32939,6 +32962,46 @@
 	
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 249 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(147);
+	
+	var Errors = React.createClass({
+	  displayName: "Errors",
+	
+	  getInitialState: function () {
+	    return {
+	      errors: []
+	    };
+	  },
+	
+	  handleError: function (errors) {
+	    this.setState({ errors: errors });
+	  },
+	
+	  render: function () {
+	    debugger;
+	    return React.createElement(
+	      "div",
+	      { "class": "alert alert-warning alert-dismissible", role: "alert" },
+	      React.createElement(
+	        "button",
+	        { type: "button", "class": "close", "data-dismiss": "alert", "aria-label": "Close" },
+	        React.createElement(
+	          "span",
+	          { "aria-hidden": "true" },
+	          "×"
+	        )
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = Errors;
 
 /***/ }
 /******/ ]);

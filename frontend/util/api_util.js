@@ -1,6 +1,6 @@
-var ApiActions = require('../actions/api_actions');
-
-var SearchParamsStore = require('../stores/program');
+var React = require('react');
+var ApiActions = require('../actions/api_actions'),
+		ApplicationErrors = require('../components/errors.jsx');
 
 var ApiUtil = {
 	fetchPrograms: function(params) {
@@ -21,8 +21,7 @@ var ApiUtil = {
 		});
 	},
 
-	addReview: function (results) {
-		debugger
+	addReview: function (results, callback) {
 		$.ajax({
 			  type: "POST",
 			  url: "/api/reviews",
@@ -30,8 +29,8 @@ var ApiUtil = {
 			  success: function( data ) {
 					ApiActions.updateReviews(data);
 				},
-				error: function ( error ) {
-					debugger;
+				error: function ( errors ) {
+					callback(errors);
 				},
 			});
 	}
