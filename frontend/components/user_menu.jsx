@@ -24,9 +24,12 @@ var UserMenu = React.createClass({
       );
     } else {
       return (
-        <ul className="nav navbar-nav navbar-right">
-          <li><a href="#">Notifications</a></li>
-          <li className="dropdown clean">
+        <ul className="list-group">
+          <li className="list-group-item">
+            <span className="badge">14</span><a href="#">
+            Notifications
+          </a></li>
+        <li className="list-group-item dropdown clean">
             <a href="#" className="dropdown-toggle"
               data-toggle="dropdown"
               role="button"

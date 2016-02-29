@@ -1,7 +1,9 @@
 var ReactDOM = require('react-dom'),
     React = require('react'),
     NavBarMain = require('./components/navbar_main'),
-    Tabs = require('./components/tabs');
+    Tabs = require('./components/tabs'),
+    User = require('./components/user'),
+    SignIn = require('./components/signin');
 
 var Router = require('react-router').Router;
 var IndexRoute = require('react-router').IndexRoute;
@@ -15,6 +17,7 @@ var App = React.createClass({
         <div>
           {this.props.children}
           <Tabs />
+          <User />
         </div>
     );
   }
@@ -22,8 +25,9 @@ var App = React.createClass({
 
 var routes = (
     <Route path="/" component={App}>
-      <IndexRoute component={NavBarMain} />
-      <Route path="user/:id" component={NavBarMain} />
+      <IndexRoute component={NavBarMain} >
+        <Route path="users/:id" component={User} />
+      </IndexRoute>
     </Route>
 );
 

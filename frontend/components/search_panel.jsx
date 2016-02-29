@@ -59,7 +59,7 @@ var SearchPanel = React.createClass({
           </div>
 
           <div className="row">
-            <div className="col-md-8 blog-main">
+            <div className="col-md-12 blog-main">
               <div className="blog-post">
                 <h2 className="blog-post-title">About</h2>
                 <p>{this.props.description}</p>

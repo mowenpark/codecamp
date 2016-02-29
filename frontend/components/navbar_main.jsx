@@ -9,6 +9,7 @@ var NavBarMain = React.createClass({
 
   render: function() {
     return (
+      <div>
       <nav className="navbar navbar-clean">
         <div className="container-fluid">
           {/*Brand and toggle get grouped for better mobile display*/}
@@ -29,6 +30,8 @@ var NavBarMain = React.createClass({
           </div>{/* /.navbar-collapse -->*/}
         </div>{/* /.container-fluid -->*/}
       </nav>
+      {this.props.children}
+      </div>
     );
   }
 
