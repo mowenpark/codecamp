@@ -49,7 +49,8 @@
 	    NavBarMain = __webpack_require__(159),
 	    Tabs = __webpack_require__(196),
 	    User = __webpack_require__(201),
-	    SignIn = __webpack_require__(202);
+	    SignIn = __webpack_require__(202),
+	    Dashboard = __webpack_require__(252);
 	
 	var Router = __webpack_require__(203).Router;
 	var IndexRoute = __webpack_require__(203).IndexRoute;
@@ -65,6 +66,7 @@
 	      'div',
 	      null,
 	      React.createElement(NavBarMain, null),
+	      React.createElement(Dashboard, null),
 	      this.props.children
 	    );
 	  }
@@ -19729,7 +19731,7 @@
 	            React.createElement(
 	              'a',
 	              { href: '/#' },
-	              React.createElement('img', { alt: 'Brand', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png' })
+	              React.createElement('img', { alt: 'Brand', className: 'logo', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png' })
 	            )
 	          ),
 	          React.createElement(HeaderMenu, null)
@@ -33253,6 +33255,245 @@
 	
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 252 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(147);
+	var PropTypes = React.PropTypes;
+	
+	var Dashboard = React.createClass({
+	  displayName: "Dashboard",
+	
+	
+	  render: function () {
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "div",
+	        { id: "myCarousel", className: "carousel slide", "data-ride": "carousel" },
+	        React.createElement(
+	          "ol",
+	          { className: "carousel-indicators" },
+	          React.createElement("li", { "data-target": "#myCarousel", "data-slide-to": "0", className: "active" }),
+	          React.createElement("li", { "data-target": "#myCarousel", "data-slide-to": "1" }),
+	          React.createElement("li", { "data-target": "#myCarousel", "data-slide-to": "2" })
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "carousel-inner", role: "listbox" },
+	          React.createElement(
+	            "div",
+	            { className: "item active" },
+	            React.createElement("img", { className: "first-slide", src: "http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456856395/people-coffee-notes-tea_ziykz4.jpg", alt: "First slide" }),
+	            React.createElement(
+	              "div",
+	              { className: "container" },
+	              React.createElement(
+	                "div",
+	                { className: "carousel-caption" },
+	                React.createElement(
+	                  "h1",
+	                  null,
+	                  "Example headline."
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "Note: If you're viewing this page via a ",
+	                  React.createElement(
+	                    "code",
+	                    null,
+	                    "file://"
+	                  ),
+	                  " URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  React.createElement(
+	                    "a",
+	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
+	                    "Sign up today"
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "item" },
+	            React.createElement("img", { className: "second-slide", src: "http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456855670/coffee-apple-iphone-desk_i1uriy.jpg", alt: "Second slide" }),
+	            React.createElement(
+	              "div",
+	              { className: "container" },
+	              React.createElement(
+	                "div",
+	                { className: "carousel-caption" },
+	                React.createElement(
+	                  "h1",
+	                  null,
+	                  "Another example headline."
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  React.createElement(
+	                    "a",
+	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
+	                    "Learn more"
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "item" },
+	            React.createElement("img", { className: "third-slide", src: "http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456770075/flowers-desk-office-vintage_dy19o8.jpg", alt: "Third slide" }),
+	            React.createElement(
+	              "div",
+	              { className: "container" },
+	              React.createElement(
+	                "div",
+	                { className: "carousel-caption" },
+	                React.createElement(
+	                  "h1",
+	                  null,
+	                  "One more for good measure."
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+	                ),
+	                React.createElement(
+	                  "p",
+	                  null,
+	                  React.createElement(
+	                    "a",
+	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
+	                    "Browse gallery"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          "a",
+	          { className: "left carousel-control", href: "#myCarousel", role: "button", "data-slide": "prev" },
+	          React.createElement("span", { className: "glyphicon glyphicon-chevron-left", "aria-hidden": "true" }),
+	          React.createElement(
+	            "span",
+	            { className: "sr-only" },
+	            "Previous"
+	          )
+	        ),
+	        React.createElement(
+	          "a",
+	          { className: "right carousel-control", href: "#myCarousel", role: "button", "data-slide": "next" },
+	          React.createElement("span", { className: "glyphicon glyphicon-chevron-right", "aria-hidden": "true" }),
+	          React.createElement(
+	            "span",
+	            { className: "sr-only" },
+	            "Next"
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "container marketing" },
+	        React.createElement(
+	          "div",
+	          { className: "row" },
+	          React.createElement(
+	            "div",
+	            { className: "col-lg-4" },
+	            React.createElement("img", { className: "img-circle", src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            React.createElement(
+	              "h2",
+	              null,
+	              "Heading"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna."
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              React.createElement(
+	                "a",
+	                { className: "btn btn-default", href: "#", role: "button" },
+	                "View details »"
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "col-lg-4" },
+	            React.createElement("img", { className: "img-circle", src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            React.createElement(
+	              "h2",
+	              null,
+	              "Heading"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh."
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              React.createElement(
+	                "a",
+	                { className: "btn btn-default", href: "#", role: "button" },
+	                "View details »"
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "col-lg-4" },
+	            React.createElement("img", { className: "img-circle", src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            React.createElement(
+	              "h2",
+	              null,
+	              "Heading"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              React.createElement(
+	                "a",
+	                { className: "btn btn-default", href: "#", role: "button" },
+	                "View details »"
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = Dashboard;
 
 /***/ }
 /******/ ]);

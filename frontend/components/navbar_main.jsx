@@ -18,7 +18,7 @@ var NavBarMain = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a href="/#"><img alt="Brand" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png" /></a>
+            <a href="/#"><img alt="Brand" className="logo" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png" /></a>
           </div>
             <HeaderMenu />
         </div>
