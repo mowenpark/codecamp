@@ -50,6 +50,7 @@
 	    Tabs = __webpack_require__(196),
 	    User = __webpack_require__(201),
 	    SignIn = __webpack_require__(202),
+	    SignUp = __webpack_require__(253),
 	    Dashboard = __webpack_require__(252);
 	
 	var Router = __webpack_require__(203).Router;
@@ -77,7 +78,8 @@
 	  React.createElement(IndexRoute, { component: Dashboard }),
 	  React.createElement(Route, { path: 'users/:id', component: User }),
 	  React.createElement(Route, { path: 'search', component: Tabs }),
-	  React.createElement(Route, { path: 'signin', component: SignIn })
+	  React.createElement(Route, { path: 'signin', component: SignIn }),
+	  React.createElement(Route, { path: 'signup', component: SignUp })
 	);
 	
 	document.addEventListener("DOMContentLoaded", function () {
@@ -33536,6 +33538,141 @@
 	});
 	
 	module.exports = Dashboard;
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(147);
+	var PropTypes = React.PropTypes;
+	
+	var SignUp = React.createClass({
+	  displayName: "SignUp",
+	
+	
+	  render: function () {
+	    return React.createElement(
+	      "div",
+	      { className: "container-fluid" },
+	      React.createElement(
+	        "section",
+	        { className: "container" },
+	        React.createElement(
+	          "div",
+	          { className: "container-page" },
+	          React.createElement(
+	            "div",
+	            { className: "col-md-6" },
+	            React.createElement(
+	              "h3",
+	              { className: "dark-grey" },
+	              "Registration"
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "form-group col-lg-12" },
+	              React.createElement(
+	                "label",
+	                null,
+	                "Full Name"
+	              ),
+	              React.createElement("input", { type: "", name: "", className: "form-control", id: "", value: "" })
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "form-group col-lg-6" },
+	              React.createElement(
+	                "label",
+	                null,
+	                "Password"
+	              ),
+	              React.createElement("input", { type: "password", name: "", className: "form-control", id: "", value: "" })
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "form-group col-lg-6" },
+	              React.createElement(
+	                "label",
+	                null,
+	                "Repeat Password"
+	              ),
+	              React.createElement("input", { type: "password", name: "", className: "form-control", id: "", value: "" })
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "form-group col-lg-6" },
+	              React.createElement(
+	                "label",
+	                null,
+	                "Email Address"
+	              ),
+	              React.createElement("input", { type: "", name: "", className: "form-control", id: "", value: "" })
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "form-group col-lg-6" },
+	              React.createElement(
+	                "label",
+	                null,
+	                "Repeat Email Address"
+	              ),
+	              React.createElement("input", { type: "", name: "", className: "form-control", id: "", value: "" })
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "col-sm-6" },
+	              React.createElement("input", { type: "checkbox", className: "checkbox" }),
+	              "Sigh up for our newsletter"
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "col-sm-6" },
+	              React.createElement("input", { type: "checkbox", className: "checkbox" }),
+	              "Send notifications to this email"
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "col-md-6" },
+	            React.createElement(
+	              "h3",
+	              { className: "dark-grey" },
+	              "Terms and Conditions"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "By clicking on \"Register\" you agree to The Company's Terms and Conditions"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "While rare, prices are subject to change based on exchange rate fluctuations - should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)"
+	            ),
+	            React.createElement(
+	              "button",
+	              { type: "submit", className: "btn btn-primary" },
+	              "Register"
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = SignUp;
 
 /***/ }
 /******/ ]);

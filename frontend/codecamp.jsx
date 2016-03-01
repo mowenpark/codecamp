@@ -4,6 +4,7 @@ var ReactDOM = require('react-dom'),
     Tabs = require('./components/tabs'),
     User = require('./components/user'),
     SignIn = require('./components/signin'),
+    SignUp = require('./components/signup'),
     Dashboard = require('./components/dashboard');
 
 var Router = require('react-router').Router;
@@ -29,6 +30,7 @@ var routes = (
       <Route path="users/:id" component={User} />
       <Route path="search" component={Tabs} />
       <Route path="signin" component={SignIn} />
+      <Route path="signup" component={SignUp} />
     </Route>
 );
 
