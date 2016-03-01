@@ -42,6 +42,19 @@ end
   })
 end
 
+name = "Michael"
+email = "mike@mail.com"
+password = "mikemike"
+bio = Faker::Lorem.paragraphs
+location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
+User.create({
+  name: name,
+  email: email,
+  password: password,
+  location: location,
+  bio: bio
+})
+
 Program.all.each do |program|
   rand(1..5).times do
     user_id = rand(5)
