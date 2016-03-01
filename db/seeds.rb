@@ -28,11 +28,13 @@ Company.all.each do |company|
 end
 
 20.times do
+  # name = Faker::Internet.name
   email = Faker::Internet.safe_email
   password = Faker::Internet.password(8)
   bio = Faker::Lorem.paragraphs
   location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
   User.create({
+    name: name,
     email: email,
     password: password,
     location: location,
