@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301152812) do
+ActiveRecord::Schema.define(version: 20160301164055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160301152812) do
     t.string   "profile_pic",     default: "http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_180,w_180/v1456770578/820C3ABDED_mrrhma_yaui0w.jpg"
     t.text     "bio",                                                                                                                                      null: false
     t.string   "location",                                                                                                                                 null: false
+    t.string   "name",                                                                                                                                     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
