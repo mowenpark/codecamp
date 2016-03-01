@@ -28,7 +28,7 @@ Company.all.each do |company|
 end
 
 20.times do
-  # name = Faker::Internet.name
+  name = Faker::Name.name
   email = Faker::Internet.safe_email
   password = Faker::Internet.password(8)
   bio = Faker::Lorem.paragraphs
