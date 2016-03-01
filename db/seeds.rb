@@ -60,7 +60,6 @@ Program.all.each do |program|
       pros: pros,
       enrollment_status: enrollment_status,
       cons: cons,
-      comments: comments,
       rating: rating,
       )
   end
