@@ -1,17 +1,11 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
+
+var ApiUtil = require('../util/api_util');
 
 var UserMenu = React.createClass({
 
   logoutUser: function () {
-    $.ajax({
-      url: '/session',
-      type: 'post',
-      data: {_method: 'delete'},
-      success: function() {
-        window.location.replace("/session/new");
-      }
-    });
+    ApiUtil.logout();
   },
 
   render: function() {

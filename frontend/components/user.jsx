@@ -6,7 +6,6 @@ var NavBarMain = require('./navbar_main'),
 var User = React.createClass({
 
   componentDidMount: function () {
-    debugger;
     ApiUtil.fetchUser(this.props.param);
   },
 

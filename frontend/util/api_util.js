@@ -3,8 +3,32 @@ var ApiActions = require('../actions/api_actions'),
 		ApplicationErrors = require('../components/errors.jsx');
 
 var ApiUtil = {
+
+	logout: function () {
+		$.ajax({
+			url: '/session',
+			type: 'post',
+			data: {_method: 'delete'},
+			success: function() {
+				window.location.replace("/session/new");
+			}
+		});
+	},
+
+	login: function (params) {
+		$.ajax({
+				type: "POST",
+				url: "/session",
+				data: params,
+				success: function( data ) {
+					window.location.replace("/#/users/27");
+				}
+			});
+	},
+
 	fetchPrograms: function(params) {
 		$.get("/api/programs", params, function (programs) {
+			window.location.replace("/#/search");
 			ApiActions.receivePrograms(programs);
 		});
 	},

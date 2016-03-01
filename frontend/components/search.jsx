@@ -46,7 +46,10 @@ var Search = React.createClass({
 
   handleSearch: function (event) {
     event.preventDefault();
-    var fetchParams = Object.assign({}, this.state);
+    var fetchParams = {
+      name: this.state.name,
+      location: this.state.location,
+    };
     if (this.state.param === "Programs") {
       ApiUtil.fetchPrograms(fetchParams);
     } else if (this.state.param === "Companies") {

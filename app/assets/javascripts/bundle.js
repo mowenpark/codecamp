@@ -19706,39 +19706,34 @@
 	
 	  render: function () {
 	    return React.createElement(
-	      'div',
-	      null,
+	      'nav',
+	      { className: 'navbar navbar-default navbar-fixed-top' },
 	      React.createElement(
-	        'nav',
-	        { className: 'navbar navbar-clean' },
+	        'div',
+	        { className: 'container-fluid' },
 	        React.createElement(
 	          'div',
-	          { className: 'container-fluid' },
+	          { className: 'navbar-header' },
 	          React.createElement(
-	            'div',
-	            { className: 'navbar-header' },
+	            'button',
+	            { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
 	            React.createElement(
-	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1' },
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                'Toggle navigation'
-	              ),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' }),
-	              React.createElement('span', { className: 'icon-bar' })
+	              'span',
+	              { className: 'sr-only' },
+	              'Toggle navigation'
 	            ),
-	            React.createElement(
-	              'a',
-	              { href: '/#' },
-	              React.createElement('img', { alt: 'Brand', className: 'logo', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png' })
-	            )
+	            React.createElement('span', { className: 'icon-bar' }),
+	            React.createElement('span', { className: 'icon-bar' }),
+	            React.createElement('span', { className: 'icon-bar' })
 	          ),
-	          React.createElement(HeaderMenu, null)
-	        )
-	      ),
-	      this.props.children
+	          React.createElement(
+	            'a',
+	            { href: '/#' },
+	            React.createElement('img', { alt: 'Brand', className: 'logo', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_50/v1456336205/codecamp-logo_uyckba_hmjppx.png' })
+	          )
+	        ),
+	        React.createElement(HeaderMenu, null)
+	      )
 	    );
 	  }
 	
@@ -19856,21 +19851,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var PropTypes = React.PropTypes;
+	
+	var ApiUtil = __webpack_require__(171);
 	
 	var UserMenu = React.createClass({
 	  displayName: 'UserMenu',
 	
 	
 	  logoutUser: function () {
-	    $.ajax({
-	      url: '/session',
-	      type: 'post',
-	      data: { _method: 'delete' },
-	      success: function () {
-	        window.location.replace("/session/new");
-	      }
-	    });
+	    ApiUtil.logout();
 	  },
 	
 	  render: function () {
@@ -20022,7 +20011,10 @@
 	
 	  handleSearch: function (event) {
 	    event.preventDefault();
-	    var fetchParams = Object.assign({}, this.state);
+	    var fetchParams = {
+	      name: this.state.name,
+	      location: this.state.location
+	    };
 	    if (this.state.param === "Programs") {
 	      ApiUtil.fetchPrograms(fetchParams);
 	    } else if (this.state.param === "Companies") {
@@ -20916,8 +20908,32 @@
 	    ApplicationErrors = __webpack_require__(177);
 	
 	var ApiUtil = {
+	
+		logout: function () {
+			$.ajax({
+				url: '/session',
+				type: 'post',
+				data: { _method: 'delete' },
+				success: function () {
+					window.location.replace("/session/new");
+				}
+			});
+		},
+	
+		login: function (params) {
+			$.ajax({
+				type: "POST",
+				url: "/session",
+				data: params,
+				success: function (data) {
+					window.location.replace("/#/users/27");
+				}
+			});
+		},
+	
 		fetchPrograms: function (params) {
 			$.get("/api/programs", params, function (programs) {
+				window.location.replace("/#/search");
 				ApiActions.receivePrograms(programs);
 			});
 		},
@@ -21340,7 +21356,6 @@
 	  },
 	
 	  render: function () {
-	    debugger;
 	    return React.createElement(
 	      "div",
 	      { "class": "alert alert-warning alert-dismissible", role: "alert" },
@@ -28429,7 +28444,6 @@
 	
 	
 	  componentDidMount: function () {
-	    debugger;
 	    ApiUtil.fetchUser(this.props.param);
 	  },
 	
@@ -28558,10 +28572,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var PropTypes = React.PropTypes;
+	
+	var ApiUtil = __webpack_require__(171);
 	
 	var SignIn = React.createClass({
-	  displayName: "SignIn",
+	  displayName: 'SignIn',
 	
 	
 	  getInitialState: function () {
@@ -28582,57 +28597,57 @@
 	  handleSubmit: function (e) {
 	    e.preventDefault();
 	    var params = Object.assign({}, this.state);
-	    ApiUtil.signin(params);
+	    ApiUtil.login(params);
 	  },
 	
 	  render: function () {
 	    return React.createElement(
-	      "div",
-	      { className: "container" },
+	      'div',
+	      { className: 'container' },
 	      React.createElement(
-	        "form",
-	        { className: "form-signin", onSubmit: this.handleSubmit },
+	        'form',
+	        { className: 'form-signin', onSubmit: this.handleSubmit },
 	        React.createElement(
-	          "h2",
-	          { className: "form-signin-heading" },
-	          "Please sign in"
+	          'h2',
+	          { className: 'form-signin-heading' },
+	          'Please sign in'
 	        ),
 	        React.createElement(
-	          "label",
-	          { className: "sr-only" },
-	          "Email address"
+	          'label',
+	          { className: 'sr-only' },
+	          'Email address'
 	        ),
-	        React.createElement("input", { type: "email",
-	          id: "inputEmail",
-	          className: "form-control",
-	          placeholder: "Email address",
+	        React.createElement('input', { type: 'email',
+	          id: 'inputEmail',
+	          className: 'form-control',
+	          placeholder: 'Email address',
 	          onChange: this.emailChange,
 	          required: true, autofocus: true }),
 	        React.createElement(
-	          "label",
-	          { className: "sr-only" },
-	          "Password"
+	          'label',
+	          { className: 'sr-only' },
+	          'Password'
 	        ),
-	        React.createElement("input", { type: "password",
-	          id: "inputPassword",
-	          className: "form-control",
-	          placeholder: "Password",
+	        React.createElement('input', { type: 'password',
+	          id: 'inputPassword',
+	          className: 'form-control',
+	          placeholder: 'Password',
 	          onChange: this.passwordChange,
 	          required: true }),
 	        React.createElement(
-	          "div",
-	          { className: "checkbox" },
+	          'div',
+	          { className: 'checkbox' },
 	          React.createElement(
-	            "label",
+	            'label',
 	            null,
-	            React.createElement("input", { type: "checkbox", value: "remember-me" }),
-	            " Remember me"
+	            React.createElement('input', { type: 'checkbox', value: 'remember-me' }),
+	            ' Remember me'
 	          )
 	        ),
 	        React.createElement(
-	          "button",
-	          { className: "btn btn-lg btn-primary btn-block", type: "submit" },
-	          "Sign in"
+	          'button',
+	          { className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	          'Sign in'
 	        )
 	      )
 	    );

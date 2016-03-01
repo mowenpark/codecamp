@@ -8,8 +8,7 @@ var NavBarMain = React.createClass({
 
   render: function() {
     return (
-      <div>
-      <nav className="navbar navbar-clean">
+      <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container-fluid">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -23,8 +22,6 @@ var NavBarMain = React.createClass({
             <HeaderMenu />
         </div>
       </nav>
-    {this.props.children}
-      </div>
     );
   }
 

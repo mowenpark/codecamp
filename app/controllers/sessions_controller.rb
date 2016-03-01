@@ -4,11 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_credentials(params[:user][:email], params[:user][:password])
+    user = User.find_by_credentials(params["email"], params["password"])
     if user
       sign_in(user)
-      flash[:success] = "Welcome back!"
-      redirect_to "/#/users/#{user.id}"
+      redirect_to "/#/users/#{user.id}" #Render a JSON USER ID
     else
       flash.now[:errors] = "Oh snap! Your credentials were incorrect, please try again."
       render :new

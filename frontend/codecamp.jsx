@@ -27,7 +27,7 @@ var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Dashboard}/>
       <Route path="users/:id" component={User} />
-      <Route path="search" component={Tabs}/>
+      <Route path="search" component={Tabs} />
       <Route path="signin" component={SignIn} />
     </Route>
 );

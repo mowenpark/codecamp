@@ -1,5 +1,6 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
+
+var ApiUtil = require('../util/api_util');
 
 var SignIn = React.createClass({
 
@@ -21,7 +22,7 @@ var SignIn = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var params = Object.assign({}, this.state);
-    ApiUtil.signin(params);
+    ApiUtil.login(params);
   },
 
   render: function() {
