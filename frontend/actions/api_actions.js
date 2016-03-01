@@ -24,6 +24,7 @@ var ApiActions = {
   },
 
   updateReviews: function (review) {
+    debugger
     AppDispatcher.dispatch({
       actionType: "RECEIVE_REVIEW",
       review: review

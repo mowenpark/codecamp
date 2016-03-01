@@ -63,11 +63,9 @@ var ApiUtil = {
 			  url: "/api/reviews",
 			  data: results,
 			  success: function( data ) {
+					window.location.replace("/#/search");
 					ApiActions.updateReviews(data);
-				},
-				error: function ( errors ) {
-					callback(errors);
-				},
+				}
 			});
 	}
 

@@ -20970,10 +20970,8 @@
 				url: "/api/reviews",
 				data: results,
 				success: function (data) {
+					window.location.replace("/#/search");
 					ApiActions.updateReviews(data);
-				},
-				error: function (errors) {
-					callback(errors);
 				}
 			});
 		}
@@ -21012,6 +21010,7 @@
 	  },
 	
 	  updateReviews: function (review) {
+	    debugger;
 	    AppDispatcher.dispatch({
 	      actionType: "RECEIVE_REVIEW",
 	      review: review
