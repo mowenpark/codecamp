@@ -17,7 +17,6 @@ var App = React.createClass({
     return (
         <div>
           <NavBarMain />
-          <Dashboard />
           {this.props.children}
         </div>
     );
@@ -26,8 +25,10 @@ var App = React.createClass({
 
 var routes = (
     <Route path="/" component={App}>
+      <IndexRoute component={Dashboard}/>
       <Route path="users/:id" component={User} />
-      <IndexRoute component={Tabs}/>
+      <Route path="search" component={Tabs}/>
+      <Route path="signin" component={SignIn} />
     </Route>
 );
 

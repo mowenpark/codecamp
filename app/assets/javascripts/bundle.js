@@ -66,7 +66,6 @@
 	      'div',
 	      null,
 	      React.createElement(NavBarMain, null),
-	      React.createElement(Dashboard, null),
 	      this.props.children
 	    );
 	  }
@@ -75,8 +74,10 @@
 	var routes = React.createElement(
 	  Route,
 	  { path: '/', component: App },
+	  React.createElement(IndexRoute, { component: Dashboard }),
 	  React.createElement(Route, { path: 'users/:id', component: User }),
-	  React.createElement(IndexRoute, { component: Tabs })
+	  React.createElement(Route, { path: 'search', component: Tabs }),
+	  React.createElement(Route, { path: 'signin', component: SignIn })
 	);
 	
 	document.addEventListener("DOMContentLoaded", function () {
@@ -19873,7 +19874,7 @@
 	  },
 	
 	  render: function () {
-	    if (this.props.user !== undefined) {
+	    if (this.props.user === undefined) {
 	      return React.createElement(
 	        'ul',
 	        { className: 'nav navbar-nav navbar-right' },
@@ -19882,7 +19883,7 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { href: '/session/new' },
+	            { href: '#/signin' },
 	            'login'
 	          )
 	        ),
@@ -19891,7 +19892,7 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { href: '/users/new' },
+	            { href: 'users/new' },
 	            'sign up'
 	          )
 	        )
@@ -28223,9 +28224,7 @@
 	  handleSubmit: function (event) {
 	    event.preventDefault();
 	    var review = Object.assign({}, this.state);
-	    ApiUtil.addReview(review, function (errors) {
-	      debugger;
-	    });
+	    ApiUtil.addReview(review, function (errors) {});
 	  },
 	
 	  render: function () {
@@ -28565,13 +28564,34 @@
 	  displayName: "SignIn",
 	
 	
+	  getInitialState: function () {
+	    return {
+	      email: "",
+	      password: ""
+	    };
+	  },
+	
+	  emailChange: function (e) {
+	    this.setState({ email: e.target.value });
+	  },
+	
+	  passwordChange: function (e) {
+	    this.setState({ password: e.target.value });
+	  },
+	
+	  handleSubmit: function (e) {
+	    e.preventDefault();
+	    var params = Object.assign({}, this.state);
+	    ApiUtil.signin(params);
+	  },
+	
 	  render: function () {
 	    return React.createElement(
 	      "div",
 	      { className: "container" },
 	      React.createElement(
 	        "form",
-	        { className: "form-signin" },
+	        { className: "form-signin", onSubmit: this.handleSubmit },
 	        React.createElement(
 	          "h2",
 	          { className: "form-signin-heading" },
@@ -28579,27 +28599,34 @@
 	        ),
 	        React.createElement(
 	          "label",
-	          { "for": "inputEmail", className: "sr-only" },
+	          { className: "sr-only" },
 	          "Email address"
 	        ),
-	        React.createElement("input", { type: "email", id: "inputEmail", className: "form-control", placeholder: "Email address", required: true, autofocus: true }),
+	        React.createElement("input", { type: "email",
+	          id: "inputEmail",
+	          className: "form-control",
+	          placeholder: "Email address",
+	          onChange: this.emailChange,
+	          required: true, autofocus: true }),
 	        React.createElement(
 	          "label",
-	          { "for": "inputPassword", className: "sr-only" },
+	          { className: "sr-only" },
 	          "Password"
 	        ),
-	        React.createElement("input", { type: "password", id: "inputPassword", className: "form-control", placeholder: "Password", required: true }),
+	        React.createElement("input", { type: "password",
+	          id: "inputPassword",
+	          className: "form-control",
+	          placeholder: "Password",
+	          onChange: this.passwordChange,
+	          required: true }),
 	        React.createElement(
 	          "div",
 	          { className: "checkbox" },
 	          React.createElement(
 	            "label",
 	            null,
-	            React.createElement(
-	              "input",
-	              { type: "checkbox", value: "remember-me" },
-	              " Remember me"
-	            )
+	            React.createElement("input", { type: "checkbox", value: "remember-me" }),
+	            " Remember me"
 	          )
 	        ),
 	        React.createElement(

@@ -15,11 +15,11 @@ var UserMenu = React.createClass({
   },
 
   render: function() {
-    if (this.props.user !== undefined) {
+    if (this.props.user === undefined) {
       return(
         <ul className="nav navbar-nav navbar-right">
-          <li><a href="/session/new">login</a></li>
-          <li><a href="/users/new">sign up</a></li>
+          <li><a href="#/signin">login</a></li>
+          <li><a href="users/new">sign up</a></li>
         </ul>
       );
     } else {
