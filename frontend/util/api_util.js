@@ -9,6 +9,18 @@ var ApiUtil = {
 		});
 	},
 
+	fetchCompanies: function(params) {
+		$.get("/api/companies", params, function (companies) {
+			ApiActions.receiveCompanies(companies);
+		});
+	},
+
+	fetchLanguages: function(params) {
+		$.get("/api/programs", params, function (programs) {
+			ApiActions.receiveLanguages(programs);
+		});
+	},
+
 	fetchLocations: function () {
 		$.get("/api/programs/new", function (locations) {
 			ApiActions.receiveLocations(locations);

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user
       sign_in(user)
       flash[:success] = "Welcome back!"
-      redirect_to user_url(user)
+      redirect_to "/#/users/#{user.id}"
     else
       flash.now[:errors] = "Oh snap! Your credentials were incorrect, please try again."
       render :new

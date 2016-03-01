@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227000714) do
+ActiveRecord::Schema.define(version: 20160301055410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.text     "about",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "logo"
+  end
 
   create_table "programs", force: :cascade do |t|
     t.string   "title",       null: false
@@ -22,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160227000714) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "location",    null: false
-    t.string   "logo",        null: false
+    t.integer  "company_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -42,11 +50,14 @@ ActiveRecord::Schema.define(version: 20160227000714) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "email",                                                                                                                                    null: false
+    t.string   "password_digest",                                                                                                                          null: false
+    t.string   "session_token",                                                                                                                            null: false
+    t.datetime "created_at",                                                                                                                               null: false
+    t.datetime "updated_at",                                                                                                                               null: false
+    t.string   "profile_pic",     default: "http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_180,w_180/v1456770578/820C3ABDED_mrrhma_yaui0w.jpg"
+    t.text     "bio",                                                                                                                                      null: false
+    t.string   "location",                                                                                                                                 null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

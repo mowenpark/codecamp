@@ -1,17 +1,23 @@
 var React = require('react');
 
-var NavBarMain = require('./navbar_main');
+var NavBarMain = require('./navbar_main'),
+    ApiUtil = require('../util/api_util');
 
 var User = React.createClass({
+
+  componentDidMount: function () {
+    debugger;
+    ApiUtil.fetchUser(this.props.param);
+  },
 
   render: function() {
     return (
         <div className="container">
             <div className="fb-profile">
                 <img align="left" className="fb-image-lg" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_280,w_850/v1456770320/flowers-desk-office-vintage_dy19o8_jfhnu3.jpg" alt="Profile image example"/>
-                <img align="left" className="fb-image-profile thumbnail" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_180,w_180/v1456770578/820C3ABDED_mrrhma_yaui0w.jpg" alt="Profile image example"/>
-                <div className="fb-profile-text">
-                    <h1>Eli Macy</h1>
+                <img align="left" className="thumbnail fb-image-profile" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_180,w_180/v1456770578/820C3ABDED_mrrhma_yaui0w.jpg" alt="Profile image example"/>
+                <div align="right" className="fb-profile-text">
+                    <h1>Sarah Macy</h1>
                     <p>Girls just wanna have fun.</p>
                 </div>
             </div>

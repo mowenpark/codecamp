@@ -12,7 +12,8 @@ var Search = React.createClass({
       name: "",
       location: "",
       locations: ProgramsStore.locations(),
-      locFocus: false
+      locFocus: false,
+      param: this.props.searchParam
     };
   },
 
@@ -45,8 +46,15 @@ var Search = React.createClass({
 
   handleSearch: function (event) {
     event.preventDefault();
-    var programs = Object.assign({}, this.state);
-    ApiUtil.fetchPrograms(programs);
+    var fetchParams = Object.assign({}, this.state);
+    if (this.state.param === "Programs") {
+      ApiUtil.fetchPrograms(fetchParams);
+    } else if (this.state.param === "Companies") {
+      var companies = Object.assign({}, this.state);
+      ApiUtil.fetchCompanies(fetchParams);
+    } else if (this.state.param === "Languages") {
+      ApiUtil.fetchLanguages(fetchParams);
+    }
   },
 
   updateLocations: function () {

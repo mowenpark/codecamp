@@ -1,35 +1,36 @@
 var React = require('react');
 
-var Search = require('./search');
+var UserMenu = require('./user_menu'),
+    Search = require('./search');
 
 var HeaderMenu = React.createClass({
   getInitialState: function () {
     return {
-      param: "programs"
+      param: "Programs"
     };
   },
 
   handleClick: function (e) {
-    this.setState({param: e.target.value});
+    this.setState({param: e.target.innerHTML});
   },
 
   render: function() {
     return (
-      <div>
-        <div className="btn-group btn-group-justified" role="group">
-          <div className="btn-group" role="group">
-            <button type="button" onClick={this.handleClick} className="btn btn-success-outline">Programs</button>
-          </div>
-          <div className="btn-group" role="group">
-            <button type="button" onClick={this.handleClick} className="btn btn-success-outline">Companies</button>
-          </div>
-          <div className="btn-group" role="group">
-            <button type="button" onClick={this.handleClick} className="btn btn-success-outline">Languages</button>
-          </div>
-        </div>
-        <br></br>
-        <Search searchParam={this.state.param}/>
-      </div>
+      <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul className="nav navbar-nav">
+       <li className="dropdown">
+         <a href="#" className="dropdown-toggle"
+           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{this.state.param} <span className="caret"></span></a>
+         <ul className="dropdown-menu">
+           <li onClick={this.handleClick}><a href="#">Programs</a></li>
+           <li onClick={this.handleClick}><a href="#">Companies</a></li>
+           <li onClick={this.handleClick}><a href="#">Languages</a></li>
+         </ul>
+       </li>
+     </ul>
+     <Search searchParam={this.state.param}/>
+     <UserMenu />
+   </div>
     );
   }
 

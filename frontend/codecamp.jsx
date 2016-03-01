@@ -15,9 +15,8 @@ var App = React.createClass({
   render: function(){
     return (
         <div>
+          <NavBarMain />
           {this.props.children}
-          <Tabs />
-          <User />
         </div>
     );
   }
@@ -25,9 +24,8 @@ var App = React.createClass({
 
 var routes = (
     <Route path="/" component={App}>
-      <IndexRoute component={NavBarMain} >
-        <Route path="users/:id" component={User} />
-      </IndexRoute>
+      <Route path="users/:id" component={User} />
+      <IndexRoute component={Tabs}/>
     </Route>
 );
 

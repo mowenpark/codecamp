@@ -1,14 +1,13 @@
 # == Schema Information
 #
-# Table name: programs
+# Table name: companies
 #
-#  id          :integer          not null, primary key
-#  title       :string           not null
-#  description :text             not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  location    :string           not null
-#  company_id  :integer
+#  id         :integer          not null, primary key
+#  name       :string           not null
+#  about      :text             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  logo       :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

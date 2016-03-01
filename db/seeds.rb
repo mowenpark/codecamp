@@ -6,25 +6,37 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-20.times do
-  location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
-  title = Faker::Company.name
-  description = Faker::Lorem.paragraphs
+10.times do
+  name = Faker::Company.name
+  about = Faker::Lorem.paragraphs
   logo = Faker::Company.logo
-  Program.create({
-    title: title,
-    description: description,
-    location: location,
-    logo: logo
-  })
+  Company.create({name: name, about: about, logo: logo})
 end
 
-5.times do
+Company.all.each do |company|
+  rand(1..2).times do
+    location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
+    title = Faker::Company.buzzword
+    description = Faker::Lorem.paragraphs
+    Program.create({
+      title: title,
+      description: description,
+      location: location,
+      company_id: company.id,
+    })
+  end
+end
+
+20.times do
   email = Faker::Internet.safe_email
   password = Faker::Internet.password(8)
+  bio = Faker::Lorem.paragraphs
+  location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
   User.create({
     email: email,
-    password: password
+    password: password,
+    location: location,
+    bio: bio
   })
 end
 
@@ -37,17 +49,17 @@ Program.all.each do |program|
     pros = Faker::Hipster.sentence
     cons = Faker::Hipster.sentence
     rating = rand(1..5)
-    employee_status = true
+    enrollment_status = true
     Review.create(
       title: title,
       comments: comments,
       program_id: program_id,
       user_id: user_id,
       pros: pros,
-      employee_status: employee_status,
+      enrollment_status: enrollment_status,
       cons: cons,
       comments: comments,
       rating: rating,
-      years_worked: 2)
+      )
   end
 end

@@ -22,6 +22,15 @@
     width: 20%;
 }
 
+.thumbnail.fb-image-profile {
+  display: inline-block;
+}
+
+.fb-profile-text {
+  display: inline-block;
+  padding-left: 15px;
+}
+
 @media (max-width:768px)
 {
 

@@ -7,6 +7,8 @@
 #  description :text             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  location    :string           not null
+#  company_id  :integer
 #
 
 require 'test_helper'

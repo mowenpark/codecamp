@@ -24,18 +24,17 @@ var UserMenu = React.createClass({
       );
     } else {
       return (
-        <ul className="list-group">
-          <li className="list-group-item">
-            <span className="badge">14</span><a href="#">
-            Notifications
+        <ul className="nav navbar-nav navbar-right">
+          <li><a href="#">
+            Notifications <span className="badge">4</span>
           </a></li>
-        <li className="list-group-item dropdown clean">
+        <li className="dropdown">
             <a href="#" className="dropdown-toggle"
               data-toggle="dropdown"
               role="button"
               aria-expanded="false">User <i className="ion-ios-arrow-down"></i></a>
-            <ul className="dropdown-menu" role="menu">
-              <li><a href="/users/:id">Profile</a></li>
+            <ul className="dropdown-menu">
+              <li><a href="/users/1">Profile</a></li>
               <li><a href="#">Settings</a></li>
               <li className="divider"></li>
               <li><a onClick={this.logoutUser}>Logout</a></li>
