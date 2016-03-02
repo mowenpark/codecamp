@@ -61,7 +61,7 @@ User.create({
 
 Program.all.each do |program|
   rand(1..5).times do
-    user_id = rand(5)
+    user_id = rand(1..20)
     program_id = program.id
     title = Faker::Company.catch_phrase
     comments = Faker::Hacker.say_something_smart

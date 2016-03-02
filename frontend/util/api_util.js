@@ -6,11 +6,11 @@ var ApiUtil = {
 
 	logout: function () {
 		$.ajax({
-			url: '/session',
+			url: '/api/session',
 			type: 'post',
 			data: {_method: 'delete'},
 			success: function() {
-				window.location.replace("/session/new");
+				window.location.replace("/#/signin");
 			}
 		});
 	},
@@ -18,10 +18,12 @@ var ApiUtil = {
 	login: function (params) {
 		$.ajax({
 				type: "POST",
-				url: "/session",
+				url: "/api/session",
 				data: params,
 				success: function( data ) {
-					window.location.replace("/#/users/27");
+					var userUrl = "/#/uers/" + data.id;
+					debugger;
+					window.location.replace("/#/users/" + data.id);
 				}
 			});
 	},

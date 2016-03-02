@@ -10,7 +10,7 @@
 #  updated_at      :datetime         not null
 #
 
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
 
   def new
   end

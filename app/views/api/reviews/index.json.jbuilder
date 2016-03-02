@@ -1,7 +1,7 @@
 json.array! @reviews do |review|
   json.title review.title
   json.pros review.pros
-  json.username review.user.email if review.user
+  json.username review.user.name if review.user
   json.cons review.cons
   json.comments review.comments
   json.rating review.rating
