@@ -14,11 +14,11 @@
   end
   about = Faker::Lorem.paragraph
   logo = Faker::Company.logo
-  Company.create({name: name, about: about, logo: logo})
+  Company.create({name: name, about: about, logo: logo, locations: locations})
 end
 
 Company.all.each do |company|
-  company.locations.times do |i|
+  company.locations.length.times do |i|
     location = company.locations[i]
     title = Faker::Company.buzzword
     description = Faker::Lorem.paragraph

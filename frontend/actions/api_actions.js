@@ -9,6 +9,13 @@ var ApiActions = {
     });
   },
 
+  receiveCompanies: function (companies) {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_COMPANIES",
+      companies: companies
+    });
+  },
+
   receiveLocations: function (locations) {
     AppDispatcher.dispatch({
       actionType: "RECEIVE_LOCATIONS",
@@ -24,7 +31,6 @@ var ApiActions = {
   },
 
   updateReviews: function (review) {
-    debugger
     AppDispatcher.dispatch({
       actionType: "RECEIVE_REVIEW",
       review: review

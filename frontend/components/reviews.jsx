@@ -9,7 +9,7 @@ var Reviews = React.createClass({
           <div className="panel-heading">
             <div className="media-left">
               <a href="#">
-                <img className="media-object" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456771323/photo_1_tmllrc.png" alt="..."></img>
+                <img className="media-object" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456883189/820C3ABDED_mrrhma_yaui0w_c6jjua.jpg" alt="..."></img>
               </a>
             </div>
             {review.title}
