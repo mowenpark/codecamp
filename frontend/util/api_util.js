@@ -28,13 +28,14 @@ var ApiUtil = {
 
 	fetchPrograms: function(params) {
 		$.get("/api/programs", params, function (programs) {
-			window.location.replace("/#/search");
+			window.location.replace("/#/programs");
 			ApiActions.receivePrograms(programs);
 		});
 	},
 
 	fetchCompanies: function(params) {
 		$.get("/api/companies", params, function (companies) {
+			window.location.replace("/#/companies");
 			ApiActions.receiveCompanies(companies);
 		});
 	},

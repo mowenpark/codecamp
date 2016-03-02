@@ -8,16 +8,20 @@
 
 10.times do
   name = Faker::Company.name
-  about = Faker::Lorem.paragraphs
+  locations = []
+  rand(1..3).times do
+    locations << "#{Faker::Address.city}, #{Faker::Address.state} (US)"
+  end
+  about = Faker::Lorem.paragraph
   logo = Faker::Company.logo
   Company.create({name: name, about: about, logo: logo})
 end
 
 Company.all.each do |company|
-  rand(1..2).times do
-    location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
+  company.locations.times do |i|
+    location = company.locations[i]
     title = Faker::Company.buzzword
-    description = Faker::Lorem.paragraphs
+    description = Faker::Lorem.paragraph
     Program.create({
       title: title,
       description: description,
@@ -31,7 +35,7 @@ end
   name = Faker::Name.name
   email = Faker::Internet.safe_email
   password = Faker::Internet.password(8)
-  bio = Faker::Lorem.paragraphs
+  bio = Faker::Lorem.paragraph
   location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
   User.create({
     name: name,
@@ -45,7 +49,7 @@ end
 name = "Michael"
 email = "mike@mail.com"
 password = "mikemike"
-bio = Faker::Lorem.paragraphs
+bio = Faker::Lorem.paragraph
 location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
 User.create({
   name: name,

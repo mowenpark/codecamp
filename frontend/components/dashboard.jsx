@@ -17,9 +17,11 @@ var Dashboard = React.createClass({
             <img className="first-slide" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456856395/people-coffee-notes-tea_ziykz4.jpg" alt="First slide"></img>
             <div className="container">
               <div className="carousel-caption">
-                <h1>Example headline.</h1>
-                <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <div className="hero">
+                  <h1>Example headline.</h1>
+                  <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                </div>
               </div>
             </div>
           </div>
@@ -27,9 +29,11 @@ var Dashboard = React.createClass({
             <img className="second-slide" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456855670/coffee-apple-iphone-desk_i1uriy.jpg" alt="Second slide"></img>
             <div className="container">
               <div className="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                <div className="hero">
+                  <h1>Another example headline.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                </div>
               </div>
             </div>
           </div>
@@ -37,9 +41,11 @@ var Dashboard = React.createClass({
             <img className="third-slide" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456770075/flowers-desk-office-vintage_dy19o8.jpg" alt="Third slide"></img>
             <div className="container">
               <div className="carousel-caption">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                <div className="hero">
+                  <h1>One more for good measure.</h1>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                </div>
               </div>
             </div>
           </div>

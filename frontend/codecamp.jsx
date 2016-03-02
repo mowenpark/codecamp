@@ -5,6 +5,7 @@ var ReactDOM = require('react-dom'),
     User = require('./components/user'),
     SignIn = require('./components/signin'),
     SignUp = require('./components/signup'),
+    Companies = require('./components/companies'),
     Dashboard = require('./components/dashboard');
 
 var Router = require('react-router').Router;
@@ -28,7 +29,8 @@ var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Dashboard}/>
       <Route path="users/:id" component={User} />
-      <Route path="search" component={Tabs} />
+      <Route path="programs" component={Tabs} />
+      <Route path="companies" component={Companies} />
       <Route path="signin" component={SignIn} />
       <Route path="signup" component={SignUp} />
     </Route>

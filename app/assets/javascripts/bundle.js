@@ -51,6 +51,7 @@
 	    User = __webpack_require__(201),
 	    SignIn = __webpack_require__(202),
 	    SignUp = __webpack_require__(253),
+	    Companies = __webpack_require__(254),
 	    Dashboard = __webpack_require__(252);
 	
 	var Router = __webpack_require__(203).Router;
@@ -77,7 +78,8 @@
 	  { path: '/', component: App },
 	  React.createElement(IndexRoute, { component: Dashboard }),
 	  React.createElement(Route, { path: 'users/:id', component: User }),
-	  React.createElement(Route, { path: 'search', component: Tabs }),
+	  React.createElement(Route, { path: 'programs', component: Tabs }),
+	  React.createElement(Route, { path: 'companies', component: Companies }),
 	  React.createElement(Route, { path: 'signin', component: SignIn }),
 	  React.createElement(Route, { path: 'signup', component: SignUp })
 	);
@@ -19814,7 +19816,7 @@
 	              { onClick: this.handleClick },
 	              React.createElement(
 	                'a',
-	                { href: '#' },
+	                null,
 	                'Programs'
 	              )
 	            ),
@@ -19823,7 +19825,7 @@
 	              { onClick: this.handleClick },
 	              React.createElement(
 	                'a',
-	                { href: '#' },
+	                null,
 	                'Companies'
 	              )
 	            ),
@@ -19832,7 +19834,7 @@
 	              { onClick: this.handleClick },
 	              React.createElement(
 	                'a',
-	                { href: '#' },
+	                null,
 	                'Languages'
 	              )
 	            )
@@ -19865,7 +19867,7 @@
 	  },
 	
 	  render: function () {
-	    if (this.props.user === undefined) {
+	    if (this.props.user !== undefined) {
 	      return React.createElement(
 	        'ul',
 	        { className: 'nav navbar-nav navbar-right' },
@@ -19979,8 +19981,7 @@
 	      name: "",
 	      location: "",
 	      locations: ProgramsStore.locations(),
-	      locFocus: false,
-	      param: this.props.searchParam
+	      locFocus: false
 	    };
 	  },
 	
@@ -20017,12 +20018,11 @@
 	      name: this.state.name,
 	      location: this.state.location
 	    };
-	    if (this.state.param === "Programs") {
+	    if (this.props.searchParam === "Programs") {
 	      ApiUtil.fetchPrograms(fetchParams);
-	    } else if (this.state.param === "Companies") {
-	      var companies = Object.assign({}, this.state);
+	    } else if (this.props.searchParam === "Companies") {
 	      ApiUtil.fetchCompanies(fetchParams);
-	    } else if (this.state.param === "Languages") {
+	    } else if (this.props.searchParam === "Languages") {
 	      ApiUtil.fetchLanguages(fetchParams);
 	    }
 	  },
@@ -20935,13 +20935,14 @@
 	
 		fetchPrograms: function (params) {
 			$.get("/api/programs", params, function (programs) {
-				window.location.replace("/#/search");
+				window.location.replace("/#/programs");
 				ApiActions.receivePrograms(programs);
 			});
 		},
 	
 		fetchCompanies: function (params) {
 			$.get("/api/companies", params, function (companies) {
+				window.location.replace("/#/companies");
 				ApiActions.receiveCompanies(companies);
 			});
 		},
@@ -33338,28 +33339,32 @@
 	                "div",
 	                { className: "carousel-caption" },
 	                React.createElement(
-	                  "h1",
-	                  null,
-	                  "Example headline."
-	                ),
-	                React.createElement(
-	                  "p",
-	                  null,
-	                  "Note: If you're viewing this page via a ",
+	                  "div",
+	                  { className: "hero" },
 	                  React.createElement(
-	                    "code",
+	                    "h1",
 	                    null,
-	                    "file://"
+	                    "Example headline."
 	                  ),
-	                  " URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."
-	                ),
-	                React.createElement(
-	                  "p",
-	                  null,
 	                  React.createElement(
-	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
-	                    "Sign up today"
+	                    "p",
+	                    null,
+	                    "Note: If you're viewing this page via a ",
+	                    React.createElement(
+	                      "code",
+	                      null,
+	                      "file://"
+	                    ),
+	                    " URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."
+	                  ),
+	                  React.createElement(
+	                    "p",
+	                    null,
+	                    React.createElement(
+	                      "a",
+	                      { className: "btn btn-lg btn-primary", href: "#", role: "button" },
+	                      "Sign up today"
+	                    )
 	                  )
 	                )
 	              )
@@ -33376,22 +33381,26 @@
 	                "div",
 	                { className: "carousel-caption" },
 	                React.createElement(
-	                  "h1",
-	                  null,
-	                  "Another example headline."
-	                ),
-	                React.createElement(
-	                  "p",
-	                  null,
-	                  "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
-	                ),
-	                React.createElement(
-	                  "p",
-	                  null,
+	                  "div",
+	                  { className: "hero" },
 	                  React.createElement(
-	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
-	                    "Learn more"
+	                    "h1",
+	                    null,
+	                    "Another example headline."
+	                  ),
+	                  React.createElement(
+	                    "p",
+	                    null,
+	                    "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+	                  ),
+	                  React.createElement(
+	                    "p",
+	                    null,
+	                    React.createElement(
+	                      "a",
+	                      { className: "btn btn-lg btn-primary", href: "#", role: "button" },
+	                      "Learn more"
+	                    )
 	                  )
 	                )
 	              )
@@ -33408,22 +33417,26 @@
 	                "div",
 	                { className: "carousel-caption" },
 	                React.createElement(
-	                  "h1",
-	                  null,
-	                  "One more for good measure."
-	                ),
-	                React.createElement(
-	                  "p",
-	                  null,
-	                  "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
-	                ),
-	                React.createElement(
-	                  "p",
-	                  null,
+	                  "div",
+	                  { className: "hero" },
 	                  React.createElement(
-	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
-	                    "Browse gallery"
+	                    "h1",
+	                    null,
+	                    "One more for good measure."
+	                  ),
+	                  React.createElement(
+	                    "p",
+	                    null,
+	                    "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+	                  ),
+	                  React.createElement(
+	                    "p",
+	                    null,
+	                    React.createElement(
+	                      "a",
+	                      { className: "btn btn-lg btn-primary", href: "#", role: "button" },
+	                      "Browse gallery"
+	                    )
 	                  )
 	                )
 	              )
@@ -33672,6 +33685,88 @@
 	});
 	
 	module.exports = SignUp;
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(147);
+	var CompaniesStore = __webpack_require__(255);
+	
+	var Companies = React.createClass({
+	  displayName: 'Companies',
+	
+	  getInitialState: function () {
+	    return {
+	      companies: CompaniesStore.all()
+	    };
+	  },
+	
+	  componentDidMount: function () {
+	    this.token = CompaniesStore.addListener(this.renderPanes);
+	  },
+	
+	  render: function () {
+	    var companies = this.state.companies.map(function (company, index) {
+	      var name = company.name;
+	      var about = company.about;
+	      var logo = company.logo;
+	      return React.createElement(
+	        'div',
+	        { className: 'jumbotron',
+	          key: index },
+	        React.createElement(
+	          'h1',
+	          null,
+	          name
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          about
+	        )
+	      );
+	    });
+	    return React.createElement(
+	      'div',
+	      null,
+	      companies
+	    );
+	  }
+	
+	});
+	
+	module.exports = Companies;
+
+/***/ },
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(173);
+	var Store = __webpack_require__(179).Store;
+	
+	var CompaniesStore = new Store(AppDispatcher);
+	
+	var _companies = [];
+	
+	var resetPrograms = function (companies) {
+	  _companies = companies.slice(0);
+	};
+	
+	CompaniesStore.all = function () {
+	  return _companies.slice(0);
+	};
+	
+	CompaniesStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case "RECEIVE_COMPANIES":
+	      resetPrograms(payload.companies);
+	      CompaniesStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = CompaniesStore;
 
 /***/ }
 /******/ ]);

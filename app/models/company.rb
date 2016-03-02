@@ -11,4 +11,8 @@
 #
 
 class Company < ActiveRecord::Base
+  validates :name, :about, :logo, presence: true
+
+  has_many :programs
+
 end
