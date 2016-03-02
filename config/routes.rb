@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :programs
     resources :reviews
     resources :companies
-    resource :session
-    resources :users
   end
+
+  resource :session
+  resources :users
+  
 end

@@ -52,7 +52,8 @@
 	    SignIn = __webpack_require__(202),
 	    SignUp = __webpack_require__(203),
 	    Companies = __webpack_require__(204),
-	    Dashboard = __webpack_require__(206);
+	    Dashboard = __webpack_require__(206),
+	    Company = __webpack_require__(256);
 	
 	var Router = __webpack_require__(207).Router;
 	var IndexRoute = __webpack_require__(207).IndexRoute;
@@ -79,7 +80,11 @@
 	  React.createElement(IndexRoute, { component: Dashboard }),
 	  React.createElement(Route, { path: 'users/:id', component: User }),
 	  React.createElement(Route, { path: 'programs', component: Tabs }),
-	  React.createElement(Route, { path: 'companies', component: Companies }),
+	  React.createElement(
+	    Route,
+	    { path: 'companies', component: Companies },
+	    React.createElement(Route, { path: ':id', component: Company })
+	  ),
 	  React.createElement(Route, { path: 'signin', component: SignIn }),
 	  React.createElement(Route, { path: 'signup', component: SignUp })
 	);
@@ -28820,6 +28825,10 @@
 	    this.token = CompaniesStore.addListener(this.renderCompanies);
 	  },
 	
+	  componentWillUnmount: function () {
+	    this.token.remove();
+	  },
+	
 	  renderCompanies: function () {
 	    this.setState({ companies: CompaniesStore.all() });
 	  },
@@ -28828,10 +28837,10 @@
 	    var companies = this.state.companies.map(function (company, index) {
 	      var name = company.name;
 	      var about = company.about;
-	      var locations = company.locations.map(function (location) {
+	      var locations = company.locations.map(function (location, index2) {
 	        return React.createElement(
 	          'li',
-	          null,
+	          { key: index2 },
 	          location
 	        );
 	      });
@@ -28845,7 +28854,7 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { href: "/#/company/" + company.id },
+	            { href: "/#/companies/" + company.id },
 	            name
 	          )
 	        ),
@@ -33793,6 +33802,25 @@
 	
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(147);
+	var PropTypes = React.PropTypes;
+	
+	var Company = React.createClass({
+	  displayName: 'Company',
+	
+	
+	  render: function () {
+	    return React.createElement('div', null);
+	  }
+	
+	});
+	
+	module.exports = Company;
 
 /***/ }
 /******/ ]);

@@ -5,7 +5,7 @@ class Api::CompaniesController < ApplicationController
     p_tab = Program.arel_table
     name = params["name"].downcase
     location = params["location"].downcase
-    @companies = Company.where(t[:name].matches("%#{name}%")).joins(:programs).where(p_tab[:location].matches("%#{location}%"))
+    @companies = Company.where(t[:name].matches("%#{name}%")).joins(:programs).where(p_tab[:location].matches("%#{location}%")).uniq
     render :index
   end
 
