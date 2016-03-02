@@ -35,6 +35,13 @@ var ApiActions = {
       actionType: "RECEIVE_REVIEW",
       review: review
     });
+  },
+
+  receiveCurrentUser: function (user) {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_CURRENT_USER",
+      user: user
+    });
   }
 
 };

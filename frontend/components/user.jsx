@@ -1,12 +1,17 @@
 var React = require('react');
 
 var NavBarMain = require('./navbar_main'),
-    ApiUtil = require('../util/api_util');
+    ApiUtil = require('../util/api_util'),
+    CurrentUserStore = require('../stores/current_user');
 
 var User = React.createClass({
 
   componentDidMount: function () {
-    ApiUtil.fetchUser(this.props.param);
+    this.token = CurrentUserStore.addListener(this.renderCurrentUser);
+  },
+
+  componentWillUnmount: function () {
+    this.token.remove();
   },
 
   render: function() {

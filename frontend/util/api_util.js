@@ -21,9 +21,8 @@ var ApiUtil = {
 				url: "/api/session",
 				data: params,
 				success: function( data ) {
-					var userUrl = "/#/uers/" + data.id;
-					debugger;
 					window.location.replace("/#/users/" + data.id);
+					ApiActions.receiveCurrentUser(data);
 				}
 			});
 	},

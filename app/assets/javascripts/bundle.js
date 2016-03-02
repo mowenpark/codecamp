@@ -80,11 +80,8 @@
 	  React.createElement(IndexRoute, { component: Dashboard }),
 	  React.createElement(Route, { path: 'users/:id', component: User }),
 	  React.createElement(Route, { path: 'programs', component: Tabs }),
-	  React.createElement(
-	    Route,
-	    { path: 'companies', component: Companies },
-	    React.createElement(Route, { path: ':id', component: Company })
-	  ),
+	  React.createElement(Route, { path: 'companies', component: Companies }),
+	  React.createElement(Route, { path: '/companies/:id', component: Company }),
 	  React.createElement(Route, { path: 'signin', component: SignIn }),
 	  React.createElement(Route, { path: 'signup', component: SignUp })
 	);
@@ -19933,7 +19930,7 @@
 	              null,
 	              React.createElement(
 	                'a',
-	                { href: '/users/1' },
+	                { href: "/#/users/" },
 	                'Profile'
 	              )
 	            ),
@@ -19993,9 +19990,8 @@
 				url: "/api/session",
 				data: params,
 				success: function (data) {
-					var userUrl = "/#/uers/" + data.id;
-					debugger;
 					window.location.replace("/#/users/" + data.id);
+					ApiActions.receiveCurrentUser(data);
 				}
 			});
 		},
@@ -20088,6 +20084,13 @@
 	    AppDispatcher.dispatch({
 	      actionType: "RECEIVE_REVIEW",
 	      review: review
+	    });
+	  },
+	
+	  receiveCurrentUser: function (user) {
+	    AppDispatcher.dispatch({
+	      actionType: "RECEIVE_CURRENT_USER",
+	      user: user
 	    });
 	  }
 	
@@ -20551,7 +20554,7 @@
 	          { key: i, onClick: this.selectLocation },
 	          location
 	        );
-	      }.bind(this));
+	      }.bind(this)).slice(0, 6);
 	    }
 	
 	    return React.createElement(
@@ -20576,7 +20579,7 @@
 	          onFocus: this.toggleFocus }),
 	        React.createElement(
 	          'ul',
-	          { className: 'auto-location',
+	          { className: 'auto-location panel',
 	            id: 'toggle-trigger' },
 	          React.createElement(
 	            ReactCSSTransitionGroup,
@@ -28452,14 +28455,19 @@
 	var React = __webpack_require__(147);
 	
 	var NavBarMain = __webpack_require__(159),
-	    ApiUtil = __webpack_require__(163);
+	    ApiUtil = __webpack_require__(163),
+	    CurrentUserStore = __webpack_require__(257);
 	
 	var User = React.createClass({
 	  displayName: 'User',
 	
 	
 	  componentDidMount: function () {
-	    ApiUtil.fetchUser(this.props.param);
+	    this.token = CurrentUserStore.addListener(this.renderCurrentUser);
+	  },
+	
+	  componentWillUnmount: function () {
+	    this.token.remove();
 	  },
 	
 	  render: function () {
@@ -33823,6 +33831,38 @@
 	
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(165);
+	var Store = __webpack_require__(179).Store;
+	
+	var CurrentUserStore = new Store(AppDispatcher);
+	
+	var _currentUser = {};
+	
+	var resetUser = function (user) {
+	  _currentUser["currentUser"] = user;
+	};
+	
+	CurrentUserStore.all = function () {
+	  var currentUser = [];
+	  currentUser.push(_currentUser["currentUser"]);
+	  return currentUser;
+	};
+	
+	CurrentUserStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case "RECEIVE_CURRENT_USER":
+	      resetUser(payload.user);
+	      CurrentUserStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = CurrentUserStore;
 
 /***/ }
 /******/ ]);

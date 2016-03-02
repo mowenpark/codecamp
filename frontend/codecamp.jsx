@@ -31,9 +31,8 @@ var routes = (
       <IndexRoute component={Dashboard}/>
       <Route path="users/:id" component={User} />
       <Route path="programs" component={Tabs} />
-      <Route path="companies" component={Companies}>
-        <Route path=":id" component={Company}/>
-      </Route>
+      <Route path="companies" component={Companies} />
+      <Route path="/companies/:id" component={Company}/>
       <Route path="signin" component={SignIn} />
       <Route path="signup" component={SignUp} />
     </Route>

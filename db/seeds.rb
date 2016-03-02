@@ -69,6 +69,7 @@ Program.all.each do |program|
     cons = Faker::Hipster.sentence
     rating = rand(1..5)
     enrollment_status = true
+
     Review.create(
       title: title,
       comments: comments,
