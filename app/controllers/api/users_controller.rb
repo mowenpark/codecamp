@@ -13,6 +13,7 @@
 class Api::UsersController < ApplicationController
 
   def new
+    render json: current_user
   end
 
   def create

@@ -6,13 +6,11 @@ var CurrentUserStore = new Store(AppDispatcher);
 var _currentUser = {};
 
 var resetUser = function(user){
-  _currentUser["currentUser"] = user;
+  _currentUser = jQuery.extend(true, {}, user);
 };
 
 CurrentUserStore.all = function () {
-  var currentUser = [];
-  currentUser.push(_currentUser["currentUser"]);
-  return currentUser;
+  return _currentUser;
 };
 
 CurrentUserStore.__onDispatch = function (payload) {

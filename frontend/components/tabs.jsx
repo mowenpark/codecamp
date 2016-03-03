@@ -73,6 +73,7 @@ var Tabs = React.createClass({
           </Headers>
           <div className="search-panel">
             <SearchPanel
+              languages={pane.languages}
               location={pane.location}
               description={pane.description}
               title={pane.title}

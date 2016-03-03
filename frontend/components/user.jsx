@@ -5,6 +5,11 @@ var NavBarMain = require('./navbar_main'),
     CurrentUserStore = require('../stores/current_user');
 
 var User = React.createClass({
+  getInitialState: function () {
+    return{
+      user: CurrentUserStore.all()
+    };
+  },
 
   componentDidMount: function () {
     this.token = CurrentUserStore.addListener(this.renderCurrentUser);
@@ -14,15 +19,19 @@ var User = React.createClass({
     this.token.remove();
   },
 
+  renderCurrentUser: function () {
+    this.setState({user: CurrentUserStore.all()});
+  },
+
   render: function() {
     return (
         <div className="container">
             <div className="fb-profile">
                 <img align="left" className="fb-image-lg" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_280,w_850/v1456770320/flowers-desk-office-vintage_dy19o8_jfhnu3.jpg" alt="Profile image example"/>
-                <img align="left" className="thumbnail fb-image-profile" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_180,w_180/v1456770578/820C3ABDED_mrrhma_yaui0w.jpg" alt="Profile image example"/>
+                <img align="left" className="thumbnail fb-image-profile" src={this.state.user.profile_pic} alt="Profile image example"/>
                 <div align="right" className="fb-profile-text">
-                    <h1>Sarah Macy</h1>
-                    <p>Girls just wanna have fun.</p>
+                    <h1>{this.state.user.name}</h1>
+                    <p>{this.state.user.location}</p>
                 </div>
             </div>
             <div className="row">
@@ -31,7 +40,7 @@ var User = React.createClass({
                   <p className="lead blog-description">Bio</p>
                 </div>
                 <div className="blog-post">
-                  <p>bio text</p>
+                  <p>{this.state.user.bio}</p>
                 </div>
               </div>
               <div className="col-md-8">

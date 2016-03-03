@@ -11,6 +11,7 @@ var ApiUtil = {
 			data: {_method: 'delete'},
 			success: function() {
 				window.location.replace("/#/signin");
+				ApiActions.receiveCurrentUser({"currentUser": undefined});
 			}
 		});
 	},
@@ -22,6 +23,16 @@ var ApiUtil = {
 				data: params,
 				success: function( data ) {
 					window.location.replace("/#/users/" + data.id);
+					ApiActions.receiveCurrentUser(data);
+				}
+			});
+	},
+
+	fetchCurrentUser: function () {
+		$.ajax({
+				type: "GET",
+				url: "/api/users/new",
+				success: function( data ) {
 					ApiActions.receiveCurrentUser(data);
 				}
 			});
@@ -42,8 +53,9 @@ var ApiUtil = {
 	},
 
 	fetchLanguages: function(params) {
-		$.get("/api/programs", params, function (programs) {
-			ApiActions.receiveLanguages(programs);
+		$.get("/api/languages", params, function (programs) {
+			window.location.replace("/#/languages");
+			ApiActions.receivePrograms(programs);
 		});
 	},
 
@@ -65,7 +77,6 @@ var ApiUtil = {
 			  url: "/api/reviews",
 			  data: results,
 			  success: function( data ) {
-					window.location.replace("/#/search");
 					ApiActions.updateReviews(data);
 				}
 			});

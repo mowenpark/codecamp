@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :companies
     resource :session
     resources :users
+    resources :languages
   end
 
 end

@@ -69,6 +69,16 @@ Program.all.each do |program|
     cons = Faker::Hipster.sentence
     rating = rand(1..5)
     enrollment_status = true
+    language = Faker::StarWars.planet
+
+    while program.languages.include?(language)
+      language = Faker::StarWars.planet
+    end
+
+    Language.create(
+      name: language,
+      program_id: program_id
+    )
 
     Review.create(
       title: title,

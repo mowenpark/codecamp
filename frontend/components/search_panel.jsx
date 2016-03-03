@@ -30,7 +30,13 @@ var SearchPanel = React.createClass({
     this.token.remove();
   },
 
+  searchLanguage: function (language) {
+    var params = {"location": "", "name": language.name};
+    ApiUtil.fetchLanguages(params);
+  },
+
   render: function() {
+    var that = this;
     var ratings = this.state.reviews.map( function (review) {
       return(
         review.rating
@@ -48,11 +54,24 @@ var SearchPanel = React.createClass({
         <span key={i} className="glyphicon glyphicon-star" aria-hidden="true"></span>
       );
     }
+    var languages = this.props.languages.map(function (language, index) {
+      return (<button type="button" onClick={that.searchLanguage.bind(this, language)} className="btn btn-info" key={index}>#{language.name}</button>);
+    });
+
     return (
         <div >
           <div className="blog-header">
             <h1 className="blog-title">{this.props.title}</h1>
             <p className="lead blog-description">{this.props.location}</p>
+            <label>Languages:</label>
+            <br></br>
+            <row>
+              {languages}
+            </row>
+            <br></br>
+            <br></br>
+            <label>Rating:</label>
+            <br></br>
             <row>
               {stars}
             </row>

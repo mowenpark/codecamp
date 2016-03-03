@@ -32,6 +32,7 @@ var routes = (
       <Route path="users/:id" component={User} />
       <Route path="programs" component={Tabs} />
       <Route path="companies" component={Companies} />
+      <Route path="languages" component={Tabs} />
       <Route path="/companies/:id" component={Company}/>
       <Route path="signin" component={SignIn} />
       <Route path="signup" component={SignUp} />

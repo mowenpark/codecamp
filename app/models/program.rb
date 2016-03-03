@@ -17,6 +17,8 @@ class Program < ActiveRecord::Base
 
   has_many :reviews
 
+  has_many :languages
+
   belongs_to :company
 
 end
