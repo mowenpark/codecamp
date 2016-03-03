@@ -53,7 +53,8 @@
 	    SignUp = __webpack_require__(204),
 	    Companies = __webpack_require__(205),
 	    Dashboard = __webpack_require__(207),
-	    Company = __webpack_require__(208);
+	    Company = __webpack_require__(208),
+	    Footer = __webpack_require__(259);
 	
 	var Router = __webpack_require__(209).Router;
 	var IndexRoute = __webpack_require__(209).IndexRoute;
@@ -69,7 +70,12 @@
 	      'div',
 	      null,
 	      React.createElement(NavBarMain, null),
-	      this.props.children
+	      React.createElement(
+	        'div',
+	        { className: 'bod' },
+	        this.props.children
+	      ),
+	      React.createElement(Footer, null)
 	    );
 	  }
 	});
@@ -20027,6 +20033,17 @@
 			});
 		},
 	
+		fetchUser: function (id) {
+			$.ajax({
+				type: "GET",
+				url: "/api/users/" + id,
+				data: { "id": id },
+				success: function (data) {
+					ApiActions.receiveUser(data);
+				}
+			});
+		},
+	
 		fetchPrograms: function (params) {
 			$.get("/api/programs", params, function (programs) {
 				window.location.replace("/#/programs");
@@ -20068,6 +20085,12 @@
 				success: function (data) {
 					ApiActions.updateReviews(data);
 				}
+			});
+		},
+	
+		fetchCompany: function (id) {
+			$.get("/api/companies/" + id, { "id": id }, function (company) {
+				ApiActions.receiveCompany(company);
 			});
 		}
 	
@@ -20122,6 +20145,20 @@
 	    AppDispatcher.dispatch({
 	      actionType: "RECEIVE_CURRENT_USER",
 	      user: user
+	    });
+	  },
+	
+	  receiveUser: function (user) {
+	    AppDispatcher.dispatch({
+	      actionType: "RECEIVE_USER",
+	      user: user
+	    });
+	  },
+	
+	  receiveCompany: function (company) {
+	    AppDispatcher.dispatch({
+	      actionType: "RECEIVE_COMPANY",
+	      company: company
 	    });
 	  }
 	
@@ -27098,7 +27135,7 @@
 	          )
 	        )
 	      ),
-	      React.createElement('input', { type: 'submit', className: 'btn btn-success', value: 'Search' })
+	      React.createElement('input', { type: 'submit', className: 'btn btn-success btn-sm', value: 'Search' })
 	    );
 	  }
 	
@@ -28114,7 +28151,7 @@
 	    var languages = this.props.languages.map(function (language, index) {
 	      return React.createElement(
 	        'button',
-	        { type: 'button', onClick: that.searchLanguage.bind(this, language), className: 'btn btn-info', key: index },
+	        { type: 'button', onClick: that.searchLanguage.bind(null, language), className: 'btn btn-info', key: index },
 	        '#',
 	        language.name
 	      );
@@ -28238,7 +28275,11 @@
 	          React.createElement(
 	            "small",
 	            { className: "text-muted" },
-	            review.username,
+	            React.createElement(
+	              "a",
+	              { href: "/#/users/" + review.id },
+	              review.username
+	            ),
 	            " ",
 	            review.dateCreated
 	          )
@@ -28552,143 +28593,235 @@
 	
 	var NavBarMain = __webpack_require__(159),
 	    ApiUtil = __webpack_require__(163),
-	    CurrentUserStore = __webpack_require__(170);
+	    CurrentUserStore = __webpack_require__(170),
+	    UserStore = __webpack_require__(258),
+	    Reviews = __webpack_require__(199);
 	
 	var User = React.createClass({
 	  displayName: 'User',
 	
 	  getInitialState: function () {
 	    return {
-	      user: CurrentUserStore.all()
+	      user: UserStore.all(),
+	      currentUser: CurrentUserStore.all()
 	    };
 	  },
 	
 	  componentDidMount: function () {
 	    this.token = CurrentUserStore.addListener(this.renderCurrentUser);
+	    this.token2 = UserStore.addListener(this.renderUser);
+	    ApiUtil.fetchUser(this.props.params.id);
+	  },
+	
+	  componentWillReceiveProps: function (newProps) {
+	    ApiUtil.fetchUser(newProps.params.id);
 	  },
 	
 	  componentWillUnmount: function () {
 	    this.token.remove();
+	    this.token2.remove();
 	  },
 	
 	  renderCurrentUser: function () {
-	    this.setState({ user: CurrentUserStore.all() });
+	    this.setState({ currentUser: CurrentUserStore.all() });
+	  },
+	
+	  renderUser: function () {
+	    this.setState({ user: UserStore.all() });
 	  },
 	
 	  render: function () {
-	    return React.createElement(
-	      'div',
-	      { className: 'container' },
-	      React.createElement(
+	    var id = parseInt(this.props.params.id);
+	    if (this.state.currentUser.id === id) {
+	      return React.createElement(
 	        'div',
-	        { className: 'fb-profile' },
-	        React.createElement('img', { align: 'left', className: 'fb-image-lg', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_280,w_850/v1456770320/flowers-desk-office-vintage_dy19o8_jfhnu3.jpg', alt: 'Profile image example' }),
-	        React.createElement('img', { align: 'left', className: 'thumbnail fb-image-profile', src: this.state.user.profile_pic, alt: 'Profile image example' }),
+	        { className: 'container' },
 	        React.createElement(
 	          'div',
-	          { align: 'right', className: 'fb-profile-text' },
-	          React.createElement(
-	            'h1',
-	            null,
-	            this.state.user.name
-	          ),
-	          React.createElement(
-	            'p',
-	            null,
-	            this.state.user.location
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'row' },
-	        React.createElement(
-	          'div',
-	          { className: 'col-md-4' },
+	          { className: 'fb-profile' },
+	          React.createElement('img', { align: 'left', className: 'fb-image-lg', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_280,w_850/v1456770320/flowers-desk-office-vintage_dy19o8_jfhnu3.jpg', alt: 'Profile image example' }),
+	          React.createElement('img', { align: 'left', className: 'thumbnail fb-image-profile', src: this.state.currentUser.profile_pic, alt: 'Profile image example' }),
 	          React.createElement(
 	            'div',
-	            { className: 'blog-header' },
+	            { align: 'right', className: 'fb-profile-text' },
 	            React.createElement(
-	              'p',
-	              { className: 'lead blog-description' },
-	              'Bio'
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'blog-post' },
+	              'h1',
+	              null,
+	              this.state.currentUser.name
+	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              this.state.user.bio
+	              this.state.currentUser.location
 	            )
 	          )
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'col-md-8' },
-	          React.createElement(
-	            'h3',
-	            null,
-	            'Bootcamp Activity Feed'
-	          ),
+	          { className: 'row' },
 	          React.createElement(
 	            'div',
-	            { className: 'media' },
+	            { className: 'col-md-4' },
 	            React.createElement(
 	              'div',
-	              { className: 'media-left' },
+	              { className: 'blog-header' },
 	              React.createElement(
-	                'a',
-	                { href: '#' },
-	                React.createElement('img', { className: 'media-object', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456771323/photo_1_tmllrc.png', alt: '...' })
+	                'p',
+	                { className: 'lead blog-description' },
+	                'Bio'
 	              )
 	            ),
 	            React.createElement(
 	              'div',
-	              { className: 'media-body' },
-	              React.createElement(
-	                'h4',
-	                { className: 'media-heading' },
-	                'App Academy'
-	              ),
+	              { className: 'blog-post' },
 	              React.createElement(
 	                'p',
 	                null,
-	                'some activity text'
+	                this.state.currentUser.bio
 	              )
 	            )
 	          ),
 	          React.createElement(
 	            'div',
-	            { className: 'media' },
+	            { className: 'col-md-8' },
 	            React.createElement(
 	              'div',
-	              { className: 'media-left' },
+	              { className: 'blog-header' },
 	              React.createElement(
-	                'a',
-	                { href: '#' },
-	                React.createElement('img', { className: 'media-object', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456772380/hack_p3vsaj.webp', alt: '...' })
+	                'p',
+	                { className: 'lead blog-description' },
+	                'Activity Feed'
 	              )
 	            ),
 	            React.createElement(
 	              'div',
-	              { className: 'media-body' },
+	              { className: 'media' },
 	              React.createElement(
-	                'h4',
-	                { className: 'media-heading' },
-	                'Hack Reactor'
+	                'div',
+	                { className: 'media-left' },
+	                React.createElement(
+	                  'a',
+	                  { href: '#' },
+	                  React.createElement('img', { className: 'media-object', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456771323/photo_1_tmllrc.png', alt: '...' })
+	                )
 	              ),
 	              React.createElement(
-	                'p',
-	                null,
-	                'some bad activity text'
+	                'div',
+	                { className: 'media-body' },
+	                React.createElement(
+	                  'h4',
+	                  { className: 'media-heading' },
+	                  'App Academy'
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  'some activity text'
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              'div',
+	              { className: 'media' },
+	              React.createElement(
+	                'div',
+	                { className: 'media-left' },
+	                React.createElement(
+	                  'a',
+	                  { href: '#' },
+	                  React.createElement('img', { className: 'media-object', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456772380/hack_p3vsaj.webp', alt: '...' })
+	                )
+	              ),
+	              React.createElement(
+	                'div',
+	                { className: 'media-body' },
+	                React.createElement(
+	                  'h4',
+	                  { className: 'media-heading' },
+	                  'Hack Reactor'
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  'some bad activity text'
+	                )
 	              )
 	            )
 	          )
 	        )
-	      )
-	    );
+	      );
+	    } else {
+	      var reviews;
+	      if (this.state.user.reviews === undefined) {
+	        reviews = React.createElement('div', null);
+	      } else {
+	        reviews = React.createElement(Reviews, { reviews: this.state.user.reviews });
+	      }
+	      return React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'div',
+	          { className: 'fb-profile' },
+	          React.createElement('img', { align: 'left', className: 'fb-image-lg', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_crop,h_280,w_850/v1456770320/flowers-desk-office-vintage_dy19o8_jfhnu3.jpg', alt: 'Profile image example' }),
+	          React.createElement('img', { align: 'left', className: 'thumbnail fb-image-profile', src: this.state.user.profile_pic, alt: 'Profile image example' }),
+	          React.createElement(
+	            'div',
+	            { align: 'right', className: 'fb-profile-text' },
+	            React.createElement(
+	              'h1',
+	              null,
+	              this.state.user.name
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              this.state.user.location
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-4' },
+	            React.createElement(
+	              'div',
+	              { className: 'blog-header' },
+	              React.createElement(
+	                'p',
+	                { className: 'lead blog-description' },
+	                'Bio'
+	              )
+	            ),
+	            React.createElement(
+	              'div',
+	              { className: 'blog-post' },
+	              React.createElement(
+	                'p',
+	                null,
+	                this.state.user.bio
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-md-8' },
+	            React.createElement(
+	              'div',
+	              { className: 'blog-header' },
+	              React.createElement(
+	                'p',
+	                { className: 'lead blog-description' },
+	                'Reviews'
+	              )
+	            ),
+	            reviews
+	          )
+	        )
+	      );
+	    }
 	  }
 	
 	});
@@ -29005,20 +29138,39 @@
 	
 	var CompaniesStore = new Store(AppDispatcher);
 	
-	var _companies = [];
+	var _companies = {};
 	
-	var resetPrograms = function (companies) {
-	  _companies = companies.slice(0);
+	var resetCompanies = function (companies) {
+	  _companies = {};
+	  companies.forEach(function (company) {
+	    _companies[company.id] = company;
+	  });
+	};
+	
+	var resetCompany = function (company) {
+	  _companies[company.id] = company;
 	};
 	
 	CompaniesStore.all = function () {
-	  return _companies.slice(0);
+	  var companies = [];
+	  for (var id in _companies) {
+	    companies.push(_companies[id]);
+	  }
+	  return companies;
+	};
+	
+	CompaniesStore.find = function (id) {
+	  return _companies[id];
 	};
 	
 	CompaniesStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
 	    case "RECEIVE_COMPANIES":
-	      resetPrograms(payload.companies);
+	      resetCompanies(payload.companies);
+	      CompaniesStore.__emitChange();
+	      break;
+	    case "RECEIVE_COMPANY":
+	      resetCompany(payload.company);
 	      CompaniesStore.__emitChange();
 	      break;
 	  }
@@ -29057,7 +29209,9 @@
 	          React.createElement(
 	            "div",
 	            { className: "item active" },
-	            React.createElement("img", { className: "first-slide", src: "http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456856395/people-coffee-notes-tea_ziykz4.jpg", alt: "First slide" }),
+	            React.createElement("img", { className: "first-slide",
+	              src: "http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456856395/people-coffee-notes-tea_ziykz4.jpg",
+	              alt: "First slide" }),
 	            React.createElement(
 	              "div",
 	              { className: "container" },
@@ -29282,14 +29436,127 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var PropTypes = React.PropTypes;
+	
+	var CompanyStore = __webpack_require__(206),
+	    ApiUtil = __webpack_require__(163);
 	
 	var Company = React.createClass({
 	  displayName: 'Company',
 	
+	  getInitialState: function () {
+	    return {
+	      company: {}
+	    };
+	  },
+	
+	  componentDidMount: function () {
+	    this.token = CompanyStore.addListener(this.renderCompany);
+	    ApiUtil.fetchCompany(this.props.params.id);
+	  },
+	
+	  componentWillReceiveProps: function (newProps) {
+	    ApiUtil.fetchCompany(newProps.params.id);
+	  },
+	
+	  componentWillUnmount: function () {
+	    this.token.remove();
+	  },
+	
+	  renderCompany: function () {
+	    this.setState({ company: CompanyStore.find(this.props.params.id) });
+	  },
 	
 	  render: function () {
-	    return React.createElement('div', null);
+	    return React.createElement(
+	      'div',
+	      { className: 'container jumbo' },
+	      React.createElement(
+	        'div',
+	        { className: 'jumbotron narrow' },
+	        React.createElement(
+	          'h1',
+	          null,
+	          this.state.company.name
+	        ),
+	        React.createElement(
+	          'p',
+	          { className: 'lead' },
+	          this.state.company.about
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'row marketing' },
+	        React.createElement(
+	          'div',
+	          { className: 'col-lg-6' },
+	          React.createElement(
+	            'h4',
+	            null,
+	            'Subheading'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.'
+	          ),
+	          React.createElement(
+	            'h4',
+	            null,
+	            'Subheading'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.'
+	          ),
+	          React.createElement(
+	            'h4',
+	            null,
+	            'Subheading'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'Maecenas sed diam eget risus varius blandit sit amet non magna.'
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'col-lg-6' },
+	          React.createElement(
+	            'h4',
+	            null,
+	            'Subheading'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.'
+	          ),
+	          React.createElement(
+	            'h4',
+	            null,
+	            'Subheading'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.'
+	          ),
+	          React.createElement(
+	            'h4',
+	            null,
+	            'Subheading'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            'Maecenas sed diam eget risus varius blandit sit amet non magna.'
+	          )
+	        )
+	      )
+	    );
 	  }
 	
 	});
@@ -33936,6 +34203,67 @@
 	
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(165);
+	var Store = __webpack_require__(171).Store;
+	
+	var UserStore = new Store(AppDispatcher);
+	
+	var _user = {};
+	
+	var resetUser = function (user) {
+	  _user = jQuery.extend(true, {}, user);
+	};
+	
+	UserStore.all = function () {
+	  return _user;
+	};
+	
+	UserStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case "RECEIVE_USER":
+	      resetUser(payload.user);
+	      UserStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = UserStore;
+
+/***/ },
+/* 259 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(147);
+	var PropTypes = React.PropTypes;
+	
+	var Footer = React.createClass({
+	  displayName: "Footer",
+	
+	
+	  render: function () {
+	    return React.createElement(
+	      "footer",
+	      { className: "footer" },
+	      React.createElement(
+	        "div",
+	        { className: "container" },
+	        React.createElement(
+	          "p",
+	          { className: "text-muted" },
+	          "this is the footer"
+	        )
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = Footer;
 
 /***/ }
 /******/ ]);

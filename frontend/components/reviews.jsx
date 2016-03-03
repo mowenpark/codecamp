@@ -14,7 +14,7 @@ var Reviews = React.createClass({
             </div>
             {review.title}
             <br></br>
-            <small className="text-muted">{review.username} {review.dateCreated}</small>
+            <small className="text-muted"><a href={"/#/users/" + review.id}>{review.username}</a> {review.dateCreated}</small>
           </div>
           <div className="panel-body">
             <p><strong>Pros:</strong></p>

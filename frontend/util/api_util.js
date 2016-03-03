@@ -38,6 +38,17 @@ var ApiUtil = {
 			});
 	},
 
+	fetchUser: function (id) {
+		$.ajax({
+				type: "GET",
+				url: "/api/users/"+id,
+				data: {"id": id},
+				success: function( data ) {
+					ApiActions.receiveUser(data);
+				}
+			});
+	},
+
 	fetchPrograms: function(params) {
 		$.get("/api/programs", params, function (programs) {
 			window.location.replace("/#/programs");
@@ -80,6 +91,12 @@ var ApiUtil = {
 					ApiActions.updateReviews(data);
 				}
 			});
+	},
+
+	fetchCompany: function (id) {
+		$.get("/api/companies/"+id, {"id": id}, function (company) {
+			ApiActions.receiveCompany(company);
+		});
 	}
 
 };

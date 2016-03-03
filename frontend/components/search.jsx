@@ -119,7 +119,7 @@ var Search = React.createClass({
               </ReactCSSTransitionGroup>
             </ul>
         </div>
-        <input type="submit" className="btn btn-success" value="Search" />
+        <input type="submit" className="btn btn-success btn-sm" value="Search" />
       </form>
     );
   }

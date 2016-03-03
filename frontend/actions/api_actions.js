@@ -42,6 +42,20 @@ var ApiActions = {
       actionType: "RECEIVE_CURRENT_USER",
       user: user
     });
+  },
+
+  receiveUser: function (user) {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_USER",
+      user: user
+    });
+  },
+
+  receiveCompany: function (company) {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_COMPANY",
+      company: company
+    });
   }
 
 };

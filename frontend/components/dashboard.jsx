@@ -14,7 +14,9 @@ var Dashboard = React.createClass({
         </ol>
         <div className="carousel-inner" role="listbox">
           <div className="item active">
-            <img className="first-slide" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456856395/people-coffee-notes-tea_ziykz4.jpg" alt="First slide"></img>
+            <img className="first-slide"
+              src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456856395/people-coffee-notes-tea_ziykz4.jpg"
+              alt="First slide"></img>
             <div className="container">
               <div className="carousel-caption">
                 <div className="hero">

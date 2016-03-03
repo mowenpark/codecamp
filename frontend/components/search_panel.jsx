@@ -55,7 +55,7 @@ var SearchPanel = React.createClass({
       );
     }
     var languages = this.props.languages.map(function (language, index) {
-      return (<button type="button" onClick={that.searchLanguage.bind(this, language)} className="btn btn-info" key={index}>#{language.name}</button>);
+      return (<button type="button" onClick={that.searchLanguage.bind(null, language)} className="btn btn-info" key={index}>#{language.name}</button>);
     });
 
     return (

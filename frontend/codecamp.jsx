@@ -7,7 +7,8 @@ var ReactDOM = require('react-dom'),
     SignUp = require('./components/signup'),
     Companies = require('./components/companies'),
     Dashboard = require('./components/dashboard'),
-    Company = require('./components/company');
+    Company = require('./components/company'),
+    Footer = require('./components/footer');
 
 var Router = require('react-router').Router;
 var IndexRoute = require('react-router').IndexRoute;
@@ -20,7 +21,10 @@ var App = React.createClass({
     return (
         <div>
           <NavBarMain />
-          {this.props.children}
+          <div className="bod">
+            {this.props.children}
+          </div>
+          <Footer />
         </div>
     );
   }
