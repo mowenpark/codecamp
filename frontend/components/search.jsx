@@ -99,7 +99,7 @@ var Search = React.createClass({
         <div className="form-group">
           <input type="text" name="program"
             onChange={this.nameChanged}
-            placeholder="Program Title or Keywords"
+            placeholder={"Search " + this.props.searchParam}
             value={this.state.name} />
         </div>
         <div className="form-group">

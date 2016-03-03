@@ -29,13 +29,17 @@ var Company = React.createClass({
 
 
   render: function() {
+    var divStyle = {
+      backgroundImage: 'url(http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457042881/blue-abstract-glass-balls_fkud2k.jpg)',
+      backgroundSize: "cover",
+    };
     return (
       <div className="container jumbo">
-        <div className="jumbotron narrow">
+        <div className="jumbotron narrow"
+          style={divStyle}>
           <h1>{this.state.company.name}</h1>
-          <p className="lead">{this.state.company.about}</p>
+          <p>{this.state.company.about}</p>
         </div>
-
         <div className="row marketing">
           <div className="col-lg-6">
             <h4>Subheading</h4>

@@ -22,6 +22,12 @@ class User < ActiveRecord::Base
 
   has_many :reviews
 
+  has_many :follows
+
+  has_many :followings,
+  through: :follows,
+  source: :program
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

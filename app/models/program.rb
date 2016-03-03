@@ -19,6 +19,12 @@ class Program < ActiveRecord::Base
 
   has_many :languages
 
+  has_many :follows
+
+  has_many :followers,
+  through: :follows,
+  source: :user
+
   belongs_to :company
 
 end
