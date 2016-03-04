@@ -29,4 +29,8 @@ class Review < ActiveRecord::Base
     foreign_key: :program_id,
     primary_key: :id
 
+  has_one :company,
+    through: :program,
+    source: :company
+
 end

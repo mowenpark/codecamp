@@ -28633,10 +28633,34 @@
 	  render: function () {
 	    var id = parseInt(this.props.params.id);
 	    if (this.state.currentUser.id === id) {
+	      var followings = this.state.currentUser.following.map(function (program, idx) {
+	        return React.createElement(
+	          'div',
+	          { className: 'media' },
+	          React.createElement(
+	            'div',
+	            { className: 'media-left' },
+	            React.createElement(
+	              'a',
+	              { href: '#' },
+	              React.createElement('img', { className: 'media-object', width: '60', src: program.logo, alt: '...' })
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'media-body' },
+	            React.createElement(
+	              'h4',
+	              { className: 'media-heading' },
+	              program.title
+	            )
+	          )
+	        );
+	      });
 	      var feed = this.state.currentUser.feed.map(function (feedItem, index) {
 	        return React.createElement(
 	          'li',
-	          { className: 'news-item' },
+	          { key: index, className: 'news-item' },
 	          React.createElement(
 	            'table',
 	            { cellPadding: '4' },
@@ -28649,19 +28673,16 @@
 	                React.createElement(
 	                  'td',
 	                  null,
-	                  React.createElement('img', { src: 'images/1.png', width: '60', className: 'img-circle' })
+	                  React.createElement('img', { src: feedItem.company_logo, width: '60', className: 'img-circle' })
 	                ),
 	                React.createElement(
 	                  'td',
 	                  null,
-	                  feedItem.title
-	                ),
-	                React.createElement(
-	                  'td',
-	                  null,
+	                  feedItem.title,
+	                  ' ',
 	                  React.createElement(
 	                    'a',
-	                    { href: '#' },
+	                    { href: "/#/companies/" + feedItem.company_id },
 	                    ' Read more...'
 	                  )
 	                )
@@ -28715,6 +28736,25 @@
 	                'p',
 	                null,
 	                this.state.currentUser.bio
+	              )
+	            ),
+	            React.createElement('br', null),
+	            React.createElement(
+	              'div',
+	              { className: 'blog-header' },
+	              React.createElement(
+	                'p',
+	                { className: 'lead blog-description' },
+	                'Following'
+	              )
+	            ),
+	            React.createElement(
+	              'div',
+	              { className: 'blog-post' },
+	              React.createElement(
+	                'ul',
+	                null,
+	                followings
 	              )
 	            )
 	          ),

@@ -40,18 +40,31 @@ var User = React.createClass({
   render: function() {
     var id = parseInt(this.props.params.id);
     if (this.state.currentUser.id === id) {
+      var followings = this.state.currentUser.following.map(function (program, idx) {
+        return (
+          <div className="media">
+            <div className="media-left">
+              <a href="#">
+                <img className="media-object" width="60" src={program.logo} alt="..."></img>
+              </a>
+            </div>
+            <div className="media-body">
+              <h4 className="media-heading">{program.title}</h4>
+            </div>
+          </div>
+        );
+      });
       var feed = this.state.currentUser.feed.map(function (feedItem, index) {
         return(
-          <li className="news-item">
-          <table cellPadding="4">
-            <tbody>
-          <tr>
-          <td><img src="images/1.png" width="60" className="img-circle" /></td>
-          <td>{feedItem.title}</td>
-          <td><a href="#"> Read more...</a></td>
-          </tr>
-        </tbody>
-          </table>
+          <li key={index} className="news-item">
+            <table cellPadding="4">
+              <tbody>
+                <tr>
+                  <td><img src={feedItem.company_logo} width="60" className="img-circle" /></td>
+                  <td>{feedItem.title} <a href={"/#/companies/"+feedItem.company_id}> Read more...</a></td>
+                </tr>
+              </tbody>
+            </table>
           </li>
         );
       });
@@ -72,6 +85,15 @@ var User = React.createClass({
                   </div>
                   <div className="blog-post">
                     <p>{this.state.currentUser.bio}</p>
+                  </div>
+                  <br></br>
+                  <div className="blog-header">
+                    <p className="lead blog-description">Following</p>
+                  </div>
+                  <div className="blog-post">
+                    <ul>
+                      {followings}
+                    </ul>
                   </div>
                 </div>
                 <div className="col-md-8">
