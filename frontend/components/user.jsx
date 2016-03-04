@@ -40,6 +40,21 @@ var User = React.createClass({
   render: function() {
     var id = parseInt(this.props.params.id);
     if (this.state.currentUser.id === id) {
+      var feed = this.state.currentUser.feed.map(function (feedItem, index) {
+        return(
+          <li className="news-item">
+          <table cellPadding="4">
+            <tbody>
+          <tr>
+          <td><img src="images/1.png" width="60" className="img-circle" /></td>
+          <td>{feedItem.title}</td>
+          <td><a href="#"> Read more...</a></td>
+          </tr>
+        </tbody>
+          </table>
+          </li>
+        );
+      });
       return (
           <div className="container">
               <div className="fb-profile">
@@ -63,28 +78,21 @@ var User = React.createClass({
                   <div className="blog-header">
                     <p className="lead blog-description">Activity Feed</p>
                   </div>
-                  <div className="media">
-                    <div className="media-left">
-                      <a href="#">
-                        <img className="media-object" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456771323/photo_1_tmllrc.png" alt="..."></img>
-                      </a>
+                  <div className="panel panel-default">
+                    <div className="panel-heading"> <span className="glyphicon glyphicon-list-alt"></span><b>News</b></div>
+                    <div className="panel-body">
+                    <div className="row">
+                    <div className="col-xs-12">
+                    <ul className="demo">
+
+                      {feed}
+
+                    </ul>
                     </div>
-                    <div className="media-body">
-                      <h4 className="media-heading">App Academy</h4>
-                      <p>some activity text</p>
                     </div>
-                  </div>
-                  <div className="media">
-                    <div className="media-left">
-                      <a href="#">
-                        <img className="media-object" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456772380/hack_p3vsaj.webp" alt="..."></img>
-                      </a>
                     </div>
-                    <div className="media-body">
-                      <h4 className="media-heading">Hack Reactor</h4>
-                      <p>some bad activity text</p>
+                    <div className="panel-footer"> </div>
                     </div>
-                  </div>
                 </div>
               </div>
           </div>

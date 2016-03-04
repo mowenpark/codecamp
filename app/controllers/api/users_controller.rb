@@ -13,7 +13,10 @@
 class Api::UsersController < ApplicationController
 
   def new
-    render json: current_user
+    @user = current_user
+    last_week = Time.now - 7.days
+    @feed = Review.all.joins('LEFT OUTER JOIN follows ON reviews.program_id = follows.program_id').where(:follows => {:user_id => current_user.id})
+    render :new
   end
 
   def create

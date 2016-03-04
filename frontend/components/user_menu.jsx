@@ -38,8 +38,8 @@ var UserMenu = React.createClass({
     } else {
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li><a href="#">
-            Notifications <span className="badge">4</span>
+          <li><a href={"/#/users/" + this.state.currentUser.id}>
+            Notifications <span className="badge">{this.state.currentUser.feed.length}</span>
           </a></li>
         <li className="dropdown">
             <a href="#" className="dropdown-toggle"

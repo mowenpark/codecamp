@@ -19927,12 +19927,12 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { href: '#' },
+	            { href: "/#/users/" + this.state.currentUser.id },
 	            'Notifications ',
 	            React.createElement(
 	              'span',
 	              { className: 'badge' },
-	              '4'
+	              this.state.currentUser.feed.length
 	            )
 	          )
 	        ),
@@ -28633,6 +28633,43 @@
 	  render: function () {
 	    var id = parseInt(this.props.params.id);
 	    if (this.state.currentUser.id === id) {
+	      var feed = this.state.currentUser.feed.map(function (feedItem, index) {
+	        return React.createElement(
+	          'li',
+	          { className: 'news-item' },
+	          React.createElement(
+	            'table',
+	            { cellPadding: '4' },
+	            React.createElement(
+	              'tbody',
+	              null,
+	              React.createElement(
+	                'tr',
+	                null,
+	                React.createElement(
+	                  'td',
+	                  null,
+	                  React.createElement('img', { src: 'images/1.png', width: '60', className: 'img-circle' })
+	                ),
+	                React.createElement(
+	                  'td',
+	                  null,
+	                  feedItem.title
+	                ),
+	                React.createElement(
+	                  'td',
+	                  null,
+	                  React.createElement(
+	                    'a',
+	                    { href: '#' },
+	                    ' Read more...'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        );
+	      });
 	      return React.createElement(
 	        'div',
 	        { className: 'container' },
@@ -28695,56 +28732,39 @@
 	            ),
 	            React.createElement(
 	              'div',
-	              { className: 'media' },
+	              { className: 'panel panel-default' },
 	              React.createElement(
 	                'div',
-	                { className: 'media-left' },
+	                { className: 'panel-heading' },
+	                ' ',
+	                React.createElement('span', { className: 'glyphicon glyphicon-list-alt' }),
 	                React.createElement(
-	                  'a',
-	                  { href: '#' },
-	                  React.createElement('img', { className: 'media-object', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456771323/photo_1_tmllrc.png', alt: '...' })
+	                  'b',
+	                  null,
+	                  'News'
 	                )
 	              ),
 	              React.createElement(
 	                'div',
-	                { className: 'media-body' },
+	                { className: 'panel-body' },
 	                React.createElement(
-	                  'h4',
-	                  { className: 'media-heading' },
-	                  'App Academy'
-	                ),
-	                React.createElement(
-	                  'p',
-	                  null,
-	                  'some activity text'
-	                )
-	              )
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'media' },
-	              React.createElement(
-	                'div',
-	                { className: 'media-left' },
-	                React.createElement(
-	                  'a',
-	                  { href: '#' },
-	                  React.createElement('img', { className: 'media-object', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_64/v1456772380/hack_p3vsaj.webp', alt: '...' })
+	                  'div',
+	                  { className: 'row' },
+	                  React.createElement(
+	                    'div',
+	                    { className: 'col-xs-12' },
+	                    React.createElement(
+	                      'ul',
+	                      { className: 'demo' },
+	                      feed
+	                    )
+	                  )
 	                )
 	              ),
 	              React.createElement(
 	                'div',
-	                { className: 'media-body' },
-	                React.createElement(
-	                  'h4',
-	                  { className: 'media-heading' },
-	                  'Hack Reactor'
-	                ),
-	                React.createElement(
-	                  'p',
-	                  null,
-	                  'some bad activity text'
-	                )
+	                { className: 'panel-footer' },
+	                ' '
 	              )
 	            )
 	          )
