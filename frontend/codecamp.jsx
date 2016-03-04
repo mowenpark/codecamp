@@ -8,8 +8,7 @@ var ReactDOM = require('react-dom'),
     Companies = require('./components/companies'),
     Dashboard = require('./components/dashboard'),
     Company = require('./components/company'),
-    Footer = require('./components/footer'),
-    Music = require('./components/music');
+    Footer = require('./components/footer');
 
 var Router = require('react-router').Router;
 var IndexRoute = require('react-router').IndexRoute;
@@ -25,7 +24,6 @@ var App = React.createClass({
           <div className="bod">
             {this.props.children}
           </div>
-          <Music />
           <Footer />
         </div>
     );

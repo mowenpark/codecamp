@@ -82,7 +82,7 @@ var ApiUtil = {
 		});
 	},
 
-	addReview: function (results, callback) {
+	addReview: function (results) {
 		$.ajax({
 			  type: "POST",
 			  url: "/api/reviews",
@@ -97,6 +97,18 @@ var ApiUtil = {
 		$.get("/api/companies/"+id, {"id": id}, function (company) {
 			ApiActions.receiveCompany(company);
 		});
+	},
+
+	createUser: function (user) {
+		$.ajax({
+				type: "POST",
+				url: "/api/users",
+				data: user,
+				success: function( data ) {
+					window.location.replace("/#/users/" + data.id);
+					ApiActions.receiveCurrentUser(data);
+				}
+			});
 	}
 
 };

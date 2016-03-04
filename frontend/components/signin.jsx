@@ -50,7 +50,8 @@ var SignIn = React.createClass({
               <input type="checkbox" value="remember-me" /> Remember me
             </label>
           </div>
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <button className="btn btn-primary" type="submit">Sign in</button>
+          <button type="submit" className="btn btn-primary">Guest</button>
         </form>
 
       </div>

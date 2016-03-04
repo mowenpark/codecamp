@@ -54,8 +54,7 @@
 	    Companies = __webpack_require__(206),
 	    Dashboard = __webpack_require__(208),
 	    Company = __webpack_require__(209),
-	    Footer = __webpack_require__(210),
-	    Music = __webpack_require__(211);
+	    Footer = __webpack_require__(210);
 	
 	var Router = __webpack_require__(212).Router;
 	var IndexRoute = __webpack_require__(212).IndexRoute;
@@ -76,7 +75,6 @@
 	        { className: 'bod' },
 	        this.props.children
 	      ),
-	      React.createElement(Music, null),
 	      React.createElement(Footer, null)
 	    );
 	  }
@@ -20079,7 +20077,7 @@
 			});
 		},
 	
-		addReview: function (results, callback) {
+		addReview: function (results) {
 			$.ajax({
 				type: "POST",
 				url: "/api/reviews",
@@ -20093,6 +20091,18 @@
 		fetchCompany: function (id) {
 			$.get("/api/companies/" + id, { "id": id }, function (company) {
 				ApiActions.receiveCompany(company);
+			});
+		},
+	
+		createUser: function (user) {
+			$.ajax({
+				type: "POST",
+				url: "/api/users",
+				data: user,
+				success: function (data) {
+					window.location.replace("/#/users/" + data.id);
+					ApiActions.receiveCurrentUser(data);
+				}
 			});
 		}
 	
@@ -28999,8 +29009,13 @@
 	        ),
 	        React.createElement(
 	          'button',
-	          { className: 'btn btn-lg btn-primary btn-block', type: 'submit' },
+	          { className: 'btn btn-primary', type: 'submit' },
 	          'Sign in'
+	        ),
+	        React.createElement(
+	          'button',
+	          { type: 'submit', className: 'btn btn-primary' },
+	          'Guest'
 	        )
 	      )
 	    );
@@ -29015,125 +29030,161 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var PropTypes = React.PropTypes;
+	var LinkedStateMixin = __webpack_require__(261);
+	
+	var ApiUtil = __webpack_require__(163);
 	
 	var SignUp = React.createClass({
-	  displayName: "SignUp",
+	  displayName: 'SignUp',
 	
+	  mixins: [LinkedStateMixin],
+	
+	  getInitialState: function () {
+	    return {
+	      name: "",
+	      password: "",
+	      email: "",
+	      location: "",
+	      bio: ""
+	    };
+	  },
+	
+	  handleSubmit: function (e) {
+	    e.preventDefault();
+	    var newUser = Object.assign({}, this.state);
+	    ApiUtil.createUser(newUser);
+	  },
 	
 	  render: function () {
 	    return React.createElement(
-	      "div",
-	      { className: "container-fluid" },
+	      'div',
+	      { className: 'container-fluid' },
 	      React.createElement(
-	        "section",
-	        { className: "container" },
+	        'section',
+	        { className: 'container' },
 	        React.createElement(
-	          "div",
-	          { className: "container-page" },
+	          'div',
+	          { className: 'container-page' },
 	          React.createElement(
-	            "div",
-	            { className: "col-md-6" },
+	            'div',
+	            { className: 'col-md-6' },
 	            React.createElement(
-	              "h3",
-	              { className: "dark-grey" },
-	              "Registration"
+	              'h3',
+	              { className: 'dark-grey' },
+	              'Registration'
 	            ),
 	            React.createElement(
-	              "div",
-	              { className: "form-group col-lg-12" },
+	              'div',
+	              { className: 'form-group col-lg-12' },
 	              React.createElement(
-	                "label",
+	                'label',
 	                null,
-	                "Full Name"
+	                'Full Name'
 	              ),
-	              React.createElement("input", { type: "", name: "", className: "form-control", id: "", value: "" })
+	              React.createElement('textarea', { valueLink: this.linkState('name'), className: 'form-control',
+	                rows: '1',
+	                placeholder: 'Please enter your full name.' })
 	            ),
 	            React.createElement(
-	              "div",
-	              { className: "form-group col-lg-6" },
+	              'div',
+	              { className: 'form-group col-lg-6' },
 	              React.createElement(
-	                "label",
+	                'label',
 	                null,
-	                "Password"
+	                'Password'
 	              ),
-	              React.createElement("input", { type: "password", name: "", className: "form-control", id: "", value: "" })
+	              React.createElement('textarea', { valueLink: this.linkState('password'), className: 'form-control',
+	                rows: '1',
+	                placeholder: 'At least 6 characters long.' })
 	            ),
 	            React.createElement(
-	              "div",
-	              { className: "form-group col-lg-6" },
+	              'div',
+	              { className: 'form-group col-lg-6' },
 	              React.createElement(
-	                "label",
+	                'label',
 	                null,
-	                "Repeat Password"
+	                'Repeat Password'
 	              ),
-	              React.createElement("input", { type: "password", name: "", className: "form-control", id: "", value: "" })
+	              React.createElement('textarea', { valueLink: this.linkState('password'), className: 'form-control',
+	                rows: '1',
+	                placeholder: 'One more time with feeling.' })
 	            ),
 	            React.createElement(
-	              "div",
-	              { className: "form-group col-lg-6" },
+	              'div',
+	              { className: 'form-group col-lg-6' },
 	              React.createElement(
-	                "label",
+	                'label',
 	                null,
-	                "Email Address"
+	                'Email Address'
 	              ),
-	              React.createElement("input", { type: "", name: "", className: "form-control", id: "", value: "" })
+	              React.createElement('textarea', { valueLink: this.linkState('email'), className: 'form-control',
+	                rows: '1',
+	                placeholder: 'A valid email please.' })
 	            ),
 	            React.createElement(
-	              "div",
-	              { className: "form-group col-lg-6" },
+	              'div',
+	              { className: 'form-group col-lg-6' },
 	              React.createElement(
-	                "label",
+	                'label',
 	                null,
-	                "Repeat Email Address"
+	                'Repeat Email Address'
 	              ),
-	              React.createElement("input", { type: "", name: "", className: "form-control", id: "", value: "" })
+	              React.createElement('textarea', { valueLink: this.linkState('email'), className: 'form-control',
+	                rows: '1',
+	                placeholder: 'You can do it!' })
 	            ),
 	            React.createElement(
-	              "div",
-	              { className: "col-sm-6" },
-	              React.createElement("input", { type: "checkbox", className: "checkbox" }),
-	              "Sigh up for our newsletter"
+	              'div',
+	              { className: 'form-group col-lg-6' },
+	              React.createElement(
+	                'label',
+	                null,
+	                'Your Location'
+	              ),
+	              React.createElement('textarea', { valueLink: this.linkState('location'), className: 'form-control',
+	                rows: '1',
+	                placeholder: 'e.g. Mill Valley, California (US)' })
 	            ),
 	            React.createElement(
-	              "div",
-	              { className: "col-sm-6" },
-	              React.createElement("input", { type: "checkbox", className: "checkbox" }),
-	              "Send notifications to this email"
+	              'div',
+	              { className: 'form-group col-lg-6' },
+	              React.createElement(
+	                'label',
+	                null,
+	                'A quick bio about yourself'
+	              ),
+	              React.createElement('textarea', { valueLink: this.linkState('bio'), className: 'form-control',
+	                rows: '1',
+	                placeholder: 'I don\'t care.' })
 	            )
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "col-md-6" },
+	            'div',
+	            { className: 'col-md-6' },
 	            React.createElement(
-	              "h3",
-	              { className: "dark-grey" },
-	              "Terms and Conditions"
+	              'h3',
+	              { className: 'dark-grey' },
+	              'Welcome to Codecamp!'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
-	              "By clicking on \"Register\" you agree to The Company's Terms and Conditions"
+	              'Once you\'ve signed up you can leave reviews on programs you\'ve attended or are currently attending.'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
-	              "While rare, prices are subject to change based on exchange rate fluctuations - should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)"
+	              'Feel free to browse other programs and companies using the search bar above.'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
-	              "Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)"
+	              'If you are more interested in searching by language, that is indeed possible! Select Languages from the dropdown-menu and let er rip!'
 	            ),
 	            React.createElement(
-	              "p",
-	              null,
-	              "Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)"
-	            ),
-	            React.createElement(
-	              "button",
-	              { type: "submit", className: "btn btn-primary" },
-	              "Register"
+	              'button',
+	              { type: 'submit', onClick: this.handleSubmit, className: 'btn btn-primary' },
+	              'Sign Up'
 	            )
 	          )
 	        )
@@ -29665,24 +29716,26 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var PropTypes = React.PropTypes;
+	
+	var Music = __webpack_require__(211);
 	
 	var Footer = React.createClass({
-	  displayName: "Footer",
+	  displayName: 'Footer',
 	
 	
 	  render: function () {
 	    return React.createElement(
-	      "footer",
-	      { className: "footer" },
+	      'footer',
+	      { className: 'footer' },
 	      React.createElement(
-	        "div",
-	        { className: "container" },
+	        'div',
+	        { className: 'container' },
 	        React.createElement(
-	          "p",
-	          { className: "text-muted" },
-	          "this is the footer"
-	        )
+	          'p',
+	          { className: 'text-muted' },
+	          'this is the footer'
+	        ),
+	        React.createElement(Music, null)
 	      )
 	    );
 	  }
@@ -34369,6 +34422,236 @@
 	
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(262);
+
+/***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule LinkedStateMixin
+	 * @typechecks static-only
+	 */
+	
+	'use strict';
+	
+	var ReactLink = __webpack_require__(263);
+	var ReactStateSetters = __webpack_require__(264);
+	
+	/**
+	 * A simple mixin around ReactLink.forState().
+	 */
+	var LinkedStateMixin = {
+	  /**
+	   * Create a ReactLink that's linked to part of this component's state. The
+	   * ReactLink will have the current value of this.state[key] and will call
+	   * setState() when a change is requested.
+	   *
+	   * @param {string} key state key to update. Note: you may want to use keyOf()
+	   * if you're using Google Closure Compiler advanced mode.
+	   * @return {ReactLink} ReactLink instance linking to the state.
+	   */
+	  linkState: function (key) {
+	    return new ReactLink(this.state[key], ReactStateSetters.createStateKeySetter(this, key));
+	  }
+	};
+	
+	module.exports = LinkedStateMixin;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactLink
+	 * @typechecks static-only
+	 */
+	
+	'use strict';
+	
+	/**
+	 * ReactLink encapsulates a common pattern in which a component wants to modify
+	 * a prop received from its parent. ReactLink allows the parent to pass down a
+	 * value coupled with a callback that, when invoked, expresses an intent to
+	 * modify that value. For example:
+	 *
+	 * React.createClass({
+	 *   getInitialState: function() {
+	 *     return {value: ''};
+	 *   },
+	 *   render: function() {
+	 *     var valueLink = new ReactLink(this.state.value, this._handleValueChange);
+	 *     return <input valueLink={valueLink} />;
+	 *   },
+	 *   _handleValueChange: function(newValue) {
+	 *     this.setState({value: newValue});
+	 *   }
+	 * });
+	 *
+	 * We have provided some sugary mixins to make the creation and
+	 * consumption of ReactLink easier; see LinkedValueUtils and LinkedStateMixin.
+	 */
+	
+	var React = __webpack_require__(148);
+	
+	/**
+	 * @param {*} value current value of the link
+	 * @param {function} requestChange callback to request a change
+	 */
+	function ReactLink(value, requestChange) {
+	  this.value = value;
+	  this.requestChange = requestChange;
+	}
+	
+	/**
+	 * Creates a PropType that enforces the ReactLink API and optionally checks the
+	 * type of the value being passed inside the link. Example:
+	 *
+	 * MyComponent.propTypes = {
+	 *   tabIndexLink: ReactLink.PropTypes.link(React.PropTypes.number)
+	 * }
+	 */
+	function createLinkTypeChecker(linkType) {
+	  var shapes = {
+	    value: typeof linkType === 'undefined' ? React.PropTypes.any.isRequired : linkType.isRequired,
+	    requestChange: React.PropTypes.func.isRequired
+	  };
+	  return React.PropTypes.shape(shapes);
+	}
+	
+	ReactLink.PropTypes = {
+	  link: createLinkTypeChecker
+	};
+	
+	module.exports = ReactLink;
+
+/***/ },
+/* 264 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactStateSetters
+	 */
+	
+	'use strict';
+	
+	var ReactStateSetters = {
+	  /**
+	   * Returns a function that calls the provided function, and uses the result
+	   * of that to set the component's state.
+	   *
+	   * @param {ReactCompositeComponent} component
+	   * @param {function} funcReturningState Returned callback uses this to
+	   *                                      determine how to update state.
+	   * @return {function} callback that when invoked uses funcReturningState to
+	   *                    determined the object literal to setState.
+	   */
+	  createStateSetter: function (component, funcReturningState) {
+	    return function (a, b, c, d, e, f) {
+	      var partialState = funcReturningState.call(component, a, b, c, d, e, f);
+	      if (partialState) {
+	        component.setState(partialState);
+	      }
+	    };
+	  },
+	
+	  /**
+	   * Returns a single-argument callback that can be used to update a single
+	   * key in the component's state.
+	   *
+	   * Note: this is memoized function, which makes it inexpensive to call.
+	   *
+	   * @param {ReactCompositeComponent} component
+	   * @param {string} key The key in the state that you should update.
+	   * @return {function} callback of 1 argument which calls setState() with
+	   *                    the provided keyName and callback argument.
+	   */
+	  createStateKeySetter: function (component, key) {
+	    // Memoize the setters.
+	    var cache = component.__keySetters || (component.__keySetters = {});
+	    return cache[key] || (cache[key] = createStateKeySetter(component, key));
+	  }
+	};
+	
+	function createStateKeySetter(component, key) {
+	  // Partial state is allocated outside of the function closure so it can be
+	  // reused with every call, avoiding memory allocation when this function
+	  // is called.
+	  var partialState = {};
+	  return function stateKeySetter(value) {
+	    partialState[key] = value;
+	    component.setState(partialState);
+	  };
+	}
+	
+	ReactStateSetters.Mixin = {
+	  /**
+	   * Returns a function that calls the provided function, and uses the result
+	   * of that to set the component's state.
+	   *
+	   * For example, these statements are equivalent:
+	   *
+	   *   this.setState({x: 1});
+	   *   this.createStateSetter(function(xValue) {
+	   *     return {x: xValue};
+	   *   })(1);
+	   *
+	   * @param {function} funcReturningState Returned callback uses this to
+	   *                                      determine how to update state.
+	   * @return {function} callback that when invoked uses funcReturningState to
+	   *                    determined the object literal to setState.
+	   */
+	  createStateSetter: function (funcReturningState) {
+	    return ReactStateSetters.createStateSetter(this, funcReturningState);
+	  },
+	
+	  /**
+	   * Returns a single-argument callback that can be used to update a single
+	   * key in the component's state.
+	   *
+	   * For example, these statements are equivalent:
+	   *
+	   *   this.setState({x: 1});
+	   *   this.createStateKeySetter('x')(1);
+	   *
+	   * Note: this is memoized function, which makes it inexpensive to call.
+	   *
+	   * @param {string} key The key in the state that you should update.
+	   * @return {function} callback of 1 argument which calls setState() with
+	   *                    the provided keyName and callback argument.
+	   */
+	  createStateKeySetter: function (key) {
+	    return ReactStateSetters.createStateKeySetter(this, key);
+	  }
+	};
+	
+	module.exports = ReactStateSetters;
 
 /***/ }
 /******/ ]);
