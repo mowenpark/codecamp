@@ -29603,7 +29603,7 @@
 	                React.createElement(
 	                  "h1",
 	                  null,
-	                  "Example headline."
+	                  "Welcome to codecamp!"
 	                ),
 	                React.createElement(
 	                  "p",
@@ -29621,8 +29621,8 @@
 	                  null,
 	                  React.createElement(
 	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
-	                    "Sign up today"
+	                    { className: "btn btn-lg btn-primary", href: "/#/signin", role: "button" },
+	                    "Sign in"
 	                  )
 	                )
 	              )
@@ -29723,11 +29723,11 @@
 	          React.createElement(
 	            "div",
 	            { className: "col-lg-4" },
-	            React.createElement("img", { className: "img-circle", src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            React.createElement("img", { className: "img-circle", src: "https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png", alt: "Generic placeholder image", width: "140", height: "140" }),
 	            React.createElement(
 	              "h2",
 	              null,
-	              "Heading"
+	              "github"
 	            ),
 	            React.createElement(
 	              "p",
@@ -29739,7 +29739,7 @@
 	              null,
 	              React.createElement(
 	                "a",
-	                { className: "btn btn-default", href: "#", role: "button" },
+	                { className: "btn btn-default", href: "https://github.com/mowenpark", role: "button" },
 	                "View details »"
 	              )
 	            )
@@ -29747,11 +29747,11 @@
 	          React.createElement(
 	            "div",
 	            { className: "col-lg-4" },
-	            React.createElement("img", { className: "img-circle", src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            React.createElement("img", { className: "img-circle", src: "https://yt3.ggpht.com/-CepHHHB3l1Y/AAAAAAAAAAI/AAAAAAAAAAA/Z8MftqWbEqA/s900-c-k-no/photo.jpg", alt: "Generic placeholder image", width: "140", height: "140" }),
 	            React.createElement(
 	              "h2",
 	              null,
-	              "Heading"
+	              "Linkedin"
 	            ),
 	            React.createElement(
 	              "p",
@@ -29763,7 +29763,7 @@
 	              null,
 	              React.createElement(
 	                "a",
-	                { className: "btn btn-default", href: "#", role: "button" },
+	                { className: "btn btn-default", href: "https://www.linkedin.com/in/mowenpark", role: "button" },
 	                "View details »"
 	              )
 	            )
@@ -29771,11 +29771,11 @@
 	          React.createElement(
 	            "div",
 	            { className: "col-lg-4" },
-	            React.createElement("img", { className: "img-circle", src: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            React.createElement("img", { className: "img-circle", src: "http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457329886/Screen_Shot_2016-03-06_at_9.50.52_PM_cny0ex.png", alt: "Generic placeholder image", width: "140", height: "140" }),
 	            React.createElement(
 	              "h2",
 	              null,
-	              "Heading"
+	              "Blog"
 	            ),
 	            React.createElement(
 	              "p",
@@ -29787,7 +29787,7 @@
 	              null,
 	              React.createElement(
 	                "a",
-	                { className: "btn btn-default", href: "#", role: "button" },
+	                { className: "btn btn-default", href: "http://mowenpark.tumblr.com", role: "button" },
 	                "View details »"
 	              )
 	            )

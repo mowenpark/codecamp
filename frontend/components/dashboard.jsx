@@ -17,9 +17,9 @@ var Dashboard = React.createClass({
             <img className="first-slide" src=""></img>
               <div className="carousel-caption">
                 <div className="hero">
-                  <h1>Example headline.</h1>
+                  <h1>Welcome to codecamp!</h1>
                   <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                  <p><a className="btn btn-lg btn-primary" href="/#/signin" role="button">Sign in</a></p>
                 </div>
               </div>
           </div>
@@ -56,22 +56,22 @@ var Dashboard = React.createClass({
       <div className="container marketing">
         <div className="row">
           <div className="col-lg-4">
-            <img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></img>
-            <h2>Heading</h2>
+            <img className="img-circle" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="Generic placeholder image" width="140" height="140"></img>
+            <h2>github</h2>
             <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <p><a className="btn btn-default" href="https://github.com/mowenpark" role="button">View details &raquo;</a></p>
           </div>
           <div className="col-lg-4">
-            <img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></img>
-            <h2>Heading</h2>
+            <img className="img-circle" src="https://yt3.ggpht.com/-CepHHHB3l1Y/AAAAAAAAAAI/AAAAAAAAAAA/Z8MftqWbEqA/s900-c-k-no/photo.jpg" alt="Generic placeholder image" width="140" height="140"></img>
+            <h2>Linkedin</h2>
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <p><a className="btn btn-default" href="https://www.linkedin.com/in/mowenpark" role="button">View details &raquo;</a></p>
           </div>
           <div className="col-lg-4">
-            <img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></img>
-            <h2>Heading</h2>
+            <img className="img-circle" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457329886/Screen_Shot_2016-03-06_at_9.50.52_PM_cny0ex.png" alt="Generic placeholder image" width="140" height="140"></img>
+            <h2>Blog</h2>
             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <p><a className="btn btn-default" href="http://mowenpark.tumblr.com" role="button">View details &raquo;</a></p>
           </div>
         </div>
       </div>
