@@ -13,8 +13,9 @@ var Errors = React.createClass({
 
   render: function() {
     return (
-      <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div className="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
       </div>
     );
   }

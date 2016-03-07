@@ -109,15 +109,16 @@ var Search = React.createClass({
             placeholder="Location"
             onBlur={this.toggleFocus}
             onFocus={this.toggleFocus}/>
-            <ul className="auto-location panel"
-              id="toggle-trigger">
+          <div>
               <ReactCSSTransitionGroup
+                className="auto-location trans-background"
+                id="toggle-trigger"
                 transitionName="auto"
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={500}>
                 {locations}
               </ReactCSSTransitionGroup>
-            </ul>
+            </div>
         </div>
         <input type="submit" className="btn btn-success btn-sm" value="Search" />
       </form>

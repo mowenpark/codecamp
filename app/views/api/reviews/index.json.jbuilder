@@ -3,6 +3,7 @@ json.array! @reviews do |review|
   json.pros review.pros
   json.username review.user.name if review.user
   json.id review.user.id if review.user
+  json.profile_pic review.user.profile_pic if review.user
   json.cons review.cons
   json.comments review.comments
   json.rating review.rating

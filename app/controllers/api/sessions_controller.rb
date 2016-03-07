@@ -1,22 +1,22 @@
 class Api::SessionsController < ApplicationController
 
-  def new
-  end
-
   def create
     @user = User.find_by_credentials(params["email"], params["password"])
     if @user
       sign_in(@user)
-      redirect_to api_user_url(@user)
-    else
-      flash.now[:errors] = "Oh snap! Your credentials were incorrect, please try again."
+      last_week = Time.now - 7.days
+      @feed = Review.where(:created_at => last_week..Time.now)
+        .joins('LEFT OUTER JOIN follows ON reviews.program_id = follows.program_id')
+        .where(:follows => {:user_id => current_user.id})
       render :new
+    else
+      render json: "You're not logged in!"
     end
   end
 
   def destroy
     sign_out
-    render :new
+    render json: "Signout successful!"
   end
 
 end

@@ -42,7 +42,7 @@ var User = React.createClass({
     if (this.state.currentUser.id === id) {
       var followings = this.state.currentUser.following.map(function (program, idx) {
         return (
-          <div className="media">
+          <div key={idx} className="media">
             <div className="media-left">
               <a href="#">
                 <img className="media-object" width="60" src={program.logo} alt="..."></img>
@@ -60,8 +60,8 @@ var User = React.createClass({
             <table cellPadding="4">
               <tbody>
                 <tr>
-                  <td><img src={feedItem.company_logo} width="60" className="img-circle" /></td>
-                  <td>{feedItem.title} <a href={"/#/companies/"+feedItem.company_id}> Read more...</a></td>
+                  <td><img src={feedItem.company_logo} width="60" /></td>
+                  <td> {feedItem.title} <a href={"/#/companies/"+feedItem.company_id}> Read more...</a></td>
                 </tr>
               </tbody>
             </table>
@@ -124,6 +124,7 @@ var User = React.createClass({
         if (this.state.user.reviews === undefined){
           reviews = <div />;
         } else {
+          debugger;
           reviews = <Reviews reviews={this.state.user.reviews} />;
         }
         return(

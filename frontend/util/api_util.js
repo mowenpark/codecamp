@@ -11,7 +11,11 @@ var ApiUtil = {
 			data: {_method: 'delete'},
 			success: function() {
 				window.location.replace("/#/signin");
-				ApiActions.receiveCurrentUser({"currentUser": undefined});
+				ApiActions.receiveCurrentUser({});
+			},
+			error: function () {
+				window.location.replace("/#/signin");
+				ApiActions.receiveCurrentUser({});
 			}
 		});
 	},

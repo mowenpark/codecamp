@@ -14,10 +14,7 @@ var Dashboard = React.createClass({
         </ol>
         <div className="carousel-inner" role="listbox">
           <div className="item active">
-            <img className="first-slide"
-              src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456856395/people-coffee-notes-tea_ziykz4.jpg"
-              alt="First slide"></img>
-            <div className="container">
+            <img className="first-slide" src=""></img>
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Example headline.</h1>
@@ -25,11 +22,9 @@ var Dashboard = React.createClass({
                   <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
                 </div>
               </div>
-            </div>
           </div>
           <div className="item">
-            <img className="second-slide" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456855670/coffee-apple-iphone-desk_i1uriy.jpg" alt="Second slide"></img>
-            <div className="container">
+            <img className="second-slide" src=""></img>
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Another example headline.</h1>
@@ -37,11 +32,9 @@ var Dashboard = React.createClass({
                   <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                 </div>
               </div>
-            </div>
           </div>
           <div className="item">
-            <img className="third-slide" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456770075/flowers-desk-office-vintage_dy19o8.jpg" alt="Third slide"></img>
-            <div className="container">
+            <img className="third-slide" src=""></img>
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>One more for good measure.</h1>
@@ -49,7 +42,6 @@ var Dashboard = React.createClass({
                   <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
                 </div>
               </div>
-            </div>
           </div>
         </div>
         <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">

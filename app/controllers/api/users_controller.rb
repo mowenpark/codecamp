@@ -15,10 +15,14 @@ class Api::UsersController < ApplicationController
   def new
     @user = current_user
     last_week = Time.now - 7.days
-    @feed = Review.all
-      .joins('LEFT OUTER JOIN follows ON reviews.program_id = follows.program_id')
-      .where(:follows => {:user_id => current_user.id})
-    render :new
+    if current_user
+      @feed = Review.where(:created_at => last_week..Time.now)
+        .joins('LEFT OUTER JOIN follows ON reviews.program_id = follows.program_id')
+        .where(:follows => {:user_id => current_user.id})
+      render :new
+    else
+      render json: "You're not logged in!"
+    end
   end
 
   def create

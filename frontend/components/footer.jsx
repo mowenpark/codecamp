@@ -1,7 +1,5 @@
 var React = require('react');
 
-var Music = require('./music');
-
 var Footer = React.createClass({
 
   render: function() {
@@ -9,7 +7,6 @@ var Footer = React.createClass({
       <footer className="footer">
         <div className="container">
           <p className="text-muted">this is the footer</p>
-          <Music />
         </div>
       </footer>
     );

@@ -1,6 +1,7 @@
 var React = require('react');
 
-var ApiUtil = require('../util/api_util');
+var ApiUtil = require('../util/api_util'),
+    Errors = require('./errors');
 
 var SignIn = React.createClass({
 
@@ -25,9 +26,19 @@ var SignIn = React.createClass({
     ApiUtil.login(params);
   },
 
+  guestLogin: function (e) {
+    e.preventDefault();
+    ApiUtil.login({
+      email: "mike@mail.com",
+      password: "mikemike"
+    });
+  },
+
   render: function() {
     return (
       <div className="container">
+
+        <Errors />
 
         <form className="form-signin" onSubmit={this.handleSubmit}>
           <h2 className="form-signin-heading">Please sign in</h2>
@@ -45,14 +56,10 @@ var SignIn = React.createClass({
             placeholder="Password"
             onChange={this.passwordChange}
             required></input>
-          <div className="checkbox">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
-            </label>
-          </div>
           <button className="btn btn-primary" type="submit">Sign in</button>
-          <button type="submit" className="btn btn-primary">Guest</button>
         </form>
+
+        <button onClick={this.guestLogin} className="btn btn-primary">Guest Login</button>
 
       </div>
 

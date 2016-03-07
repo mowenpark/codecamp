@@ -30,7 +30,7 @@ var Headers = React.createClass({
       );
     });
     return (
-      <div className="col-sm-6 col-md-3">
+      <div>
         {headers}
       </div>
 
@@ -65,20 +65,24 @@ var Tabs = React.createClass({
     var pane = this.state.panes[this.state.selectedPane];
     if (pane !== undefined) {
       return (
-        <div className="container-fluid search-results">
-          <Headers
-            selectedPane={this.state.selectedPane}
-            onTabChosen={this.selectTab}
-            panes={this.state.panes}>
-          </Headers>
-          <div className="search-panel">
-            <SearchPanel
-              languages={pane.languages}
-              location={pane.location}
-              description={pane.description}
-              title={pane.title}
-              id={pane.id}>
-            </SearchPanel>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4">
+              <Headers
+                selectedPane={this.state.selectedPane}
+                onTabChosen={this.selectTab}
+                panes={this.state.panes}>
+              </Headers>
+            </div>
+            <div className="col-md-8">
+              <SearchPanel
+                languages={pane.languages}
+                location={pane.location}
+                description={pane.description}
+                title={pane.title}
+                id={pane.id}>
+              </SearchPanel>
+            </div>
           </div>
         </div>
       );

@@ -5,18 +5,9 @@
 @import url('http://fonts.googleapis.com/css?family=Raleway:400,200');
 @import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 
-.search-panel {
-  list-style-type: none;
-  margin-left: 20px;
-  flex:2;
-  position: fixed;
-  overflow:auto;
-  height: 500px;
-}
-
-.search-results {
-  display: flex;
-  padding-top: 90px;
+html {
+    margin: 0;
+    height: 100%;
 }
 
 img.logo {
@@ -48,15 +39,6 @@ img.logo {
   position: relative;
   border-radius: 2px;
   box-sizing: border-box;
-}
-
-.container {
-  display: table;
-}
-
-.carousel-caption {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .tabs-pane {
@@ -98,7 +80,8 @@ footer {
 }
 
 .bod {
-  margin-top: 70px;
+  position: static;
+  margin-top: 85px;
   height: 100%;
 }
 
@@ -153,4 +136,57 @@ border-bottom: 1px dotted #555;
 }
 .img-circle {
   margin-right: 15px;
+}
+
+.form-group input {
+  border-radius: 4px !important;
+}
+
+.navbar-form .form-group {
+  padding-right: 5px !important;
+}
+
+.navbar-form {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+
+.navbar-default .navbar-nav>li>a {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.carousel-inner {
+  margin-top: -10px !important;
+}
+
+.trans-background {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+}
+
+.carousel-caption {
+  left: 50% !important;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  bottom: auto !important;
+  right: auto !important;
+}
+
+.item .first-slide {
+  height: 550px !important;
+  background-image: url('http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_1000/v1457043472/people-woman-coffee-meeting_rbqahr.jpg') !important;
+  background-position: center center !important;
+}
+
+.item .second-slide {
+  height: 550px !important;
+  background-image: url('http://res.cloudinary.com/dtdgkk9aa/image/upload/v1456855853/coffee-apple-iphone-desk_i1uriy_w0pxtu.jpg') !important;
+  background-position: center center !important;
+}
+
+.item .third-slide {
+  height: 550px !important;
+  background-image: url('http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_1000/v1456770075/flowers-desk-office-vintage_dy19o8.jpg') !important;
+  background-position: center center !important;
 }

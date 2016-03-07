@@ -35,6 +35,7 @@ end
   name = Faker::Name.name
   email = Faker::Internet.safe_email
   password = Faker::Internet.password(8)
+  profile_pic = Faker::Avatar.image(name, "144x144")
   bio = Faker::Lorem.paragraph
   location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
   User.create({
@@ -42,6 +43,7 @@ end
     email: email,
     password: password,
     location: location,
+    profile_pic: profile_pic,
     bio: bio
   })
 end
@@ -69,7 +71,7 @@ Program.all.each do |program|
     program_id: program_id
     )
 
-    title = Faker::Company.catch_phrase
+    title = Faker::StarWars.vehicle
     comments = Faker::Hacker.say_something_smart
     pros = Faker::Hipster.sentence
     cons = Faker::Hipster.sentence
