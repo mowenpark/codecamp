@@ -28292,15 +28292,6 @@
 	        React.createElement(
 	          "div",
 	          { className: "panel-heading" },
-	          React.createElement(
-	            "div",
-	            { className: "media-left" },
-	            React.createElement(
-	              "a",
-	              { href: "/#/users/" + review.id },
-	              React.createElement("img", { className: "media-object", style: { "height": "50%", "width": "50%" }, src: review.profile_pic, alt: "Reviewer profile image" })
-	            )
-	          ),
 	          review.title,
 	          React.createElement("br", null),
 	          React.createElement(
@@ -28847,7 +28838,6 @@
 	      if (this.state.user.reviews === undefined) {
 	        reviews = React.createElement('div', null);
 	      } else {
-	        debugger;
 	        reviews = React.createElement(Reviews, { reviews: this.state.user.reviews });
 	      }
 	      return React.createElement(
@@ -29848,26 +29838,49 @@
 	
 	  render: function () {
 	    var divStyle = {
-	      backgroundImage: 'url(http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457042881/blue-abstract-glass-balls_fkud2k.jpg)',
+	      backgroundImage: 'url(http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_1000/v1457319902/people-coffee-notes-tea_ziykz4_tvfh2x.jpg)',
 	      backgroundSize: "cover"
 	    };
+	    var locations;
+	    if (this.state.company.locations === undefined) {
+	      locations = React.createElement('div', null);
+	    } else {
+	      locations = this.state.company.locations.map(function (location, index) {
+	        return React.createElement(
+	          'li',
+	          { key: index },
+	          location
+	        );
+	      });
+	    }
+	
+	    var programs;
+	    if (this.state.company.programs === undefined) {
+	      programs = React.createElement('div', null);
+	    } else {
+	      programs = this.state.company.programs.map(function (program, idx) {
+	        return React.createElement(
+	          'li',
+	          { key: idx },
+	          program.title
+	        );
+	      });
+	    }
+	
 	    return React.createElement(
 	      'div',
 	      { className: 'container jumbo' },
+	      React.createElement('div', { className: 'jumbotron narrow',
+	        style: divStyle }),
 	      React.createElement(
-	        'div',
-	        { className: 'jumbotron narrow',
-	          style: divStyle },
-	        React.createElement(
-	          'h1',
-	          null,
-	          this.state.company.name
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          this.state.company.about
-	        )
+	        'h1',
+	        null,
+	        this.state.company.name
+	      ),
+	      React.createElement(
+	        'p',
+	        null,
+	        this.state.company.about
 	      ),
 	      React.createElement(
 	        'div',
@@ -29878,7 +29891,7 @@
 	          React.createElement(
 	            'h4',
 	            null,
-	            'Subheading'
+	            'Rating'
 	          ),
 	          React.createElement(
 	            'p',
@@ -29888,12 +29901,12 @@
 	          React.createElement(
 	            'h4',
 	            null,
-	            'Subheading'
+	            'Programs'
 	          ),
 	          React.createElement(
-	            'p',
+	            'ul',
 	            null,
-	            'Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.'
+	            programs
 	          ),
 	          React.createElement(
 	            'h4',
@@ -29912,7 +29925,7 @@
 	          React.createElement(
 	            'h4',
 	            null,
-	            'Subheading'
+	            'Reviews'
 	          ),
 	          React.createElement(
 	            'p',
@@ -29922,7 +29935,7 @@
 	          React.createElement(
 	            'h4',
 	            null,
-	            'Subheading'
+	            'Blog'
 	          ),
 	          React.createElement(
 	            'p',
@@ -29932,12 +29945,12 @@
 	          React.createElement(
 	            'h4',
 	            null,
-	            'Subheading'
+	            'Locations'
 	          ),
 	          React.createElement(
-	            'p',
+	            'ul',
 	            null,
-	            'Maecenas sed diam eget risus varius blandit sit amet non magna.'
+	            locations
 	          )
 	        )
 	      )
@@ -29968,7 +29981,11 @@
 	        React.createElement(
 	          "p",
 	          { className: "text-muted" },
-	          "this is the footer"
+	          React.createElement(
+	            "a",
+	            { href: "https://www.linkedin.com/in/mowenpark" },
+	            "About"
+	          )
 	        )
 	      )
 	    );

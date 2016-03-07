@@ -124,7 +124,6 @@ var User = React.createClass({
         if (this.state.user.reviews === undefined){
           reviews = <div />;
         } else {
-          debugger;
           reviews = <Reviews reviews={this.state.user.reviews} />;
         }
         return(

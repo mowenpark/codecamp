@@ -30,37 +30,63 @@ var Company = React.createClass({
 
   render: function() {
     var divStyle = {
-      backgroundImage: 'url(http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457042881/blue-abstract-glass-balls_fkud2k.jpg)',
+      backgroundImage: 'url(http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_1000/v1457319902/people-coffee-notes-tea_ziykz4_tvfh2x.jpg)',
       backgroundSize: "cover",
     };
+    var locations;
+    if (this.state.company.locations === undefined) {
+      locations = <div />;
+    } else {
+      locations = this.state.company.locations.map(function (location, index) {
+        return(
+          <li key={index}>{location}</li>
+        );
+      });
+    }
+
+    var programs;
+    if (this.state.company.programs === undefined) {
+      programs = <div />;
+    } else {
+      programs = this.state.company.programs.map(function (program, idx) {
+        return(
+          <li key={idx}>{program.title}</li>
+        );
+      });
+    }
+
     return (
       <div className="container jumbo">
         <div className="jumbotron narrow"
           style={divStyle}>
-          <h1>{this.state.company.name}</h1>
-          <p>{this.state.company.about}</p>
         </div>
+        <h1>{this.state.company.name}</h1>
+        <p>{this.state.company.about}</p>
         <div className="row marketing">
           <div className="col-lg-6">
-            <h4>Subheading</h4>
+            <h4>Rating</h4>
             <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-            <h4>Subheading</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+            <h4>Programs</h4>
+            <ul>
+              {programs}
+            </ul>
 
             <h4>Subheading</h4>
             <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
           </div>
 
           <div className="col-lg-6">
-            <h4>Subheading</h4>
+            <h4>Reviews</h4>
             <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-            <h4>Subheading</h4>
+            <h4>Blog</h4>
             <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-            <h4>Subheading</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <h4>Locations</h4>
+            <ul>
+              {locations}
+            </ul>
           </div>
         </div>
       </div>

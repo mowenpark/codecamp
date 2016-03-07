@@ -3,3 +3,4 @@ json.name @company.name
 json.locations @company.locations
 json.about @company.about
 json.logo @company.logo
+json.programs @company.programs

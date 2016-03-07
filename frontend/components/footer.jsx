@@ -6,7 +6,7 @@ var Footer = React.createClass({
     return (
       <footer className="footer">
         <div className="container">
-          <p className="text-muted">this is the footer</p>
+          <p className="text-muted"><a href="https://www.linkedin.com/in/mowenpark">About</a></p>
         </div>
       </footer>
     );
