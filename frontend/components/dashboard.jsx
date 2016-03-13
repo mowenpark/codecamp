@@ -18,8 +18,8 @@ var Dashboard = React.createClass({
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Welcome to codecamp!</h1>
-                  <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                  <p><a className="btn btn-lg btn-primary" href="/#/signin" role="button">Sign in</a></p>
+                  <p>Codecamp helps you find the web development bootcamp that's right for you. Locations, descriptions and reviews are available for bootcamps around the US. Click below to begin your first search.</p>
+                  <p><a className="btn btn-lg btn-primary" href="/#/programs" role="button">Search</a></p>
                 </div>
               </div>
           </div>
@@ -27,9 +27,9 @@ var Dashboard = React.createClass({
             <img className="second-slide" src=""></img>
               <div className="carousel-caption">
                 <div className="hero">
-                  <h1>Another example headline.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                  <h1>Didn't find what you were looking for?</h1>
+                  <p>Try searching by Company or by a specific language. Codecamp will try to match your input, even if it is incomplete. Give it a try! Click below to search by Company.</p>
+                  <p><a className="btn btn-lg btn-primary" href="/#/companies" role="button">Learn more</a></p>
                 </div>
               </div>
           </div>
@@ -37,9 +37,9 @@ var Dashboard = React.createClass({
             <img className="third-slide" src=""></img>
               <div className="carousel-caption">
                 <div className="hero">
-                  <h1>One more for good measure.</h1>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                  <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                  <h1>Already in a bootcamp?</h1>
+                  <p>Sign up to share your experiences with others by leaving helpful reviews about your specific program. Users are able to rate their bootcamp and leave comments how they might improve. Click the Sign up link below to get started.</p>
+                  <p><a className="btn btn-lg btn-primary" href="/#/signup" role="button">Sign up</a></p>
                 </div>
               </div>
           </div>

@@ -1,5 +1,6 @@
 var React = require('react');
-var CompaniesStore = require('../stores/companies');
+var CompaniesStore = require('../stores/companies'),
+    ApiUtil = require('../util/api_util');
 
 var Companies = React.createClass({
   getInitialState: function () {

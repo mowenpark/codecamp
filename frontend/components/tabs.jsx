@@ -1,6 +1,7 @@
 var React = require('react');
 
 var ProgramsStore = require('../stores/program'),
+    ApiUtil = require('../util/api_util'),
     SearchPanel = require('./search_panel');
 
 var Headers = React.createClass({
@@ -87,7 +88,13 @@ var Tabs = React.createClass({
         </div>
       );
     } else {
-      return <div />;
+      return (
+        <div className="container">
+          <div className="page-header">
+            <h1><small>No results</small></h1>
+          </div>
+        </div>
+      );
     }
   }
 });

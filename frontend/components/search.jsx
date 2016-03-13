@@ -89,7 +89,7 @@ var Search = React.createClass({
     if (this.state.locFocus) {
       locations = this.locationMatches().map(function (location, i) {
         return (
-            <li key={i} onClick={this.selectLocation}>{location}</li>
+            <li className="loc-item" key={i} onClick={this.selectLocation}>{location}</li>
           );
         }.bind(this)).slice(0,6);
       }

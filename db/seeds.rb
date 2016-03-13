@@ -6,30 +6,52 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-10.times do
-  name = Faker::Company.name
-  locations = []
-  rand(1..3).times do
-    locations << "#{Faker::Address.city}, #{Faker::Address.state} (US)"
-  end
-  about = Faker::Lorem.paragraph
-  logo = Faker::Company.logo
-  Company.create({name: name, about: about, logo: logo, locations: locations})
-end
+# Guest user
+require 'byebug'
+require 'csv'
 
-Company.all.each do |company|
+csv_text = File.read('app/assets/bootcamps.csv')
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  hash_row = row.to_hash
+  name = hash_row["name"].strip
+  locations = hash_row["locations"].split(";").map { |location| location.strip }
+  logo = hash_row["logo"].delete("\"")
+  about = hash_row["about"].delete("\n").strip
+  languages = hash_row["languages"].split(",").map { |location| location.strip }
+
+  company = Company.create({name: name, about: about, logo: logo, locations: locations})
   company.locations.length.times do |i|
     location = company.locations[i]
-    title = Faker::Company.buzzword
-    description = Faker::Lorem.paragraph
-    Program.create({
+    title = company.name
+    description = company.about
+    program = Program.create({
       title: title,
       description: description,
       location: location,
       company_id: company.id,
     })
+    languages.each do |language|
+      Language.create(
+        name: language,
+        program_id: program.id
+      )
+    end
   end
 end
+
+name = "Michael Park"
+email = "mike@mail.com"
+password = "mikemike"
+bio = Faker::Lorem.paragraph
+location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
+User.create({
+  name: name,
+  email: email,
+  password: password,
+  location: location,
+  bio: bio
+})
 
 20.times do
   name = Faker::Name.name
@@ -48,27 +70,13 @@ end
   })
 end
 
-name = "Michael"
-email = "mike@mail.com"
-password = "mikemike"
-bio = Faker::Lorem.paragraph
-location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
-User.create({
-  name: name,
-  email: email,
-  password: password,
-  location: location,
-  bio: bio
-})
-
 Program.all.each do |program|
   rand(1..5).times do
     user_id = User.all.sample.id
-    program_id = program.id
 
     Follow.create(
     user_id: user_id,
-    program_id: program_id
+    program_id: program.id
     )
 
     title = Faker::StarWars.vehicle
@@ -77,21 +85,11 @@ Program.all.each do |program|
     cons = Faker::Hipster.sentence
     rating = rand(1..5)
     enrollment_status = true
-    language = Faker::StarWars.planet
-
-    while program.languages.include?(language)
-      language = Faker::StarWars.planet
-    end
-
-    Language.create(
-      name: language,
-      program_id: program_id
-    )
 
     Review.create(
       title: title,
       comments: comments,
-      program_id: program_id,
+      program_id: program.id,
       user_id: user_id,
       pros: pros,
       enrollment_status: enrollment_status,

@@ -4,7 +4,7 @@ class Api::ProgramsController < ApplicationController
     t = Program.arel_table
     title = params["name"].downcase
     location = params["location"].downcase
-    @programs = Program.where(t[:title].matches("%#{title}%")).where(t[:location].matches("%#{location}%"))
+    @programs = Program.where(t[:title].matches("%#{title}%")).where(t[:location].matches("%#{location}%")).includes(:languages)
     render :index
   end
 

@@ -1,0 +1,606 @@
+name,logo,locations,about,languages
+Ada Developers Academy,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/ada-academy.jpg""",Seattle,"This bootcamp is a non-profit organization that was assembled in 
+cooperation with Seattle’s Technology Alliance Incubator. From its website: 
+“Everyone is welcome, regardless of sexual orientation, disability, 
+physical appearance, education, age, race, or religion. All women (cis and 
+trans) and people with non-binary gender who feel a part of women’s 
+community are encouraged to apply.” Its yearlong program is free for those 
+who are accepted. The first seven months is considered the “student phase” 
+where participants will learn HTML, Ruby, Rails, CSS, and JavaScript. The 
+final five months is the “internship phase,” where participants are 
+employed at Ada sponsoring companies. Interns are granted a living stipend.","JavaScript, Ruby on Rails"
+Angelhack,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/angelhack.jpg""", San Francisco,"Angelhack is 33% hackathon organizer, 33% accelerator and 33% educator. The 
+bootcamp is focused on in-demand job skills with a curriculum continuously 
+updated by members of the tech industry. Students are challenged to think 
+like programmers in an intimate environment with a low student to teacher 
+ratio. Angelhack targets everyone: students with some online courses 
+completed, others who feel they’ve plateaued in their field, those tired of 
+simply cutting and pasting code they barely understand as well as newbies 
+committed to becoming true developers. Students will interact with hiring 
+managers and recruiters during the program and attend a career night at the 
+end of each term where they’ll meet hiring companies.","JavaScript, HTML/CSS"
+Anyone Can Learn to Code,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide1_screenshot.jpg""", Chicago; San Francisco; New York,"Anyone Can Learn To Code (ACLTC) is an immersive part-time web-development 
+training program and apprenticeship with cohorts in Chicago, New York, and 
+San Francisco. With a custom curriculum and an educational approach, the 
+bootcamp teaches the fundamentals of Ruby on Rails, HTML, CSS, SQL, 
+JavaScript, and AngularJS, preparing students for a career in web 
+development while enabling them to keep their day jobs in the meantime. 
+After completing the classroom phase, ACLTC developers are guaranteed the 
+opportunity to join a web agency as apprentices for up to four months, 
+where they gain client experience, learn from more experienced developers, 
+and continue to build their portfolios. Learn more at ","Ruby on Rails, HTML, CSS, JavaScript, Angular, SQL,   Git"
+App Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide2_screenshot.jpg""", New York; San Francisco,"This is a laboratory-style coding program intended to prepare students for 
+an entry level web development job. The majority of the time is spent on 
+actual coding projects. The program is focused on Rails but ensures 
+students are equipped with the capabilities to adapt to any framework. 
+Students are not required to pay tuition until they land a developer job. 
+App Academy reports 98% of its students get job offers or are employed","JavaScript, Ruby on Rails, HTML/CSS, PostgreSQL, Jquery, Backbone.JS"
+Apprentice,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide3_screenshot.jpg""", Austin; Boston; New York; San Francisco; Stockholm; London,Apprentice is a specialized program for intermediate developers with previous coding experience. Selected candidates are assigned a mentor and  work alongside professional developers and designers on real projects at thoughtbot. During the 12-week session apprentices will have the opportunity to work with three different mentors and teams. Students receive a weekly stipend. Successful apprentices are typically offered full-time positions.,"Ruby on Rails, JavaScript, HTML5, SCSS, Git, Unix, Agile Software Development"
+Betamore Academy,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/betamore-academy.jpg"""," Baltimore, MD","Betamore Academy hosts a 10-week, front-end web development course and a 
+12-week back-end web development course. They also hold classes and 
+workshops in project management, data science, web development and a 
+cluster of other tech related topics. Its front-end course is focused on 
+JavaScript, HTML and CSS. Its back-end course takes students through a deep 
+dive of JavaScript and Node.js teaching graduates how to build 
+database-driven web applications. Graduates of both programs are enrolled 
+in the Betamore Works program where they receive custom career services. 
+Students have the opportunity to connect to partnered employers.","JavaScript, Ruby on Rails, HTML/CSS, Google Maps"
+Big Nerd Ranch,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/big-nerd-ranch.jpg"""," Atlanta; Monterey, CA","Big Nerd Ranch is a retreat where nothing comes between participants and an 
+intense learning experience except blue skies and the occasional hike. This 
+in-demand organization offers 24 different short-term bootcamps and 
+specialized training courses–many are available in English and Spanish. Its 
+courses range from four to six days long. Comparatively short, they have a 
+very good reputation for providing high quality training. The Big Nerd 
+Ranch in Georgia has hiking trails, a swimming pool and a golf course on 
+site. The California ranch has bike rentals, a swimming pool, and an ocean 
+view. These accommodations balance out the 10 hours of scheduled class and 
+lab time each day.","JavaScript, Ruby on Rails, Python, Cross Platform"
+Bitmaker Labs,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide4_screenshot.jpg""", Toronto,"Bitmaker Labs’ goal is to disrupt education and promote programming 
+literacy. Its nine-week course in web development seeks to do just that. 
+The curriculum is constantly updated. This ensures Bitmaker Labs is 
+producing the strongest full-stack programmers it possibly can. The program 
+is for people looking to refresh existing skills, start a new career, or 
+pursue entrepreneurial goals. The complete program is also delivered 
+through its mobile development program and part-time offerings.","JavaScript, Ruby on Rails, HTML/CSS, Jquery, JS"
+Brainstation,"""http://cdn.skilledup.com/wp-content/uploads/2015/07/BrainStation_Logo-blue-01-1.jpg""", Costa Rica; New York; Ottawa; Toronto; Vancouver,"BrainStation was founded in 2012 in Toronto, Canada and offers a 10 week 
+Web Development Immersive program and 10 week part-time courses ranging 
+from web development, product management, design and marketing. In addition 
+to courses in Toronto, BrainStation has locations in Ottowa and Vancouver, 
+as well as locations in the US and Latin America. ""BrainStation’s class structure combines in-person instruction with online 
+content and an adaptive curriculum. Training modules are created by 
+industry experts and classes model a hands-on approach that engages 
+participants to ask questions, challenge themselves, and work with 
+teammates to tackle real world challenges.Student to teacher ratios are 
+small which allows for a better learning experience."" ""In 2015, BrainStation moved and opened an innovation hub in Downtown 
+Toronto, featuring classrooms, shared working spaces to facilitate 
+connections in the digital industry and freelancer community. The workspace 
+also features its own cafe, Quantum Coffee. Prospective students can join 
+the BrainStation community to receive updates on scholarships and new 
+courses.""","HTML/CSS, Sass, Less, Bootstrap, JavaScript, JQuery,Rest API’s, Git, Gulp, 
+SQL, Server Side programming , Model view Controllers, SQL, NodeJs, 
+AngularJS"
+Byte Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide6_screenshot.jpg""", New York,"Many hedge funds, investment banks and insurance companies seek talent with 
+interdisciplinary skills in tech and finance. Byte Academy is looking to 
+fill this demand. Its priority is presenting the most up-to-date subject 
+matter in finance and technology. Hiring partners provide assistance 
+designing the curriculum so graduates are job-ready. Students have plenty 
+of opportunity to build a professional network throughout the 10-week 
+program. Byte Academy is the only bootcamp focused solely on building and 
+launching financial apps.","JavaScript, Python, HTML/CSS, Financial Tech, databases, Excel"
+Code Chicago,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/code-chicago.jpg""", Chicago,"This school offers several different part-time courses for aspiring web 
+developers at reasonable rates. Code Chicago has four different 10-12 week 
+courses that meet in the evening. All students have access to its 
+co-working space, Blue1647. They may attend events, participate in 
+hackathons, network with sponsoring companies, and have extra help from 
+entrepreneurs, developers and on-site instructors. Courses vary in subject 
+from Ruby basics to JavaScript, Rails, and graphic design.","JavaScript, Ruby on Rails, HTML/CSS"
+Code Core Bootcamp,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/CodeCore-Bootcamp.jpg""", Vancouver,"Code Core bootcamp is a high-intensity environment that prepares students 
+for the reality of the fast-paced business world. Seasoned mentors take 
+students through the essential steps of launching a web-based product. Code 
+Core has great partners such as Samsung, Amazon, ","JavaScript, Ruby on Rails, HTML/CSS"
+Coder Camps,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide8_screenshot.jpg""", Houston; San Francisco; Seattle,"Coder Camps is a program for students at every level with tracks for web 
+and mobile application development. Its web development program focuses on 
+Microsoft’s ASP.NET framework using C# and common web technologies like 
+HTML/CSS and JavaScript. Its iOS mobile development course is done in both 
+Swift and Objective-C. They also offer a part-time course for learning the 
+core components the modern day Web.","JavaScript, HTML/CSS, .Net, Objective-C, Swift"
+Coder Foundry,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coder-Foundry-Logo-Black-Screenshot.jpg"""," Kernersville, NC; Charlotte, NC","Coder Foundry offers a master class in web development. The program focuses 
+on Microsoft .NET development. Its program is focused on .NET in response 
+to leading businesses’ demand for quality developers with skills using this 
+Microsoft driven technology. This initiative has resulted in a 100% job 
+placement rate for all its grads.The majority of students’ time is spent in 
+lab practicing on what is learned in the previous day’s lesson. By the 
+completion of the course grads will have a final project to present to 
+future employers that consists of all the essentials learned throughout the 
+12 weeks.","JavaScript, HTML/CSS, Angular, .NET"
+Coder Vox,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide9_screenshot.jpg""", Austin,"Codervox’s approach to learning is to provide a class that is both 
+informative and interactive. On a typical day students participate in 
+lectures, coding challenges and complete projects while collaborating with 
+other students, instructors, and guest speakers. Students focus on web 
+development using PHP. PHP is the largest server-side programming language 
+and positions its students to be potential applicants for a large portion 
+of tech-related jobs. Coder Vox is in the process of adding an online 
+bootcamp offering.","JavaScript, HTML/CSS, PHP, GIT/source control"
+Codeup,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide10_screenshot.jpg""", San Antonio,"Codeup provides both a part-time front-end bootcamp and a full-time 
+full-stack bootcamp. Its 55 partner employers have helped 94% of graduates 
+secure employment within three months of course completion. Codeup preaches 
+a learn-by-doing mantra. Students are placed in an intense immersion 
+setting that doesn’t just create coders but facilitates their growth into 
+builders of complete applications for real-world use.","JavaScript, HTML/CSS, PHP, Git, JQuery, MySQL, Laravel"
+Coding Campus,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-Campus-Screenshot-2.jpg"""," Provo, UT","Coding Campus requires zero experience to enroll. They are one of the few 
+bootcamps teaching the Django framework that is used by a plethora of major 
+companies. They also have a course for developing in JavaScript using 
+AngularJS and Express.js. By graduation, students will be able to create 
+professional websites, blogs, and various applications. Students have the 
+option to be part of the bootcamp in Utah or to take the course from the 
+comfort of their own home via live online video chat. Coding Campus also 
+offers a four-week intro course.","JavaScript, Python, HTML/CSS, Angular, Django"
+Coding Dojo,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide11_screenshot.jpg""", Los Angeles; Seattle; San Francisco,"Coding Dojo is an immersive learning environment with a custom-built 
+learning management system for aspiring web developers. Students learn the 
+components of the LAMP, MEAN and Ruby on Rails stacks. In addition to 
+coding there are many cool guest speaker and networking opportunities. 
+Coding Dojo offers an end of term “Demo Day” and career services. They also 
+offer an online 2 stack bootcamp and a hybrid 2 stack bootcamp that 
+combines online and onsite learning.","AJAX, PHP, MVC, Framework API, Javascript, AngularJS, Node.js, Expresso.io, 
+Socket.io, JavaScript, HAML, SASS Coffee Script, Ruby, Rails, Heroku, 
+HTML/CSS, Angular"
+Coding House,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide12_screenshot.jpg"""," Woodside, CA","What separates Coding House from other bootcamps is that it’s the only one 
+that is live-in. All of your distractions will be taken away. No cooking or 
+cleaning necessary. Student’s time will be spent on a huge curriculum. 
+Don’t worry though, they have scheduled time for your mind to wind down 
+with daily yoga, crossfit and meditation sessions. The languages and 
+frameworks you learn will be relevant in both today’s work environment and 
+that of the future. This course is highly selective. They have built up 
+strong employment partners to ensure graduates are successful finding 
+employment.","JavaScript, Ruby on Rails, HTML/CSS"
+Concordia Coding Bootcamp,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/concordia-coding-bootcamp.jpg""", St. Paul,"This bootcamp is a product of a partnership between Concordia University – 
+Saint Paul, the Software Craftsmanship Guild and The Learning House. 
+Students of Concordia can now take a slightly modified version of the 
+Software Craftsmanship Guild’s program as part of their education. The 
+program is also available for those who are not enrolled at the university. 
+The bootcamp focuses on Java and .NET which isn’t as prevalent amongst 
+bootcamps as other technologies.","Java, C#, .NET, ASP.NET, SQL, HTML/CSS, JavaScript, jQuery, AngularJS, 
+Bootstrap, Git, Visual Studio"
+Craftsmanship Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide13_screenshot.jpg"""," Holly Springs, NC","Craftsmanship Academy offers a 4-phase learning program. Phase one includes 
+web application development, iOS mobile development, cross platform mobile 
+development or android development. After 12-weeks of skills immersion 
+students work as apprentices on real-world projects with experienced 
+mentors. After 3-6 months of apprenticeship, students begin a 3-9 month 
+residency at RoleModel, Craftsmanship Academy’s parent company. During the 
+final phase of the program, RoleModel hires successful residents as junior 
+developers or helps them find employment with partnered company. 
+Craftsmanship Academy is founded on biblical principles and is explicitly a 
+Christian organization.","Ruby, Sinatra, Rails, HTML (ERB/HAML/SLIM), SASS (CSS), JavaScript, 
+CoffeeScript, Angular, Ember, Node, SQL ,no-SQL, Swift, Objective-C, Java"
+DaVinci Coders,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide14_screenshot.jpg""", Boulder,"DaVinci Coders provides several part-time courses in web and application 
+development. Though classes are part-time students are expected to spend 
+20-40 hours a week completing assignments. They have course offerings for 
+both newbies and more experienced programmers. Courses are customized 
+dependent on students goals and needs. All students are assigned a mentor 
+to help them throughout the program. Mentors also act as scouts for 
+partnered tech companies in the area. DaVinci Coders is a provisionally 
+certified occupational school approved and regulated by the Colorado 
+Department of Higher Education (CDHE).","JavaScript, Ruby on Rails, Game Development, C#, Swift"
+Deep Dive Coding,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide15_screenshot.jpg""", Albuquerque,"Deep Dive Coding Bootcamp is hosted at the Central New Mexico STEMulus 
+Center in downtown Albuquerque. Throughout the nine weeks students work on 
+becoming fluent full-stack developers. The program familiarizes students 
+with developmental tools and coding languages through individual and group 
+projects. Students create strong portfolios of work to present to future 
+employers throughout the course. They will also have an opportunity to 
+participate in a meet and greet with recruiters and potential employers 
+towards the end of the program. The program is held in coordination with 
+Central New Mexico Community College which also supports alumni during 
+their job search.","JavaScript, HTML/CSS, jQuery, MySQL, PHP"
+Designation,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/designation.jpg""", Chicago,"Designation offers a unique hybrid experience that lasts over nineteen 
+weeks. This UX/UI design bootcamp begins with six weeks of virtual prep 
+work that covers the basics of HTML, CSS, responsive design, JavaScript and 
+more. The next 12 weeks is spent on-site where students will spend 70 hours 
+a week expanding their knowledge of design, and front-end development. 
+Weeks 11-18 consist of team and individual projects. These projects are 
+done in collaboration with external partnered companies. This gives 
+students a real world web development experience. Afterwards, students 
+graduate and are given career support, mentorship, and job placement 
+assistance as long as it is needed.","HTML/CSS, JavaScript, jQuery"
+Dev Bootcamp,"""http://cdn.skilledup.com/wp-content/uploads/2016/01/Dev-Bootcamp.jpg""", Chicago; New York; San Francisco; San Diego,"At Dev Bootcamp all students are required to take a nine-week remote prep 
+phase. During this time students learn basic front-end, Ruby and relational 
+database concepts. They will also work with their cohort partners and 
+instructors. This is followed by six weeks of intense on-site training. 
+Following will be a career week where students will prepare for interviews, 
+update their online presence and coordinate with Dev Bootcamp’s career team 
+who will assist them in finding employment.","Ruby, JavaScript, HTML/CSS, SQL"
+DevLeague,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/devleague.jpg"""," Honolulu, HI","DevLeague offers a full-time 12-week full-stack web development bootcamp as 
+well as a 26-week part-time alternative. Students are expected to complete 
+a project prior to week one of the bootcamp. The curriculum covers many 
+different languages and frameworks. For the full-time program, the initial 
+three weeks focus on core computer science and software engineering 
+concepts and technologies. By week six students will be building user 
+interfaces with a focus on responsive design. In the third section 
+DevLeague hosts two hackathons for students to participate in. Students 
+will have completed a number of data-driven applications from the ground-up 
+by the end of the program. Graduates will be equipped with a healthy 
+portfolio as well as have access to post-grad mentors who will distribute 
+resumes to a growing list of hiring partners.","HTML/CSS, JavaScript, Node.js, jQuery, AngularJS, Git, Meteor, Mocha, 
+MongoDB"
+DevMountain,"""http://cdn.skilledup.com/wp-content/uploads/2015/07/skilledup.png"""," Provo, Utah; Salt Lake City, Utah; Dallas, TX","DevMountain offers a web development immersion, an iOS development 
+immersion, as well as “after-hour” part-time courses. Its immersion courses 
+will have you “live, eat, sleep and breath code for 12-weeks.” Its program 
+includes the cost of housing in the tuition. Students will also be given a 
+transportation pass and fitness pass so they can easily get around town as 
+well as work off some stress from the 12 hour days of instruction and 
+coding.  Moving at the speed of Google Fiber (available on site), students 
+will have a fully stacked curriculum to prepare them for employment with 
+their growing list of partners, which includes Reddit, Zendesk, and Jive.","JavaScript, HTML/CSS, Git, jQuery, AngularJS, Node.js, React, MongoDB, 
+Firebase, Xcode, Swift, Objective-C"
+DevPoint Labs,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide18_screenshot.jpg""", Salt Lake City,"DevPoint Labs offers both part-time and full-time classes in web 
+development. Pair learning is utilized throughout the course providing 
+students with an experience that will parallel a true working environment. 
+The course is a mix of lectures, short exercises and complex projects. They 
+teach students how to learn about new technologies by utilizing their 
+existing skillset so they can adapt to future changes in the industry. DPL 
+also hosts hackathons, workshops, and study groups on the weekends.","JavaScript, Ruby on Rails, HTML/CSS,"
+Disruption,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide19_screenshot.jpg"""," Kansas City, MO","Disruption Institute holds a bootcamp for developing mobile applications in 
+iOS using Objective C. They teach the principles of UE/UI alongside with 
+test driven and agile development. Students also learn soft skills, how to 
+acquire clients and prep for interviews. Employment partners include 
+Sprint, OneLouder, Intouch Solutions and Sporting Innovations. For those 
+entrepreneurs out there they’ll show you how to build, launch, brand, and 
+market apps.","Objective-C, Swift"
+Epicodus,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/epicodus.jpg"""," Portland, OR","Epicodus teaches how to develop web applications in PHP or Rails yet more 
+importantly, it teaches students how to think like a programmer. The first 
+part of its courses consist of a minimalist introduction to core 
+development technologies. Afterwards, students begin building web 
+applications using the course framework. Epicodus uses pair programming as 
+a tool to give students a feel of what working in a real development role 
+is like. All of the Fall 2013 graduates and 98% of the Spring 2014 
+graduates received job offers within just over 3 months of graduating or 
+from the time they began to look for work.","JavaScript, Ruby on Rails, PHP, Drupal, HTML/CSS, SQL, AngularJS"
+Fire BootCamp,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide22_screenshot.jpg"""," Redmond, WA; Sydney, Australia","At Fire BootCamp students will work in small teams to build .NET 
+applications with the guidance of a mentor. Prior to the start of the camp, 
+students are given a tailor made JumpStart program to ensure they have a 
+firm grasp of the fundamentals of programming. The program is designed to 
+move participants past the basics and towards building an enterprise 
+ASP.Net MVC application. Projects will be showcased at a graduation gala to 
+potential employers upon completion of the program.","JavaScript, HTML/CSS, .NET, ASP.NET, MS Visual Studios 2013"
+Flatiron School,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide23_screenshot.jpg""", New York,"Flatiron School holds two immersion courses in web development and iOS 
+development. There web development course focuses on Ruby and JavaScript. 
+The iOS course teaches both Objective-C and Swift. Flatiron includes an end 
+of term science fair for graduates to showcase their work to potential 
+employers. Flatiron School hosts a fellowship program in cooperation with 
+New York City that is free for 18-26 year olds without college degrees. 
+Night and weekend courses are also available for those unable to commit to 
+a full-time schedule.","HTML/CSS, Ruby, JavaScript, Objective-C, Swift"
+Fullstack Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide24_screenshot.jpg""", New York,"Fullstack Academy focuses on taking people with moderate programming 
+knowledge and transforming them into software engineers","JavaScript, Ruby on Rails, HTML/CSS, Angular,"
+Geekwise Academy,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/geek-wise-academy.jpg"""," Fresno, CA","Geekwise has a unique model for getting its students job-ready upon 
+completion of its 6-week bootcamps. The curriculum of each of its courses 
+are tailored to adhere to a partnering employers specifications so that 
+students are ready for recruitment upon completion. This ensures students 
+are learning in-demand skills and that employers are getting tech 
+professionals they need. Each course is six weeks long and is offered at a 
+low price of $250 dollars setting in much lower than typical bootcamps. 
+Classes are held two days a week in the evening. Course topics vary from 
+front-end web development to IT maintenance and support.","JavaScript, HTML/CSS, Angular, Ajax, XML, JSON"
+Galvanize,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/gschool-galvanize.jpg""",  Austin; Boulder; Denver; Fort Collins; Seattle; San Francisco,"Galvanize is an education company that blends the lines between learning 
+and working. We create easy access for anyone who has the aptitude and 
+drive to succeed with technology, especially in data science, engineering 
+and entrepreneurship. Galvanize Full Stack is a 24-week program that 
+teaches you how to make an impact as a contributing member of a development 
+team. The curriculum is designed around solving practical, real-world 
+problems with the latest tools. Instructors will work with you to conduct 
+mock interviews, help you put together a top-notch resume, and ensure you 
+put your best foot forward when applying for job opportunities as 
+graduation approaches. The program culminates in hiring day, where students 
+meet potential employers, present projects, and show off everything they’ve 
+learned.","JavaScript, Ruby on Rails, HTML/CSS, Sinatra"
+General Assembly,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide25_screenshot.jpg""",New York City; Los Angeles; Boston; San Francisco; Washington D.C.; Seattle; Melbourne; London; Hong Kong,"General Assembly conducts immersion classes in web development and user 
+experience design all over the world. Its curriculum will cover everything 
+you need to take your ideas from the sketchbook to a live launch. They 
+provide job preparation, career resources and networking opportunities for 
+all students. Its course runs simultaneously in eight different countries, 
+which is something no other bootcamp is doing. This program will not only 
+help you build your local network but will give you access to a global 
+community. General Assembly is constantly adding new courses and workshops 
+that are well worth attending.","JavaScript, Ruby, Rails, HTML/CSS"
+Grace Hopper Academy,"""http://cdn.skilledup.com/wp-content/uploads/2016/01/Grace-Hopper-Academy.jpg""", New York City,"Grace Hopper Academy is a women’s coding school with deferred tuition. It 
+is currently the only women’s coding bootcamp where tuition is due after 
+graduating the program and securing a job. Grace Hopper Academy shares the 
+same educational structure and curriculum as its partner school, Fullstack Academy, with a focus on full-stack JavaScript. The immersive course is 17 weeks 
+long, split between a 4 week part-time, remote course (Foundations) and 13 
+weeks full-time on campus. On top of the Fullstack Academy curriculum, 
+there is also an additional focus on mentorship and collaboration.","JavaScript, Node.js, HTML/CSS, AngularJS, MongoDB, MySQL"
+Grand Circus,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/grand-circus.jpg""", Detroit,"Grand Circus is Detroit’s only coding bootcamp. They offer three different 
+programs. Students may choose from software testing, java developer and 
+.NET enterprise developer bootcamps. All bootcamp programs are full-time 
+and range from six to eight weeks. They focus on hands-on learning where 
+each student is expected to complete a comprehensive final project prior to 
+graduation. Grand Circus works closely with 100 local employers who have 
+helped them secure a 90% job placement rate in 2104. All alumni may 
+participate in networking events and seminars that will further assist them 
+in the job hunting process.","JavaScript, Node.js, HTML/CSS, AngularJS, MongoDB, MySQL"
+Hack Reactor,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide28_screenshot.jpg""", San Francisco,"Hack Reactor is one of the original bootcamps in the country and has a 
+solid reputation for producing solid graduates who are equipped and ready 
+to go in the tech industry. Its curriculum is focused around JavaScript 
+which is applicable in just about every web development role. Hack-Reactor 
+remote is now in beta and offers the same curriculum as the on-site course 
+from the convenience of your own home. The remote program includes a 
+tuition deferment program where students will pay a certain percentage of 
+their first year salary to Hack Reactor rather than an upfront payment. 
+Hack Reactor also owns MakerSquare which now has a very similar curriculum.","VB, C#, .NET, Java"
+Hackbright Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide27_screenshot.jpg""", San Francisco,"Hackbright is a women-only program “with a mission to increase female 
+representation in tech through education, mentorship and community.” Its 
+10-week fellowship program is designed to help women become software 
+engineers for one of its many high end hiring partners which includes the 
+likes of Facebook and Pinterest. The course focuses on web development in 
+Python using the Flask web framework. They also offer part-time courses for 
+front end-development, full-stack development and an introduction to 
+programming option.","JavaScript, Backbone.js, Node.js, HTML/CSS"
+HackerYou,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide30_screenshot.jpg""", Toronto,"HackerYou conducts a full-time front-end bootcamp as well as several 
+part-time tracks. Its program consists of 200+ exercises with 400+ hours of 
+in class learning over nine intense weeks. HackerYou assists students 
+through 12 projects in front-end development as well as teaches about 
+personal branding and how to build a business. Graduates receive job 
+assistance after graduation and have the option to stay on-site for a month 
+where HackerYou will aid them in setting up their own freelance business.","Python, Flask, JavaScript, HTML/CSS, SQL, NoSQL, Git"
+The Iron Yard,"""http://cdn.skilledup.com/wp-content/uploads/2015/01/The-IronYard-logo.jpg""","Atlanta; Austin; Charleston, SC; Columbia, SC; Dallas, TX; Durham, 
+NC; Greenville, SC; Houston, TX; Indianapolis; Las Vegas; Little Rock; London; Nashville; Orlando / Raleigh, NC; Salt Lake City; San Antonio; Tampa; Washington, D.C.","The Iron Yard is the world’s largest and fastest-growing code school. The 
+company’s mission is to create exceptional growth and mentorship for people 
+and their ideas through tech-focused education. The school offers full-time 
+and part-time immersive programs in Back-End Engineering, Front-End 
+Engineering, Mobile Engineering and Data Science. More than 600 people have 
+graduated from The Iron Yard’s programs. Graduates of The Iron Yard’s 
+12-week programs are prepared to start new careers as software developers 
+by graduation. The Iron Yard’s locations include 19 campuses in the U.S. 
+and one in the UK.","JavaScript, HTML/CSS, Jquery, Applied Visual Design,   Design Fundamentals"
+Iron Hack,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide32_screenshot.jpg""", Barcelona; Madrid; Miami,"Iron Hack conducts both an iOS mobile bootcamp and web development bootcamp 
+that concentrates on Ruby on Rails. Its eight-week courses provide students 
+with work-ready skills in agile development for web dev and objective-c for 
+mobile development. They offer scholarships to the most productive students 
+as well as three different payment plans. Students will design a complete 
+application to be presented during their demo day. Iron Hack also sets up 
+interviews with recruiting partners, ensures resumes are up to standards 
+and that students are prepared to handle the interview process.","HTML5, CSS3, Javascript, Git, Github, Gist, Ruby, Rails"
+Launch Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide31_screenshot.jpg""", Boston,"Every student at Launch Academy starts with a three-week “Ignition” 
+program. Students use this opportunity prior to launch to work with peers 
+and instructors. After three weeks of pre-work they embark on a 10-week 
+intensive journey. The Launch Academy introduces practical programming 
+knowledge which is later reinforced using hands on training and team 
+collaboration. In addition to an end-of-term job fair they also provide six 
+months of career mentoring to graduates.","JavaScript, Ruby on Rails, HTML/CSS"
+LearnTech Labs,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/LearnTech-Labs.jpg"""," Redwood City, CA; Hyderabad, India; Cebu, Philippines","LearnTech Lab is one of the newest players in the bootcamp field. They have 
+three standard bootcamps that cover iOS Development, Web Development, and 
+Computer Science. They also offer an eight month gap year program which is 
+a combination of any two bootcamp programs. Students also have the option 
+to take courses in two unique locals outside of the US. Students can chose 
+to study in Hyderabad, India, or on the island of Cebu in the Philippines. 
+LearnTech Labs’ curriculums are jam packed with contemporary development 
+tech. They are also dedicated to helping graduates find jobs and stay 
+employed.","JavaScript, Node.js, AngularJS, jQuery, Postgres, Bootstrap, JSON, MongoDB, 
+XCode, SQL, Objective-C, Swift"
+Learning Fuze,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide33_screenshot.jpg"""," Irvine, CA","Learning Fuze is a 12-week bootcamp in web development. The first three 
+weeks are spent doing remote pre-work followed by nine weeks on-site. The 
+curriculum covers both front-end and back-end tech. The program pushes 
+students to challenge themselves to not just acquire common skills but to 
+build robust projects that push the limits of what they have learned. 
+Learning Fuze has a network of recruiters in the greater LA metro area. 
+They boast a 90% employment rate. Students unable to find a position after 
+6 months receive a partial refund of $4,000. A part-time course in 
+front-end development is also available.","JavaScript, HTML/CSS, jQuery, MySQL, PHP, Bootstrap"
+Lighthouse Labs,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide34_screenshot.jpg""", Calgary; Toronto; Vancouver,"Lighthouse Labs offers web development and iOS development immersion 
+programs. On top of the 8-week course the iOS development immersion begins 
+with a 6-week at-home preparatory work. Lighthouse Labs introduces a 
+variety of programming languages so that its students can adapt to new 
+technologies throughout their professional career. Lighthouse Labs has 
+partnered with over 24 companies and has a 100% placement rate.","JavaScript, Ruby on Rails, HTML/CSS, Angular, Blank"
+Make School,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/make-school.jpg""", New York; Palo Alto; San Francisco,"Make School is the only bootcamp geared strictly for designing, launching, 
+and monetizing iPhone games. Students start by cloning existing games. They 
+are then challenged to bring their own game concepts to life. Peers and 
+industry professionals will then provide reviews and critiques. Make 
+School’s instructors then guide students through the iteration process. 
+Finally, the game will be showcased during demo day, which is visited by 
+industry leaders such as Electronic Arts, Facebook, and Apple. This is 
+prime time for students to market their skills and network with potential 
+employers.","Objective-C, Cocos2D, Swift, Git"
+Makers Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide36_screenshot.jpg""", London,"Makers Academy is a 12-week Web Development bootcamp based in London’s 
+Silicon Roundabout. Students will spend 80% of their time in pairs writing 
+code. They receive customized assignments and projects based on their 
+personal strengths and weaknesses. Makers Academy invites guest speakers 
+and local tech engineers to train students and conduct lectures. Its 
+underlying goal is to make all students employable in the field. Graduates 
+secure entry level jobs with the help of its dedicated placement team that 
+has already established strategic partnerships with London’s top tech 
+companies.","Ruby, Rails, HTML/CSS, Javascript, jQuery, AJAX, SQL, Sinatra"
+MakerSquare,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide37_screenshot.jpg""", Austin; Los Angeles; San Francisco,"MakerSquare’s 12-week web development immersive program is centered on 
+JavaScript. Its curriculum is carefully crafted so that students learn 
+tools that have a high professional utility value. Maker Square has a low 
+student-to-instructor ratio so that students can receive feedback quickly 
+and are well supported when testing new development techniques. Its 
+projects are specially designed to reinforce the technologies learned in 
+previous assignments and to challenge students to experiment with new ones. 
+Students receive one-on-one coaching to prepare them for all elements of 
+obtaining employment in the software engineering industry. Amazon, PayPal, 
+IBM and NASA are amongst the many companies hiring from this program.","HTML/CSS, JavaScript, MongoDB, Meteor, Node.js, AngularJS"
+The Mobile Makers Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide39_screenshot.jpg""", Chicago; San Francisco,"Mobile Makers is an iOS Mobile bootcamp. Students learn both Object-C and 
+Swift. Time is primarily spent programing in pairs. Within the first three 
+weeks students build 25 small apps. The final three weeks of the bootcamp 
+are spent in small teams working on a series of more complex apps based. 
+The Mobile Makers Academy helps every student launch a professional grade 
+app to the App Store. The program culminates with a career day attended by 
+over 100 community members including plenty of employers.","Objective-C, Swift, Git, Xcode, iOS 8 SDK, Interface Builder"
+Nashville Software School,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/nashville-software-school1.jpg""", Nashville,"NSS offers a full-time web development bootcamp. Each year they host four 
+cohorts. Each group spends three months working on the fundamentals of 
+HTLM, CSS and JavaScript. Depending on cohort the final three months are 
+spent focusing on either Ruby on Rails, .NET with C#, or Node.js. NSS uses 
+live lectures, as well as online and video tutorials to introduce the 
+different parts of its curriculum. Students then work on solo, pair and 
+team projects. They constantly are pushed to experiment and build on past 
+lessons. They work with many local tech companies to secure internships, 
+and projects for students. NSS also offers apprenticeships programs to 
+local residents.","HTML/CSS, JavaScript, AngularJS, jQuery, Git, JSON, AJAX, Ruby on Rails, 
+.Net, C#, Node.js"
+The New York Code + Design Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide41_screenshot.jpg""", New York; Philadelphia,"The New York Code and Design Academy(NYCDA) hosts a full-time intensive web 
+development course as well as several part-time intro classes. Students 
+will go through 30-hours of prep work prior to the beginning of the 
+intensive. From day students will be learning the fundamentals, working in 
+teams, and building a portfolio and strong GitHub presence. NYCDA provides 
+career planning and portfolio review, holds demo days and provides career 
+assistance to students throughout the program.","HTML/CSS, FTP, JavaScript, jQuery, Ruby, Rails, Git, Objective-C, Swift, 
+AngularJS"
+Omaha Code School,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide42_screenshot.jpg"""," Omaha, NE","Omaha code school looks to turn ambitious people into hireable web 
+developers in 12 weeks. The first third of the course is spent learning the 
+basics, practicing the fundamentals and working on real apps. Students will 
+then begin working on professional grade apps. They will focus on robust 
+group projects as they dive deeper into the curriculum. Omaha Code school 
+hosts a demo days, career fairs and works with students to make sure their 
+resume, interview skills and GitHub presences are up to par.","Ruby on Rails, HTML5, CSS, Javascript, Git, jQuery, CoffeeScript, SASS, 
+HAML, Jekyll, WordPress"
+PDX Code Guild,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/pdx-code-school.jpg"""," Portland, OR","This school hosts a full-time developers bootcamp and a part-time evening 
+dev bootcamp. Among other technologies this camp focuses on Python and 
+Django. They have small intimate classes where students form really close 
+friendships. At PDX Code Guild they keep lectures short and interactive. 
+The final month of each course is almost entirely hands on. Students use 
+real tools, real text editors, and real command lines to create interactive 
+games and apps. For their final project students can work on whatever they 
+want. Its workspace is open to alumni allowing them to continue to learn 
+and meetup with peers.","HTML/CSS, Python"
+Portland Code School,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/portland-code-school.jpg"""," Portland, OR","Portland Code School hosts a JavaScript Immersion class as well as five 
+part-time courses. PCS uses project-based learning and utilizes 
+pair-learning to prepare students for a full-time position in web 
+development. They assist students in finding internships, temporary 
+contracts and entry level jobs by providing access to its network of 
+software development companies. Its part-time courses are a strong choice 
+for those in the area who are looking to build the skills needed to 
+progress their career while maintaining employment.","JavaScript, Web Foundations"
+Recurse Center,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide29_screenshot.jpg""",New York,"Formerly Hacker School, Recurse Center offers a free immersive training 
+program that is entirely tailored for the individual. The program is 
+completely “language and framework agnostic,” without grades, teachers, and 
+formal curricula.” Recurse Center is the place for programmers who love to 
+code so much, they dream in code. The program is funded by startups who 
+recruit graduates. Recurse Center works with its sponsors to make grants 
+available for women and minorities in an effort to increase diversity in 
+the tech field.","JavaScript, Ruby on Rails, Python, HTML/CSS, Angular, .Net"
+Refactor U,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide45_screenshot.jpg""", Boulder,"RefactorU hosts a full-stack javascript bootcamp. The intent of its program 
+is to prepare students for entry-level development positions. Students will 
+learn both front-end and back-end technologies making them a valuable 
+addition to a large variety of development teams. Guest speakers, hiring 
+managers and recruiters drop in to provide insight into the current 
+landscape of the tech field. RefactorU is committed to finding its students 
+jobs upon completion of the program and will work hard to get graduates 
+connected into its network of tech companies. RefactorU also hosts four day 
+intro classes on a number of technologies.","JavaScript, HTML/CSS, Bootstrap, Node.js, jQuery, Git, MongoDB, JSON"
+RocketU,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/rocket-u1.jpg""", San Francisco,"RocketU is a full-stack development bootcamp focused on Python and Django. 
+RocketU is embedded on the RocketSpace campus, giving you access to 175+ 
+tech startups. The classroom environment has been crafted to mimic a real 
+workplace. The program has been optimized so that students spend the 
+majority of time behind their computers coding rather than behind a desk 
+sitting through lectures. Graduates receive a two-month membership to 
+RocketSpace where they can work and learn alongside mentors as well as 
+build their professional network.","Python, Django, Git, Angular, Angular JS"
+RockIT Bootcamp,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide43_screenshot.jpg""", London; Pheonix,"RockIT is an immersive, 12-week bootcamp in web development. Each student 
+is required to complete prep work prior to the start of the program. 
+Throughout the course, you will develop solid in-demand skills as you 
+develop projects that will ready you to become an entry level programmer. 
+RockIT conducts professional development to better your chances of 
+employment upon completion of the course. They will prepare students with 
+marketable resumes, train them in test taking, rehearse interviews, and 
+will hone their job searching skills. Its end of term career fair invites 
+industry experts that’ll review students’ final projects as well as conduct 
+interviews.","JavaScript, HTML/CSS, Linux, MySQL, OOP, jQuery, Patterns, SDLC 
+Agile/Waterfall, Ajax"
+Sabio,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide47_screenshot.jpg""", Los Angeles,"Sabio offers a Full-Stack Web Developer course. They cover simple front-end 
+technologies. They teach students how to create industry standard back-end 
+database with either PHP, Python, Ruby or C#/.NET. Students learn popular 
+Google APIs and development tools. Learning is team and project based. 
+Graduates receive mentorships, and attend networking events with staff to 
+ensure they are on their way of reaching their career goals. A part-time 
+front-end development course is also available..","JavaScript, Ruby on Rails, Python, HTML/CSS, Angular, .Net, jQuery"
+Shillington School,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/shillington-school.jpg""", Brisbane; London; Manchester; Melbourne; New York; Sydney,"Shillington School hosts both a part-time and full-time graphic design 
+course. The course is 3 months and 9 months respectively. Bootcamps are led 
+by instructors with years of professional graphic design experience. 
+Students will create an impressive graphic design portfolio using Adobe 
+InDesign, Illustrator, and Photoshop. Each graduating class of full-time 
+students participates in a graduate exhibition. They are also given 
+guidance and support to help them get their first graphic design job. For 
+those looking for extra inspiration they have campuses in both England and 
+Australia so that you can turn this great training opportunity into an 
+experience of a lifetime.","HTML/CSS, InDesign, Illustrator, Photoshop"
+Software Craftsmanship Guild,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide48_screenshot.jpg"""," Akron, OH","Software Craftsmanship Guild is a software development bootcamp with a 
+focus on ASP.NET, C#, and Java. Students are taught the fundamentals then 
+let loose in groups each guided by a senior instructor. Together they work 
+on lab exercises, team mastery projects and develop a capstone project. The 
+Guild works directly with companies and recruiting firms offering a direct 
+route from classroom to office. Alumni are given access to networking, and 
+educational events to assist them on their way to mastery.","C#, .Net, Java, ASP.net, HTML/CSS, JavaScript, jQuery, AngularJS, 
+Bootstrap, Visual Studio, Git"
+Starter League,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide49_screenshot.jpg""", Chicago,"Starter League is an 11-week web development bootcamp. It concentrates on 
+Ruby on Rails so that its students can quickly launch applications and 
+start their own business upon graduation. They also have part-time courses 
+in HTML and CSS, visual design, JavaScript, and user experience. Courses 
+are taught at ","JavaScript, Ruby on Rails, HTML/CSS"
+Starter School,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide50_screenshot.jpg""", Chicago,"The team behind Starter League also runs Starter School, an 
+entrepreneurship and programming hybrid bootcamp. It claims to be the 
+equivalent of ","Ruby on Rails, HTML/CSS, CSS3"
+Startup Institute,"""http://cdn.skilledup.com/wp-content/uploads/2015/01/Startup-Academy-logo.jpg""", Berlin; Boston; Chicago; London; New York,"Startup Institute is a cross-track program that prepares students for work 
+in the startup industry. They offer a full-time fundamentals immersives as 
+well part-time “RampUp” tracks in Ruby, and Web Design. It holds full-time 
+courses in web design and web development. The web design course covers 
+UI/UX fundamentals, rapid iteration and front-end technologies. The web dev 
+course includes test-driven development, advanced Rails training, along 
+with mobile-first methodology. Instructors are entrepreneurs themselves and 
+are in-tune with what startups need and are looking for in hires.","JavaScript, Ruby on Rails, Python, Web Development"
+The Tech Academy,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide52_screenshot.jpg""", Portland,"Tech Academy Portland conducts a 20-week software development bootcamp. The 
+software development bootcamp is designed to create a well-rounded, 
+entry-level software developer. Students will learn several different 
+frameworks that can be used to launch products. They can choose from many 
+leading technologies including Python, PHP, and C#. The final five weeks of 
+the course include a sprint in mobile development, a job placement course, 
+a week long live project, and a MTA exam prep course. Conveniently, Tech 
+Academy Portland is willing to work with students to adjust the schedule of 
+class around their personal obligations.","Python, JavaScript, PHP, HTML/CSS, C#, ASP.net"
+Tech Talent South,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/tech-talent-south.jpg""", Asheville; Atlanta; Charlotte; Dallas; New Orleans; Raleigh,"Tech Talent South has a full-time and part-time code immersion course. The 
+curriculum includes front-end development in HTML and CSS, interactivity 
+with JavaScript and app launching with Ruby on Rails. Tech Talent South 
+also provides instruction on how to plan out a concept, execute a design, 
+and launch a minimum viable product(MVP). Professionals in the tech field 
+mentor students. Students participate in educational events, have 
+networking opportunities and collaborate with startups and entrepreneurs. 
+Tech Talent South also has classes in game development, and marketing.","Ruby, Rails, HTML/CSS, JavaScript, Ajax,"
+Turing School,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide54_screenshot.jpg""", Denver,"Turing School of Software and Design offers a bootcamp in web development. 
+It is seven months long and comprised of four six-week courses where 
+students concentrate on different aspects of web development. Its students 
+learn to develop professional web applications with Rails using test-driven 
+development, object-oriented design and Agile methodology. Every graduate 
+of Turing School has found employment within 12 weeks of graduation. 
+Graduates of Turing are working for companies like Pivotal Labs, 
+thoughtbot, LivingSocial, Mondo Robot, EverFi, iTriage, TurboVote, Quick 
+Left, the National Park Service, TableXI, and Techstars.","Ruby, Rails, Sinatra, JavaScript"
+Turn to Tech,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide55_screenshot.jpg""", New York,"Turn to Tech provides an iOS Development Bootcamp, Android Bootcamp as well 
+as a Ruby on Rails Bootcamp. Its programs are designed to produce 
+productive software engineers who are capable of working in teams, or 
+freelancing from home. Weekly tech events bring together students and 
+experienced engineers, helping participants gain professional insight into 
+the industry. Turn to Tech has students work for real clients on real-world 
+products that will be released to market. Each student will be given a 
+6-week internship where they will gain the understanding of the complete 
+development process.","Ruby, Rails, HTML/CSS, JavaScript, jQuery, SQL, Sass, Sinatra, Swift, 
+Objective-C"
+We Can Code It,"""http://cdn.skilledup.com/wp-content/uploads/2015/05/WeCanCodeIt.jpg""", Cleveland,"We Can Code It’s mission is to increase diversity in the tech field. Its 
+three-month immersion coding school is designed to do just that. They host 
+both women-only and coed versions of courses. It is based on the idea that 
+lectures aren’t as conducive for learning as hands on work. Pair 
+programming is used throughout its project based course. Students have the 
+opportunity to spend time at employers offices to see the development 
+process in action. They also attend lots of seminars and learning sessions 
+discussing the culture of the tech industry, and how to prepare for careers 
+in the field. We Can Code It also provides internship, job placement, 
+resume writing and interview prep assistance. Part-time courses are 
+available as well.","HTML, CSS, JavaScript, jQuery, Angular, C#, .net, SQL"
+Wyncode,"""http://cdn.skilledup.com/wp-content/uploads/2014/10/Coding-guide56_screenshot.jpg""", Miami,"Wyncode is Miami’s first coding bootcamp. They currently offer a full-time 
+web development bootcamp and a part-time iOS app development bootcamp. The 
+web development course teaches students to launch apps using Ruby on Rails. 
+The iOS course covers both Objective-C and Swift. In small groups, students 
+work with not for profit organizations, artists, or local businesses to 
+develop real applications for an established user base. On Wyncode’s demo 
+day groups will present their application to employers from Miami’s tech 
+community. During their enrollment, students are taken to local schools to 
+teach children how to code. This organization is accredited by the Florida 
+Department of Education’s Commission for Independent Education.","JavaScript, Ruby on Rails, HTML/CSS, Objective-C, Swift, Xcode, Citrix APIs"

@@ -27117,7 +27117,7 @@
 	      locations = this.locationMatches().map(function (location, i) {
 	        return React.createElement(
 	          'li',
-	          { key: i, onClick: this.selectLocation },
+	          { className: 'loc-item', key: i, onClick: this.selectLocation },
 	          location
 	        );
 	      }.bind(this)).slice(0, 6);
@@ -28011,6 +28011,7 @@
 	var React = __webpack_require__(147);
 	
 	var ProgramsStore = __webpack_require__(196),
+	    ApiUtil = __webpack_require__(163),
 	    SearchPanel = __webpack_require__(198);
 	
 	var Headers = React.createClass({
@@ -28114,7 +28115,23 @@
 	        )
 	      );
 	    } else {
-	      return React.createElement('div', null);
+	      return React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'div',
+	          { className: 'page-header' },
+	          React.createElement(
+	            'h1',
+	            null,
+	            React.createElement(
+	              'small',
+	              null,
+	              'No results'
+	            )
+	          )
+	        )
+	      );
 	    }
 	  }
 	});
@@ -29442,7 +29459,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(147);
-	var CompaniesStore = __webpack_require__(211);
+	var CompaniesStore = __webpack_require__(211),
+	    ApiUtil = __webpack_require__(163);
 	
 	var Companies = React.createClass({
 	  displayName: 'Companies',
@@ -29608,21 +29626,15 @@
 	                React.createElement(
 	                  "p",
 	                  null,
-	                  "Note: If you're viewing this page via a ",
-	                  React.createElement(
-	                    "code",
-	                    null,
-	                    "file://"
-	                  ),
-	                  " URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."
+	                  "Codecamp helps you find the web development bootcamp that's right for you. Locations, descriptions and reviews are available for bootcamps around the US. Click below to begin your first search."
 	                ),
 	                React.createElement(
 	                  "p",
 	                  null,
 	                  React.createElement(
 	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "/#/signin", role: "button" },
-	                    "Sign in"
+	                    { className: "btn btn-lg btn-primary", href: "/#/programs", role: "button" },
+	                    "Search"
 	                  )
 	                )
 	              )
@@ -29641,19 +29653,19 @@
 	                React.createElement(
 	                  "h1",
 	                  null,
-	                  "Another example headline."
+	                  "Didn't find what you were looking for?"
 	                ),
 	                React.createElement(
 	                  "p",
 	                  null,
-	                  "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+	                  "Try searching by Company or by a specific language. Codecamp will try to match your input, even if it is incomplete. Give it a try! Click below to search by Company."
 	                ),
 	                React.createElement(
 	                  "p",
 	                  null,
 	                  React.createElement(
 	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
+	                    { className: "btn btn-lg btn-primary", href: "/#/companies", role: "button" },
 	                    "Learn more"
 	                  )
 	                )
@@ -29673,20 +29685,20 @@
 	                React.createElement(
 	                  "h1",
 	                  null,
-	                  "One more for good measure."
+	                  "Already in a bootcamp?"
 	                ),
 	                React.createElement(
 	                  "p",
 	                  null,
-	                  "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."
+	                  "Sign up to share your experiences with others by leaving helpful reviews about your specific program. Users are able to rate their bootcamp and leave comments how they might improve. Click the Sign up link below to get started."
 	                ),
 	                React.createElement(
 	                  "p",
 	                  null,
 	                  React.createElement(
 	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "#", role: "button" },
-	                    "Browse gallery"
+	                    { className: "btn btn-lg btn-primary", href: "/#/signup", role: "button" },
+	                    "Sign up"
 	                  )
 	                )
 	              )
