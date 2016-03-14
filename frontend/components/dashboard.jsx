@@ -1,7 +1,12 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+var React = require('react'),
+    ApiUtil = require('../util/api_util');
 
 var Dashboard = React.createClass({
+
+  searchCompany: function () {
+    var params = {"location": "", "name": ""};
+    ApiUtil.fetchCompanies(params);
+  },
 
   render: function() {
     return (
@@ -29,7 +34,7 @@ var Dashboard = React.createClass({
                 <div className="hero">
                   <h1>Didn't find what you were looking for?</h1>
                   <p>Try searching by Company or by a specific language. Codecamp will try to match your input, even if it is incomplete. Give it a try! Click below to search by Company.</p>
-                  <p><a className="btn btn-lg btn-primary" href="/#/companies" role="button">Learn more</a></p>
+                  <p><a className="btn btn-lg btn-primary" onClick={this.searchCompany} role="button">Companies</a></p>
                 </div>
               </div>
           </div>
@@ -38,7 +43,7 @@ var Dashboard = React.createClass({
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Already in a bootcamp?</h1>
-                  <p>Sign up to share your experiences with others by leaving helpful reviews about your specific program. Users are able to rate their bootcamp and leave comments how they might improve. Click the Sign up link below to get started.</p>
+                  <p>Great! Sign up to share your experiences with others by leaving helpful reviews about your specific program. Users are able to rate their bootcamp and leave comments how they might improve. Click the Sign up link below to get started.</p>
                   <p><a className="btn btn-lg btn-primary" href="/#/signup" role="button">Sign up</a></p>
                 </div>
               </div>

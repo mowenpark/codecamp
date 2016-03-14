@@ -28,7 +28,11 @@ var ApiUtil = {
 				success: function( data ) {
 					window.location.replace("/#/users/" + data.id);
 					ApiActions.receiveCurrentUser(data);
-				}
+				},
+				error: function(error){
+					var errors = error.responseText;
+	        ApiActions.receiveError(errors);
+	 			}
 			});
 	},
 
@@ -93,6 +97,10 @@ var ApiUtil = {
 			  data: results,
 			  success: function( data ) {
 					ApiActions.updateReviews(data);
+				},
+				error: function (error) {
+					debugger;
+					ApiActions.receiveError(error);
 				}
 			});
 	},

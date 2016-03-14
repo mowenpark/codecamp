@@ -5,26 +5,19 @@ var ErrorsStore = new Store(AppDispatcher);
 
 var _errors = [];
 
-var resetReviews = function(errors){
-  _errors = errors.slice(0);
-};
-
-var addReview = function (error) {
-  _errors.push(error);
+var resetErrors = function(errors){
+  _errors = [];
+  _errors.push(errors);
 };
 
 ErrorsStore.all = function () {
-  return _errors.slice(0);
+  return _errors.slice();
 };
 
 ErrorsStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case "RECEIVE_ERRORS":
-      resetReviews(payload.errors);
-      ErrorsStore.__emitChange();
-      break;
-    case "RECEIVE_ERROR":
-      addReview(payload.error);
+      resetErrors(payload.errors);
       ErrorsStore.__emitChange();
       break;
   }

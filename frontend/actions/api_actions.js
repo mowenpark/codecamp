@@ -2,6 +2,13 @@ var AppDispatcher = require('../dispatcher/dispatcher');
 
 var ApiActions = {
 
+  receiveError: function (errors) {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_ERRORS",
+      errors: errors
+    });
+  },
+
   receivePrograms: function (programs) {
     AppDispatcher.dispatch({
       actionType: "RECEIVE_PROGRAMS",

@@ -7,12 +7,16 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user.id if current_user
+    if current_user
+      @review.user_id = current_user.id
+    else
+      return render json: "You must be logged in to leave a review!"
+    end
+
     if @review.save
-      flash.now[:success] = "Review added!"
       render :new
     else
-      render json: @review.errors.full_messages, status: 422
+      render json: @review.errors.full_messages
     end
   end
 

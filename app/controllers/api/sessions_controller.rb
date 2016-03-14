@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
         .where(:follows => {:user_id => current_user.id})
       render :new
     else
-      render json: "You're not logged in!"
+      render json: "Incorrect password or email. Please try again <3"
     end
   end
 

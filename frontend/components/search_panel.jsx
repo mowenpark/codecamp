@@ -84,9 +84,12 @@ var SearchPanel = React.createClass({
                 <p>{this.props.description}</p>
               </div>
               <div className="blog-post">
-                <h2 className="blog-post-title">Reviews</h2>
+                <h2 className="blog-post-title">Reviews
+                  <button type="button" className="btn btn-primary review-button btn-sm" data-toggle="modal" data-target="#myModal">
+                    Add review
+                  </button>
+                </h2>
                 <Reviews reviews={this.state.reviews}/>
-                <h3 className="blog-post-title">Leave a Review!</h3>
                 <ReviewForm programID={this.props.id}/>
               </div>
             </div>

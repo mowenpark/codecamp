@@ -1,23 +1,43 @@
-var React = require('react');
+var React = require('react'),
+    ErrorsStore = require('../stores/errors');
 
 var Errors = React.createClass({
   getInitialState: function () {
     return{
-      errors: []
+      errors: ErrorsStore.all()
     };
   },
 
+  componentDidMount: function () {
+    this.token = ErrorsStore.addListener(this.handleError);
+  },
+
+  componentWillUnmount: function () {
+    this.token.remove();
+  },
+
   handleError: function (errors) {
-    this.setState({errors: errors});
+    this.setState({errors: ErrorsStore.all()});
   },
 
   render: function() {
-    return (
-      <div className="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Warning!</strong> Better check yourself, you're not looking too good.
-      </div>
-    );
+    if (this.state.errors[0] !== undefined) {
+      var errorMessages = this.state.errors.map(function (error, index) {
+        return(
+          <div key={index} className="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {error}
+          </div>
+        );
+      });
+      return (
+        <div>
+          {errorMessages}
+        </div>
+      );
+    } else {
+      return <div />;
+    }
   }
 
 });

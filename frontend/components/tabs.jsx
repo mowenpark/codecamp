@@ -2,7 +2,8 @@ var React = require('react');
 
 var ProgramsStore = require('../stores/program'),
     ApiUtil = require('../util/api_util'),
-    SearchPanel = require('./search_panel');
+    SearchPanel = require('./search_panel'),
+    Errors = require("./errors");
 
 var Headers = React.createClass({
   render: function () {
@@ -67,6 +68,7 @@ var Tabs = React.createClass({
     if (pane !== undefined) {
       return (
         <div className="container">
+          <Errors />
           <div className="row">
             <div className="col-md-4">
               <Headers

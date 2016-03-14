@@ -20023,6 +20023,10 @@
 				success: function (data) {
 					window.location.replace("/#/users/" + data.id);
 					ApiActions.receiveCurrentUser(data);
+				},
+				error: function (error) {
+					var errors = error.responseText;
+					ApiActions.receiveError(errors);
 				}
 			});
 		},
@@ -20088,6 +20092,10 @@
 				data: results,
 				success: function (data) {
 					ApiActions.updateReviews(data);
+				},
+				error: function (error) {
+					debugger;
+					ApiActions.receiveError(error);
 				}
 			});
 		},
@@ -20121,6 +20129,13 @@
 	var AppDispatcher = __webpack_require__(165);
 	
 	var ApiActions = {
+	
+	  receiveError: function (errors) {
+	    AppDispatcher.dispatch({
+	      actionType: "RECEIVE_ERRORS",
+	      errors: errors
+	    });
+	  },
 	
 	  receivePrograms: function (programs) {
 	    AppDispatcher.dispatch({
@@ -20502,41 +20517,56 @@
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(147);
+	var React = __webpack_require__(147),
+	    ErrorsStore = __webpack_require__(264);
 	
 	var Errors = React.createClass({
-	  displayName: "Errors",
+	  displayName: 'Errors',
 	
 	  getInitialState: function () {
 	    return {
-	      errors: []
+	      errors: ErrorsStore.all()
 	    };
 	  },
 	
+	  componentDidMount: function () {
+	    this.token = ErrorsStore.addListener(this.handleError);
+	  },
+	
+	  componentWillUnmount: function () {
+	    this.token.remove();
+	  },
+	
 	  handleError: function (errors) {
-	    this.setState({ errors: errors });
+	    this.setState({ errors: ErrorsStore.all() });
 	  },
 	
 	  render: function () {
-	    return React.createElement(
-	      "div",
-	      { className: "alert alert-warning alert-dismissible", role: "alert" },
-	      React.createElement(
-	        "button",
-	        { type: "button", className: "close", "data-dismiss": "alert", "aria-label": "Close" },
-	        React.createElement(
-	          "span",
-	          { "aria-hidden": "true" },
-	          "×"
-	        )
-	      ),
-	      React.createElement(
-	        "strong",
+	    if (this.state.errors[0] !== undefined) {
+	      var errorMessages = this.state.errors.map(function (error, index) {
+	        return React.createElement(
+	          'div',
+	          { key: index, className: 'alert alert-warning alert-dismissible', role: 'alert' },
+	          React.createElement(
+	            'button',
+	            { type: 'button', className: 'close', 'data-dismiss': 'alert', 'aria-label': 'Close' },
+	            React.createElement(
+	              'span',
+	              { 'aria-hidden': 'true' },
+	              '×'
+	            )
+	          ),
+	          error
+	        );
+	      });
+	      return React.createElement(
+	        'div',
 	        null,
-	        "Warning!"
-	      ),
-	      " Better check yourself, you're not looking too good."
-	    );
+	        errorMessages
+	      );
+	    } else {
+	      return React.createElement('div', null);
+	    }
 	  }
 	
 	});
@@ -28012,7 +28042,8 @@
 	
 	var ProgramsStore = __webpack_require__(196),
 	    ApiUtil = __webpack_require__(163),
-	    SearchPanel = __webpack_require__(198);
+	    SearchPanel = __webpack_require__(198),
+	    Errors = __webpack_require__(169);
 	
 	var Headers = React.createClass({
 	  displayName: 'Headers',
@@ -28091,6 +28122,7 @@
 	      return React.createElement(
 	        'div',
 	        { className: 'container' },
+	        React.createElement(Errors, null),
 	        React.createElement(
 	          'div',
 	          { className: 'row' },
@@ -28272,14 +28304,14 @@
 	            React.createElement(
 	              'h2',
 	              { className: 'blog-post-title' },
-	              'Reviews'
+	              'Reviews',
+	              React.createElement(
+	                'button',
+	                { type: 'button', className: 'btn btn-primary review-button btn-sm', 'data-toggle': 'modal', 'data-target': '#myModal' },
+	                'Add review'
+	              )
 	            ),
 	            React.createElement(Reviews, { reviews: this.state.reviews }),
-	            React.createElement(
-	              'h3',
-	              { className: 'blog-post-title' },
-	              'Leave a Review!'
-	            ),
 	            React.createElement(ReviewForm, { programID: this.props.id })
 	          )
 	        )
@@ -28437,147 +28469,191 @@
 	  },
 	
 	  render: function () {
+	
 	    return React.createElement(
-	      'form',
-	      { onSubmit: this.handleSubmit },
+	      'div',
+	      { className: 'modal fade', id: 'myModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel' },
 	      React.createElement(
-	        'fieldset',
-	        { className: 'form-group' },
-	        React.createElement(
-	          'label',
-	          { htmlFor: 'exampleTextarea' },
-	          'Review Title'
-	        ),
-	        React.createElement('textarea', { onChange: this.titleChanged, className: 'form-control',
-	          rows: '1',
-	          placeholder: 'Title' })
-	      ),
-	      React.createElement(
-	        'fieldset',
-	        { className: 'form-group' },
-	        React.createElement(
-	          'label',
-	          { htmlFor: 'exampleTextarea' },
-	          'Rating'
-	        ),
+	        'div',
+	        { className: 'modal-dialog', role: 'document' },
 	        React.createElement(
 	          'div',
-	          { className: 'radio' },
+	          { className: 'modal-content' },
 	          React.createElement(
-	            'label',
-	            { className: 'radio-inline' },
-	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
-	              id: 'inlineRadio1',
-	              onClick: this.ratingChanged,
-	              value: '1' }),
-	            '1'
+	            'div',
+	            { className: 'modal-header' },
+	            React.createElement(
+	              'button',
+	              { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
+	              React.createElement(
+	                'span',
+	                { 'aria-hidden': 'true' },
+	                '×'
+	              )
+	            ),
+	            React.createElement(
+	              'h4',
+	              { className: 'modal-title', id: 'myModalLabel' },
+	              'Review form'
+	            )
 	          ),
 	          React.createElement(
-	            'label',
-	            { className: 'radio-inline' },
-	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
-	              id: 'inlineRadio2',
-	              onClick: this.ratingChanged,
-	              value: '2' }),
-	            '2'
+	            'div',
+	            { className: 'modal-body' },
+	            React.createElement(
+	              'form',
+	              null,
+	              React.createElement(
+	                'fieldset',
+	                { className: 'form-group' },
+	                React.createElement(
+	                  'label',
+	                  { htmlFor: 'exampleTextarea' },
+	                  'Review Title'
+	                ),
+	                React.createElement('textarea', { onChange: this.titleChanged, className: 'form-control',
+	                  rows: '1',
+	                  placeholder: 'Title' })
+	              ),
+	              React.createElement(
+	                'fieldset',
+	                { className: 'form-group' },
+	                React.createElement(
+	                  'label',
+	                  { htmlFor: 'exampleTextarea' },
+	                  'Rating'
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'radio' },
+	                  React.createElement(
+	                    'label',
+	                    { className: 'radio-inline' },
+	                    React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	                      id: 'inlineRadio1',
+	                      onClick: this.ratingChanged,
+	                      value: '1' }),
+	                    '1'
+	                  ),
+	                  React.createElement(
+	                    'label',
+	                    { className: 'radio-inline' },
+	                    React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	                      id: 'inlineRadio2',
+	                      onClick: this.ratingChanged,
+	                      value: '2' }),
+	                    '2'
+	                  ),
+	                  React.createElement(
+	                    'label',
+	                    { className: 'radio-inline' },
+	                    React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	                      onClick: this.ratingChanged,
+	                      id: 'inlineRadio3', value: '3' }),
+	                    '3'
+	                  ),
+	                  React.createElement(
+	                    'label',
+	                    { className: 'radio-inline' },
+	                    React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	                      onClick: this.ratingChanged,
+	                      id: 'inlineRadio4', value: '4' }),
+	                    '4'
+	                  ),
+	                  React.createElement(
+	                    'label',
+	                    { className: 'radio-inline' },
+	                    React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
+	                      onClick: this.ratingChanged,
+	                      id: 'inlineRadio5', value: '5' }),
+	                    '5'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'fieldset',
+	                { className: 'form-group' },
+	                React.createElement(
+	                  'label',
+	                  { htmlFor: 'exampleTextarea' },
+	                  'Enrollment'
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'radio' },
+	                  React.createElement(
+	                    'label',
+	                    { className: 'radio-inline' },
+	                    React.createElement('input', { type: 'radio', name: 'enrollment-radio',
+	                      id: 'inlineRadio1',
+	                      onClick: this.enrollmentChanged,
+	                      value: 'true' }),
+	                    'Currently Enrolled'
+	                  ),
+	                  React.createElement(
+	                    'label',
+	                    { className: 'radio-inline' },
+	                    React.createElement('input', { type: 'radio', name: 'enrollment-radio',
+	                      id: 'inlineRadio2',
+	                      onClick: this.enrollmentChanged,
+	                      value: 'false' }),
+	                    'Former Student'
+	                  )
+	                )
+	              ),
+	              React.createElement(
+	                'fieldset',
+	                { className: 'form-group' },
+	                React.createElement(
+	                  'label',
+	                  { htmlFor: 'exampleTextarea' },
+	                  'Pros'
+	                ),
+	                React.createElement('textarea', { onChange: this.prosChanged, className: 'form-control',
+	                  rows: '3',
+	                  placeholder: 'What was your favorite part of the program?' })
+	              ),
+	              React.createElement(
+	                'fieldset',
+	                { className: 'form-group' },
+	                React.createElement(
+	                  'label',
+	                  { htmlFor: 'exampleTextarea' },
+	                  'Cons'
+	                ),
+	                React.createElement('textarea', { onChange: this.consChanged, className: 'form-control',
+	                  rows: '3',
+	                  placeholder: 'What didn\'t you like about this program?' })
+	              ),
+	              React.createElement(
+	                'fieldset',
+	                { className: 'form-group' },
+	                React.createElement(
+	                  'label',
+	                  { htmlFor: 'exampleTextarea' },
+	                  'Comments'
+	                ),
+	                React.createElement('textarea', { onChange: this.commentsChanged, className: 'form-control',
+	                  rows: '3',
+	                  placeholder: 'How could they improve?' })
+	              )
+	            )
 	          ),
 	          React.createElement(
-	            'label',
-	            { className: 'radio-inline' },
-	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
-	              onClick: this.ratingChanged,
-	              id: 'inlineRadio3', value: '3' }),
-	            '3'
-	          ),
-	          React.createElement(
-	            'label',
-	            { className: 'radio-inline' },
-	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
-	              onClick: this.ratingChanged,
-	              id: 'inlineRadio4', value: '4' }),
-	            '4'
-	          ),
-	          React.createElement(
-	            'label',
-	            { className: 'radio-inline' },
-	            React.createElement('input', { type: 'radio', name: 'inlineRadioOptions',
-	              onClick: this.ratingChanged,
-	              id: 'inlineRadio5', value: '5' }),
-	            '5'
+	            'div',
+	            { className: 'modal-footer' },
+	            React.createElement(
+	              'button',
+	              { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
+	              'Close'
+	            ),
+	            React.createElement(
+	              'button',
+	              { type: 'button', onClick: this.handleSubmit, 'data-dismiss': 'modal', className: 'btn btn-primary' },
+	              'Submit'
+	            )
 	          )
 	        )
-	      ),
-	      React.createElement(
-	        'fieldset',
-	        { className: 'form-group' },
-	        React.createElement(
-	          'label',
-	          { htmlFor: 'exampleTextarea' },
-	          'Enrollment'
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'radio' },
-	          React.createElement(
-	            'label',
-	            { className: 'radio-inline' },
-	            React.createElement('input', { type: 'radio', name: 'enrollment-radio',
-	              id: 'inlineRadio1',
-	              onClick: this.enrollmentChanged,
-	              value: 'true' }),
-	            'Currently Enrolled'
-	          ),
-	          React.createElement(
-	            'label',
-	            { className: 'radio-inline' },
-	            React.createElement('input', { type: 'radio', name: 'enrollment-radio',
-	              id: 'inlineRadio2',
-	              onClick: this.enrollmentChanged,
-	              value: 'false' }),
-	            'Former Student'
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'fieldset',
-	        { className: 'form-group' },
-	        React.createElement(
-	          'label',
-	          { htmlFor: 'exampleTextarea' },
-	          'Pros'
-	        ),
-	        React.createElement('textarea', { onChange: this.prosChanged, className: 'form-control',
-	          rows: '3',
-	          placeholder: 'What was your favorite part of the program?' })
-	      ),
-	      React.createElement(
-	        'fieldset',
-	        { className: 'form-group' },
-	        React.createElement(
-	          'label',
-	          { htmlFor: 'exampleTextarea' },
-	          'Cons'
-	        ),
-	        React.createElement('textarea', { onChange: this.consChanged, className: 'form-control',
-	          rows: '3',
-	          placeholder: 'What didn\'t you like about this program?' })
-	      ),
-	      React.createElement(
-	        'fieldset',
-	        { className: 'form-group' },
-	        React.createElement(
-	          'label',
-	          { htmlFor: 'exampleTextarea' },
-	          'Comments'
-	        ),
-	        React.createElement('textarea', { onChange: this.commentsChanged, className: 'form-control',
-	          rows: '3',
-	          placeholder: 'How could they improve?' })
-	      ),
-	      React.createElement(
-	        'button',
-	        { type: 'submit', className: 'btn btn-primary' },
-	        'Submit'
 	      )
 	    );
 	  }
@@ -29013,6 +29089,7 @@
 	          { className: 'form-signin-heading' },
 	          'Please sign in'
 	        ),
+	        React.createElement('br', null),
 	        React.createElement(
 	          'label',
 	          { className: 'sr-only' },
@@ -29021,6 +29098,7 @@
 	        React.createElement('input', { type: 'email',
 	          id: 'inputEmail',
 	          className: 'form-control',
+	          style: { marginBottom: "5px" },
 	          placeholder: 'Email address',
 	          onChange: this.emailChange,
 	          required: true, autofocus: true }),
@@ -29037,13 +29115,13 @@
 	          required: true }),
 	        React.createElement(
 	          'button',
-	          { className: 'btn btn-primary', type: 'submit' },
+	          { className: 'btn btn-primary signin-button', type: 'submit' },
 	          'Sign in'
 	        )
 	      ),
 	      React.createElement(
 	        'button',
-	        { onClick: this.guestLogin, className: 'btn btn-primary' },
+	        { onClick: this.guestLogin, className: 'btn btn-primary signin-button' },
 	        'Guest Login'
 	      )
 	    );
@@ -29584,121 +29662,126 @@
 /* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(147);
-	var PropTypes = React.PropTypes;
+	var React = __webpack_require__(147),
+	    ApiUtil = __webpack_require__(163);
 	
 	var Dashboard = React.createClass({
-	  displayName: "Dashboard",
+	  displayName: 'Dashboard',
 	
+	
+	  searchCompany: function () {
+	    var params = { "location": "", "name": "" };
+	    ApiUtil.fetchCompanies(params);
+	  },
 	
 	  render: function () {
 	    return React.createElement(
-	      "div",
+	      'div',
 	      null,
 	      React.createElement(
-	        "div",
-	        { id: "myCarousel", className: "carousel slide", "data-ride": "carousel" },
+	        'div',
+	        { id: 'myCarousel', className: 'carousel slide', 'data-ride': 'carousel' },
 	        React.createElement(
-	          "ol",
-	          { className: "carousel-indicators" },
-	          React.createElement("li", { "data-target": "#myCarousel", "data-slide-to": "0", className: "active" }),
-	          React.createElement("li", { "data-target": "#myCarousel", "data-slide-to": "1" }),
-	          React.createElement("li", { "data-target": "#myCarousel", "data-slide-to": "2" })
+	          'ol',
+	          { className: 'carousel-indicators' },
+	          React.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '0', className: 'active' }),
+	          React.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '1' }),
+	          React.createElement('li', { 'data-target': '#myCarousel', 'data-slide-to': '2' })
 	        ),
 	        React.createElement(
-	          "div",
-	          { className: "carousel-inner", role: "listbox" },
+	          'div',
+	          { className: 'carousel-inner', role: 'listbox' },
 	          React.createElement(
-	            "div",
-	            { className: "item active" },
-	            React.createElement("img", { className: "first-slide", src: "" }),
+	            'div',
+	            { className: 'item active' },
+	            React.createElement('img', { className: 'first-slide', src: '' }),
 	            React.createElement(
-	              "div",
-	              { className: "carousel-caption" },
+	              'div',
+	              { className: 'carousel-caption' },
 	              React.createElement(
-	                "div",
-	                { className: "hero" },
+	                'div',
+	                { className: 'hero' },
 	                React.createElement(
-	                  "h1",
+	                  'h1',
 	                  null,
-	                  "Welcome to codecamp!"
+	                  'Welcome to codecamp!'
 	                ),
 	                React.createElement(
-	                  "p",
+	                  'p',
 	                  null,
-	                  "Codecamp helps you find the web development bootcamp that's right for you. Locations, descriptions and reviews are available for bootcamps around the US. Click below to begin your first search."
+	                  'Codecamp helps you find the web development bootcamp that\'s right for you. Locations, descriptions and reviews are available for bootcamps around the US. Click below to begin your first search.'
 	                ),
 	                React.createElement(
-	                  "p",
+	                  'p',
 	                  null,
 	                  React.createElement(
-	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "/#/programs", role: "button" },
-	                    "Search"
+	                    'a',
+	                    { className: 'btn btn-lg btn-primary', href: '/#/programs', role: 'button' },
+	                    'Search'
 	                  )
 	                )
 	              )
 	            )
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "item" },
-	            React.createElement("img", { className: "second-slide", src: "" }),
+	            'div',
+	            { className: 'item' },
+	            React.createElement('img', { className: 'second-slide', src: '' }),
 	            React.createElement(
-	              "div",
-	              { className: "carousel-caption" },
+	              'div',
+	              { className: 'carousel-caption' },
 	              React.createElement(
-	                "div",
-	                { className: "hero" },
+	                'div',
+	                { className: 'hero' },
 	                React.createElement(
-	                  "h1",
+	                  'h1',
 	                  null,
-	                  "Didn't find what you were looking for?"
+	                  'Didn\'t find what you were looking for?'
 	                ),
 	                React.createElement(
-	                  "p",
+	                  'p',
 	                  null,
-	                  "Try searching by Company or by a specific language. Codecamp will try to match your input, even if it is incomplete. Give it a try! Click below to search by Company."
+	                  'Try searching by Company or by a specific language. Codecamp will try to match your input, even if it is incomplete. Give it a try! Click below to search by Company.'
 	                ),
 	                React.createElement(
-	                  "p",
+	                  'p',
 	                  null,
 	                  React.createElement(
-	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "/#/companies", role: "button" },
-	                    "Learn more"
+	                    'a',
+	                    { className: 'btn btn-lg btn-primary', onClick: this.searchCompany, role: 'button' },
+	                    'Companies'
 	                  )
 	                )
 	              )
 	            )
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "item" },
-	            React.createElement("img", { className: "third-slide", src: "" }),
+	            'div',
+	            { className: 'item' },
+	            React.createElement('img', { className: 'third-slide', src: '' }),
 	            React.createElement(
-	              "div",
-	              { className: "carousel-caption" },
+	              'div',
+	              { className: 'carousel-caption' },
 	              React.createElement(
-	                "div",
-	                { className: "hero" },
+	                'div',
+	                { className: 'hero' },
 	                React.createElement(
-	                  "h1",
+	                  'h1',
 	                  null,
-	                  "Already in a bootcamp?"
+	                  'Already in a bootcamp?'
 	                ),
 	                React.createElement(
-	                  "p",
+	                  'p',
 	                  null,
-	                  "Sign up to share your experiences with others by leaving helpful reviews about your specific program. Users are able to rate their bootcamp and leave comments how they might improve. Click the Sign up link below to get started."
+	                  'Great! Sign up to share your experiences with others by leaving helpful reviews about your specific program. Users are able to rate their bootcamp and leave comments how they might improve. Click the Sign up link below to get started.'
 	                ),
 	                React.createElement(
-	                  "p",
+	                  'p',
 	                  null,
 	                  React.createElement(
-	                    "a",
-	                    { className: "btn btn-lg btn-primary", href: "/#/signup", role: "button" },
-	                    "Sign up"
+	                    'a',
+	                    { className: 'btn btn-lg btn-primary', href: '/#/signup', role: 'button' },
+	                    'Sign up'
 	                  )
 	                )
 	              )
@@ -29706,101 +29789,101 @@
 	          )
 	        ),
 	        React.createElement(
-	          "a",
-	          { className: "left carousel-control", href: "#myCarousel", role: "button", "data-slide": "prev" },
-	          React.createElement("span", { className: "glyphicon glyphicon-chevron-left", "aria-hidden": "true" }),
+	          'a',
+	          { className: 'left carousel-control', href: '#myCarousel', role: 'button', 'data-slide': 'prev' },
+	          React.createElement('span', { className: 'glyphicon glyphicon-chevron-left', 'aria-hidden': 'true' }),
 	          React.createElement(
-	            "span",
-	            { className: "sr-only" },
-	            "Previous"
+	            'span',
+	            { className: 'sr-only' },
+	            'Previous'
 	          )
 	        ),
 	        React.createElement(
-	          "a",
-	          { className: "right carousel-control", href: "#myCarousel", role: "button", "data-slide": "next" },
-	          React.createElement("span", { className: "glyphicon glyphicon-chevron-right", "aria-hidden": "true" }),
+	          'a',
+	          { className: 'right carousel-control', href: '#myCarousel', role: 'button', 'data-slide': 'next' },
+	          React.createElement('span', { className: 'glyphicon glyphicon-chevron-right', 'aria-hidden': 'true' }),
 	          React.createElement(
-	            "span",
-	            { className: "sr-only" },
-	            "Next"
+	            'span',
+	            { className: 'sr-only' },
+	            'Next'
 	          )
 	        )
 	      ),
 	      React.createElement(
-	        "div",
-	        { className: "container marketing" },
+	        'div',
+	        { className: 'container marketing' },
 	        React.createElement(
-	          "div",
-	          { className: "row" },
+	          'div',
+	          { className: 'row' },
 	          React.createElement(
-	            "div",
-	            { className: "col-lg-4" },
-	            React.createElement("img", { className: "img-circle", src: "https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            'div',
+	            { className: 'col-lg-4' },
+	            React.createElement('img', { className: 'img-circle', src: 'https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png', alt: 'Generic placeholder image', width: '140', height: '140' }),
 	            React.createElement(
-	              "h2",
+	              'h2',
 	              null,
-	              "github"
+	              'github'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
-	              "Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna."
+	              'Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
 	              React.createElement(
-	                "a",
-	                { className: "btn btn-default", href: "https://github.com/mowenpark", role: "button" },
-	                "View details »"
+	                'a',
+	                { className: 'btn btn-default', href: 'https://github.com/mowenpark', role: 'button' },
+	                'View details »'
 	              )
 	            )
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "col-lg-4" },
-	            React.createElement("img", { className: "img-circle", src: "https://yt3.ggpht.com/-CepHHHB3l1Y/AAAAAAAAAAI/AAAAAAAAAAA/Z8MftqWbEqA/s900-c-k-no/photo.jpg", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            'div',
+	            { className: 'col-lg-4' },
+	            React.createElement('img', { className: 'img-circle', src: 'https://yt3.ggpht.com/-CepHHHB3l1Y/AAAAAAAAAAI/AAAAAAAAAAA/Z8MftqWbEqA/s900-c-k-no/photo.jpg', alt: 'Generic placeholder image', width: '140', height: '140' }),
 	            React.createElement(
-	              "h2",
+	              'h2',
 	              null,
-	              "Linkedin"
+	              'Linkedin'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
-	              "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh."
+	              'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
 	              React.createElement(
-	                "a",
-	                { className: "btn btn-default", href: "https://www.linkedin.com/in/mowenpark", role: "button" },
-	                "View details »"
+	                'a',
+	                { className: 'btn btn-default', href: 'https://www.linkedin.com/in/mowenpark', role: 'button' },
+	                'View details »'
 	              )
 	            )
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "col-lg-4" },
-	            React.createElement("img", { className: "img-circle", src: "http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457329886/Screen_Shot_2016-03-06_at_9.50.52_PM_cny0ex.png", alt: "Generic placeholder image", width: "140", height: "140" }),
+	            'div',
+	            { className: 'col-lg-4' },
+	            React.createElement('img', { className: 'img-circle', src: 'http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457329886/Screen_Shot_2016-03-06_at_9.50.52_PM_cny0ex.png', alt: 'Generic placeholder image', width: '140', height: '140' }),
 	            React.createElement(
-	              "h2",
+	              'h2',
 	              null,
-	              "Blog"
+	              'Blog'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
-	              "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."
+	              'Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
 	            ),
 	            React.createElement(
-	              "p",
+	              'p',
 	              null,
 	              React.createElement(
-	                "a",
-	                { className: "btn btn-default", href: "http://mowenpark.tumblr.com", role: "button" },
-	                "View details »"
+	                'a',
+	                { className: 'btn btn-default', href: 'http://mowenpark.tumblr.com', role: 'button' },
+	                'View details »'
 	              )
 	            )
 	          )
@@ -34647,6 +34730,37 @@
 	
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(165);
+	var Store = __webpack_require__(171).Store;
+	
+	var ErrorsStore = new Store(AppDispatcher);
+	
+	var _errors = [];
+	
+	var resetErrors = function (errors) {
+	  _errors = [];
+	  _errors.push(errors);
+	};
+	
+	ErrorsStore.all = function () {
+	  return _errors.slice();
+	};
+	
+	ErrorsStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case "RECEIVE_ERRORS":
+	      resetErrors(payload.errors);
+	      ErrorsStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = ErrorsStore;
 
 /***/ }
 /******/ ]);
