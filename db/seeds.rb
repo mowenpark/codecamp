@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Guest user
-require 'byebug'
+
 require 'csv'
 
 csv_text = File.read('app/assets/bootcamps.csv')
