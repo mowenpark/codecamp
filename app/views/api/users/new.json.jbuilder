@@ -15,5 +15,6 @@ json.following do
   json.array! @user.followings do |follow|
     json.title follow.title
     json.logo follow.company.logo
+    json.id follow.company.id
   end
 end

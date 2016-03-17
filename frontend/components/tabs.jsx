@@ -6,12 +6,22 @@ var ProgramsStore = require('../stores/program'),
     Errors = require("./errors");
 
 var Headers = React.createClass({
+  getInitialState: function () {
+    return{
+      followStatus: false
+    }
+  },
+
+  follow: function () {
+
+  },
+
   render: function () {
     var selected = this.props.selectedPane;
     var that = this;
     var headers = this.props.panes.map(function (pane, index) {
       var title = pane.title;
-      var short = pane.description.slice(0,50);
+      var short = pane.description.slice(0,50) + "...";
       var logo = pane.logo;
       var klass = "";
       if (index === selected) {
@@ -23,7 +33,10 @@ var Headers = React.createClass({
               key={ index }
               className={klass + " thumbnail"}
               onClick={that.props.onTabChosen.bind(null, index)}>
-              <img className="media-object" src={logo} />
+                <div onClick={this.follow} className="follow">
+                  <span className="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                </div>
+                <img className="media-object" src={logo} />
               <div className="caption" >
                 <h3>{title}</h3>
                 <p>{short}</p>

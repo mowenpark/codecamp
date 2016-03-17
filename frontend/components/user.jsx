@@ -40,16 +40,16 @@ var User = React.createClass({
   render: function() {
     var id = parseInt(this.props.params.id);
     if (this.state.currentUser.id === id) {
-      var followings = this.state.currentUser.following.map(function (program, idx) {
+      var followings = this.state.currentUser.following.map(function (follow, idx) {
         return (
           <div key={idx} className="media">
             <div className="media-left">
-              <a href="#">
-                <img className="media-object" width="60" src={program.logo} alt="..."></img>
+              <a href={"/#/companies/" + follow.id}>
+                <img className="media-object" width="60" src={follow.logo}></img>
               </a>
             </div>
             <div className="media-body">
-              <h4 className="media-heading">{program.title}</h4>
+              <h4 className="media-heading">{follow.title}</h4>
             </div>
           </div>
         );

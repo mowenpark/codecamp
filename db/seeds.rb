@@ -79,7 +79,7 @@ Program.all.each do |program|
     program_id: program.id
     )
 
-    title = Faker::StarWars.vehicle
+    title = Faker::Company.catch_phrase
     comments = Faker::Hacker.say_something_smart
     pros = Faker::Hipster.sentence
     cons = Faker::Hipster.sentence

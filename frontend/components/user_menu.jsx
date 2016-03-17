@@ -41,7 +41,7 @@ var UserMenu = React.createClass({
           <li><a href={"/#/users/" + this.state.currentUser.id}>
             Feed <span className="badge">{this.state.currentUser.feed.length}</span>
           </a></li>
-        <li className="dropdown">
+          <li className="dropdown">
             <a href="#" className="dropdown-toggle"
               data-toggle="dropdown"
               role="button"
