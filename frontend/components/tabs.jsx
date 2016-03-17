@@ -9,7 +9,14 @@ var Headers = React.createClass({
   getInitialState: function () {
     return{
       followStatus: false
-    }
+    };
+  },
+
+  componentDidMount: function functionName() {
+    $(".glyphicon")
+      .hover(
+        function(){ $(this).addClass('glyphicon-heart'), $(this).removeClass('glyphicon-heart-empty') },
+        function(){ $(this).removeClass('glyphicon-heart'), $(this).addClass('glyphicon-heart-empty') });
   },
 
   follow: function () {
@@ -33,10 +40,13 @@ var Headers = React.createClass({
               key={ index }
               className={klass + " thumbnail"}
               onClick={that.props.onTabChosen.bind(null, index)}>
-                <div onClick={this.follow} className="follow">
-                  <span className="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-                </div>
-                <img className="media-object" src={logo} />
+              <div
+                onClick={that.follow}
+                className="follow">
+                <span className="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+              </div>
+                <img className="media-object" src={logo} >
+                </img>
               <div className="caption" >
                 <h3>{title}</h3>
                 <p>{short}</p>

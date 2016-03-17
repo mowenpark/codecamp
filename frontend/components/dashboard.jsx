@@ -19,7 +19,7 @@ var Dashboard = React.createClass({
         </ol>
         <div className="carousel-inner" role="listbox">
           <div className="item active">
-            <img className="first-slide" src=""></img>
+            <div className="first-slide"></div>
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Welcome to codecamp!</h1>
@@ -29,7 +29,7 @@ var Dashboard = React.createClass({
               </div>
           </div>
           <div className="item">
-            <img className="second-slide" src=""></img>
+            <div className="second-slide"></div>
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Didn't find what you were looking for?</h1>
@@ -39,7 +39,7 @@ var Dashboard = React.createClass({
               </div>
           </div>
           <div className="item">
-            <img className="third-slide" src=""></img>
+            <div className="third-slide"></div>
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Already in a bootcamp?</h1>

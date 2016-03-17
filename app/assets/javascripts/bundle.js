@@ -19904,15 +19904,6 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { href: '' },
-	            'Explore'
-	          )
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(
-	            'a',
 	            { href: '/#/signin' },
 	            'Login'
 	          )
@@ -19931,15 +19922,6 @@
 	      return React.createElement(
 	        'ul',
 	        { className: 'nav navbar-nav navbar-right' },
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(
-	            'a',
-	            { href: '' },
-	            'Explore'
-	          )
-	        ),
 	        React.createElement(
 	          'li',
 	          null,
@@ -28103,6 +28085,14 @@
 	    };
 	  },
 	
+	  componentDidMount: function functionName() {
+	    $(".glyphicon").hover(function () {
+	      $(this).addClass('glyphicon-heart'), $(this).removeClass('glyphicon-heart-empty');
+	    }, function () {
+	      $(this).removeClass('glyphicon-heart'), $(this).addClass('glyphicon-heart-empty');
+	    });
+	  },
+	
 	  follow: function () {},
 	
 	  render: function () {
@@ -28125,7 +28115,9 @@
 	          onClick: that.props.onTabChosen.bind(null, index) },
 	        React.createElement(
 	          'div',
-	          { onClick: this.follow, className: 'follow' },
+	          {
+	            onClick: that.follow,
+	            className: 'follow' },
 	          React.createElement('span', { className: 'glyphicon glyphicon-heart-empty', 'aria-hidden': 'true' })
 	        ),
 	        React.createElement('img', { className: 'media-object', src: logo }),
@@ -29756,7 +29748,7 @@
 	          React.createElement(
 	            'div',
 	            { className: 'item active' },
-	            React.createElement('img', { className: 'first-slide', src: '' }),
+	            React.createElement('div', { className: 'first-slide' }),
 	            React.createElement(
 	              'div',
 	              { className: 'carousel-caption' },
@@ -29788,7 +29780,7 @@
 	          React.createElement(
 	            'div',
 	            { className: 'item' },
-	            React.createElement('img', { className: 'second-slide', src: '' }),
+	            React.createElement('div', { className: 'second-slide' }),
 	            React.createElement(
 	              'div',
 	              { className: 'carousel-caption' },
@@ -29820,7 +29812,7 @@
 	          React.createElement(
 	            'div',
 	            { className: 'item' },
-	            React.createElement('img', { className: 'third-slide', src: '' }),
+	            React.createElement('div', { className: 'third-slide' }),
 	            React.createElement(
 	              'div',
 	              { className: 'carousel-caption' },

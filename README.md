@@ -1,5 +1,3 @@
-# codecamp
-
 [Live link][codecamp]
 
 [codecamp]: www.codecamp.ninja/
@@ -12,7 +10,7 @@ and React.js. Allows users to:
 - [ ] Create an account
 - [ ] Log in / Log out
 - [ ] Search for web development bootcamps by company, language, or program name
-- [ ] Create, read, edit, and delete reviews
+- [ ] Write reviews for programs
 - [ ] Favorite bootcamp programs
 
 ## Overall Structure
@@ -22,7 +20,7 @@ and React.js. Allows users to:
 * [React.js][react]
 * [Flux][flux]
 * [BCrypt][bcrypt]
-* [faker][api-endpoints]
+* [Faker][faker]
 
 [react]: https://facebook.github.io/react/index.html
 [flux]: https://facebook.github.io/react/docs/flux-overview.html
