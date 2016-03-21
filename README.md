@@ -45,3 +45,5 @@ User authentication is handled in Rails using BCrypt's password hashing. User pa
 ###Search
 
 Codecamp utilizes keyword search to find programs and companies based on like matching. Using the autofill function, users may select locations to narrow their search quickly and easily.
+
+![alt tag](/app/assets/images/cc_search.png)
