@@ -85,6 +85,7 @@ Program.all.each do |program|
     cons = Faker::Hipster.sentence
     rating = rand(1..5)
     enrollment_status = true
+    user_id = User.all.sample.id
 
     Review.create(
       title: title,

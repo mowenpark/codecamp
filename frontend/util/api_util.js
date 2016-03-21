@@ -99,7 +99,6 @@ var ApiUtil = {
 					ApiActions.updateReviews(data);
 				},
 				error: function (error) {
-					debugger;
 					ApiActions.receiveError(error);
 				}
 			});
@@ -121,6 +120,16 @@ var ApiUtil = {
 					ApiActions.receiveCurrentUser(data);
 				}
 			});
+	},
+
+	toggleFollow: function (id) {
+		$.ajax({
+			type: "POST",
+			url: "/api/follows",
+			data: {"id": id},
+			success: function( data ) {
+			}
+		});
 	}
 
 };

@@ -1,19 +1,28 @@
-[Live link][codecamp]
+#Codecamp
 
-[codecamp]: www.codecamp.ninja/
-
-## Summary
-
-codecamp is a web application inspired by Glassdoor built using Ruby on Rails
+Codecamp is a web application inspired by Glassdoor built using Ruby on Rails
 and React.js. Allows users to:
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Search for web development bootcamps by company, language, or program name
-- [ ] Write reviews for programs
+- [ ] Search for web development bootcamps by Company, Language, or Program
+- [ ] Create, edit, and delete reviews once logged in
 - [ ] Favorite bootcamp programs
 
+View it live at [codecamp.ninja][codecamp].
+
+[codecamp]: www.codecamp.ninja/
+
+
 ## Overall Structure
+
+###Back end
+
+Code Camp is built on the web framework, Ruby on Rails, and uses a postgreSQL database. All data requests are completed using AJAX and are fulfilled through a JSON API. Associations are in place to prefetch data in order to minimize SQL queries to the database.
+
+###Front end
+
+The front end is built in React.js and JavaScript, utilizing React's Flux architecture. React's virtual DOM allows for quick re-rendering of individual elements without requiring new pages to be sent from the server.
 
 ###Libraries
 
@@ -28,3 +37,7 @@ and React.js. Allows users to:
 [faker]: https://github.com/stympy/faker
 
 ## Primary Components
+
+###User Authorization
+
+User authentication is handled in Rails using BCrypt's password hashing. User passwords are not saved to the database, only password hashes. When users log in, their password is rehashed and checked against the original encrypted password hash to verify credentials.

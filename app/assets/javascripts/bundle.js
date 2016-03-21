@@ -20094,7 +20094,6 @@
 					ApiActions.updateReviews(data);
 				},
 				error: function (error) {
-					debugger;
 					ApiActions.receiveError(error);
 				}
 			});
@@ -20115,6 +20114,15 @@
 					window.location.replace("/#/users/" + data.id);
 					ApiActions.receiveCurrentUser(data);
 				}
+			});
+		},
+	
+		toggleFollow: function (id) {
+			$.ajax({
+				type: "POST",
+				url: "/api/follows",
+				data: { "id": id },
+				success: function (data) {}
 			});
 		}
 	
@@ -28085,15 +28093,17 @@
 	    };
 	  },
 	
-	  componentDidMount: function functionName() {
-	    $(".glyphicon").hover(function () {
+	  componentDidMount: function () {
+	    this.token = $(".glyphicon-heart-empty").hover(function () {
 	      $(this).addClass('glyphicon-heart'), $(this).removeClass('glyphicon-heart-empty');
 	    }, function () {
 	      $(this).removeClass('glyphicon-heart'), $(this).addClass('glyphicon-heart-empty');
 	    });
 	  },
 	
-	  follow: function () {},
+	  follow: function (id) {
+	    ApiUtil.toggleFollow();
+	  },
 	
 	  render: function () {
 	    var selected = this.props.selectedPane;
@@ -28102,6 +28112,7 @@
 	      var title = pane.title;
 	      var short = pane.description.slice(0, 50) + "...";
 	      var logo = pane.logo;
+	      var follow = pane.followed ? "glyphicon glyphicon-heart" : "glyphicon glyphicon-heart-empty";
 	      var klass = "";
 	      if (index === selected) {
 	        klass = "active";
@@ -28116,9 +28127,9 @@
 	        React.createElement(
 	          'div',
 	          {
-	            onClick: that.follow,
+	            onClick: that.follow.bind(null, pane.id),
 	            className: 'follow' },
-	          React.createElement('span', { className: 'glyphicon glyphicon-heart-empty', 'aria-hidden': 'true' })
+	          React.createElement('span', { className: follow, 'aria-hidden': 'true' })
 	        ),
 	        React.createElement('img', { className: 'media-object', src: logo }),
 	        React.createElement(
@@ -28823,7 +28834,8 @@
 	              { className: 'media-heading' },
 	              follow.title
 	            )
-	          )
+	          ),
+	          React.createElement('div', { style: { display: "table-cell" }, className: 'glyphicon glyphicon-remove' })
 	        );
 	      });
 	      var feed = this.state.currentUser.feed.map(function (feedItem, index) {
@@ -29986,10 +29998,19 @@
 	  },
 	
 	  render: function () {
-	    var divStyle = {
-	      backgroundImage: 'url(http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_1000/v1457319902/people-coffee-notes-tea_ziykz4_tvfh2x.jpg)',
-	      backgroundSize: "cover"
-	    };
+	    var divStyle;
+	    if (this.state.company.locations === undefined) {
+	      divStyle = {};
+	    } else {
+	      divStyle = {
+	        backgroundImage: "url(" + this.state.company.logo + ")",
+	        backgroundPosition: "center",
+	        backgroundRepeat: "no-repeat",
+	        margin: "0px",
+	        padding: "0",
+	        borderBottom: "0"
+	      };
+	    }
 	    var locations;
 	    if (this.state.company.locations === undefined) {
 	      locations = React.createElement('div', null);
@@ -30019,8 +30040,12 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'container jumbo' },
-	      React.createElement('div', { className: 'jumbotron narrow',
-	        style: divStyle }),
+	      React.createElement(
+	        'div',
+	        { className: 'jumbotron narrow',
+	          style: divStyle },
+	        React.createElement('img', { src: this.state.company.logo, style: { visibility: "hidden" } })
+	      ),
 	      React.createElement(
 	        'h1',
 	        null,

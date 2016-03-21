@@ -51,6 +51,7 @@ var User = React.createClass({
             <div className="media-body">
               <h4 className="media-heading">{follow.title}</h4>
             </div>
+            <div style={{display: "table-cell"}} className="glyphicon glyphicon-remove"></div>
           </div>
         );
       });

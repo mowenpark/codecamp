@@ -24,7 +24,7 @@ CompaniesStore.all = function () {
   return companies;
 };
 
-CompaniesStore.find =function (id) {
+CompaniesStore.find = function (id) {
   return _companies[id];
 };
 

@@ -12,15 +12,15 @@ var Headers = React.createClass({
     };
   },
 
-  componentDidMount: function functionName() {
-    $(".glyphicon")
+  componentDidMount: function () {
+    this.token = $(".glyphicon-heart-empty")
       .hover(
         function(){ $(this).addClass('glyphicon-heart'), $(this).removeClass('glyphicon-heart-empty') },
         function(){ $(this).removeClass('glyphicon-heart'), $(this).addClass('glyphicon-heart-empty') });
   },
 
-  follow: function () {
-
+  follow: function (id) {
+    ApiUtil.toggleFollow();
   },
 
   render: function () {
@@ -30,6 +30,7 @@ var Headers = React.createClass({
       var title = pane.title;
       var short = pane.description.slice(0,50) + "...";
       var logo = pane.logo;
+      var follow = (pane.followed) ? "glyphicon glyphicon-heart" : "glyphicon glyphicon-heart-empty";
       var klass = "";
       if (index === selected) {
         klass = "active";
@@ -41,9 +42,9 @@ var Headers = React.createClass({
               className={klass + " thumbnail"}
               onClick={that.props.onTabChosen.bind(null, index)}>
               <div
-                onClick={that.follow}
+                onClick={that.follow.bind(null, pane.id)}
                 className="follow">
-                <span className="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                <span className={follow} aria-hidden="true"></span>
               </div>
                 <img className="media-object" src={logo} >
                 </img>

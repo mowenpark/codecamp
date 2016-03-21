@@ -29,10 +29,19 @@ var Company = React.createClass({
 
 
   render: function() {
-    var divStyle = {
-      backgroundImage: 'url(http://res.cloudinary.com/dtdgkk9aa/image/upload/c_scale,h_1000/v1457319902/people-coffee-notes-tea_ziykz4_tvfh2x.jpg)',
-      backgroundSize: "cover",
-    };
+    var divStyle;
+    if (this.state.company.locations === undefined) {
+      divStyle = {};
+    } else {
+      divStyle = {
+        backgroundImage: "url(" + this.state.company.logo + ")",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        margin: "0px",
+        padding: "0",
+        borderBottom: "0"
+      };
+    }
     var locations;
     if (this.state.company.locations === undefined) {
       locations = <div />;
@@ -59,6 +68,7 @@ var Company = React.createClass({
       <div className="container jumbo">
         <div className="jumbotron narrow"
           style={divStyle}>
+          <img src={this.state.company.logo} style={{visibility: "hidden"}}></img>
         </div>
         <h1>{this.state.company.name}</h1>
         <p>{this.state.company.about}</p>
