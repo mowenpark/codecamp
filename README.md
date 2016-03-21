@@ -42,8 +42,22 @@ The front end is built in React.js and JavaScript, utilizing React's Flux archit
 
 User authentication is handled in Rails using BCrypt's password hashing. User passwords are not saved to the database, only password hashes. When users log in, their password is rehashed and checked against the original encrypted password hash to verify credentials.
 
+![login image](/app/assets/images/cc_login.png)
+
+###Profile
+
+Profile page combines react elements to determine what is rendered.
+
+![profile image](/app/assets/images/cc_profile.png)
+
+###Reviews
+
+
+
+![reviews image](/app/assets/images/cc_reviews.png)
+
 ###Search
 
 Codecamp utilizes keyword search to find programs and companies based on like matching. Using the autofill function, users may select locations to narrow their search quickly and easily.
 
-![alt tag](/app/assets/images/cc_search.png)
+![search image](/app/assets/images/cc_search.png)
