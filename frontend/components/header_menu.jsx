@@ -22,9 +22,9 @@ var HeaderMenu = React.createClass({
          <a href="#" className="dropdown-toggle"
            data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{this.state.param} <span className="caret"></span></a>
          <ul className="dropdown-menu">
-           <li onClick={this.handleClick}><a>Programs</a></li>
-           <li onClick={this.handleClick}><a>Companies</a></li>
-           <li onClick={this.handleClick}><a>Languages</a></li>
+           <li className="dropdown-menu-item" onClick={this.handleClick}><a>Programs</a></li>
+           <li className="dropdown-menu-item" onClick={this.handleClick}><a>Companies</a></li>
+           <li className="dropdown-menu-item" onClick={this.handleClick}><a>Languages</a></li>
          </ul>
        </li>
      </ul>

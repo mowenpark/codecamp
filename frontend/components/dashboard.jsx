@@ -23,7 +23,9 @@ var Dashboard = React.createClass({
               <div className="carousel-caption">
                 <div className="hero">
                   <h1>Welcome to codecamp!</h1>
-                  <p>Codecamp helps you find the web development bootcamp that's right for you. Locations, descriptions and reviews are available for bootcamps around the US. Click below to begin your first search.</p>
+                  <p>Codecamp helps you find the web development bootcamp that is
+                    right for you. Locations, descriptions and reviews are available
+                    for bootcamps around the US. Click below to begin your first search.</p>
                   <p><a className="btn btn-lg btn-primary" href="/#/programs" role="button">Search</a></p>
                 </div>
               </div>
@@ -32,8 +34,8 @@ var Dashboard = React.createClass({
             <div className="second-slide"></div>
               <div className="carousel-caption">
                 <div className="hero">
-                  <h1>Didn't find what you were looking for?</h1>
-                  <p>Try searching by Company or by a specific language. Codecamp will try to match your input, even if it is incomplete. Give it a try! Click below to search by Company.</p>
+                  <h1>Try searching by Company or by a specific language</h1>
+                  <p>Codecamp will try to match your input, even if it is incomplete. Give it a try! Click below to search by Company.</p>
                   <p><a className="btn btn-lg btn-primary" onClick={this.searchCompany} role="button">Companies</a></p>
                 </div>
               </div>
@@ -61,22 +63,22 @@ var Dashboard = React.createClass({
       <div className="container marketing">
         <div className="row">
           <div className="col-lg-4">
-            <img className="img-circle" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="Generic placeholder image" width="140" height="140"></img>
+            <img className="img-circle" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="github" width="140" height="140"></img>
             <h2>github</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a className="btn btn-default" href="https://github.com/mowenpark" role="button">View details &raquo;</a></p>
+            <p>Github is my primary dev platform. This said, I have a few projects hosted there, and they're all maintained. Click to see some of my past and current endeavors.</p>
+            <p><a className="btn btn-default" href="https://github.com/mowenpark" role="button">Read more &raquo;</a></p>
           </div>
           <div className="col-lg-4">
-            <img className="img-circle" src="https://yt3.ggpht.com/-CepHHHB3l1Y/AAAAAAAAAAI/AAAAAAAAAAA/Z8MftqWbEqA/s900-c-k-no/photo.jpg" alt="Generic placeholder image" width="140" height="140"></img>
+            <img className="img-circle" src="https://yt3.ggpht.com/-CepHHHB3l1Y/AAAAAAAAAAI/AAAAAAAAAAA/Z8MftqWbEqA/s900-c-k-no/photo.jpg" alt="linkedin" width="140" height="140"></img>
             <h2>Linkedin</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a className="btn btn-default" href="https://www.linkedin.com/in/mowenpark" role="button">View details &raquo;</a></p>
+            <p>I’m a software developer with experience in Ruby, JavaScript and React.js, and a background in biology. Click below for details on my projects, experience, and education.</p>
+            <p><a className="btn btn-default" href="https://www.linkedin.com/in/mowenpark" role="button">Read more &raquo;</a></p>
           </div>
           <div className="col-lg-4">
-            <img className="img-circle" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457329886/Screen_Shot_2016-03-06_at_9.50.52_PM_cny0ex.png" alt="Generic placeholder image" width="140" height="140"></img>
+            <img className="img-circle" src="http://res.cloudinary.com/dtdgkk9aa/image/upload/v1457329886/Screen_Shot_2016-03-06_at_9.50.52_PM_cny0ex.png" alt="tumblr blog" width="140" height="140"></img>
             <h2>Blog</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a className="btn btn-default" href="http://mowenpark.tumblr.com" role="button">View details &raquo;</a></p>
+            <p>Interested in my experiences at App Academy? Check out my blog, 'The Wandering Programmer' where I jot down my thoughts on the day-to-day life at one of SF's top web development bootcamps.</p>
+            <p><a className="btn btn-default" href="http://mowenpark.tumblr.com" role="button">Read more &raquo;</a></p>
           </div>
         </div>
       </div>
