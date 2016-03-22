@@ -52,7 +52,7 @@ Profile page combines react elements to determine what is rendered.
 
 ###Reviews
 
-
+Bootstrap modal allows logged in users to submit review to backend. Reviews and ratings trigger re-rendering of program panel. 
 
 ![reviews image](/app/assets/images/cc_reviews.png)
 

@@ -168,6 +168,12 @@ border-bottom: 1px dotted #555;
   padding: 0px;
 }
 
+.loc-item:hover {
+  color: white;
+  cursor: pointer;
+  background-color: #2c84cc;
+}
+
 .loc-item {
   padding-left: 5px;
 }
