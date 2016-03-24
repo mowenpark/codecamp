@@ -19802,16 +19802,16 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+	      { className: 'collapse navbar-collapse', style: { textAlign: "center" }, id: 'bs-example-navbar-collapse-1' },
 	      React.createElement(
 	        'ul',
-	        { className: 'nav navbar-nav' },
+	        { className: 'nav navbar-nav', style: { display: "inline-block", float: "none" } },
 	        React.createElement(
 	          'li',
-	          { className: 'dropdown' },
+	          { className: 'dropdown dropdown-params' },
 	          React.createElement(
-	            'a',
-	            { href: '#', className: 'dropdown-toggle',
+	            'div',
+	            { type: 'button', className: 'btn btn-default dropdown-toggle btn-search',
 	              'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
 	            this.state.param,
 	            ' ',
@@ -19848,9 +19848,9 @@
 	              )
 	            )
 	          )
-	        )
+	        ),
+	        React.createElement(Search, { searchParam: this.state.param })
 	      ),
-	      React.createElement(Search, { searchParam: this.state.param }),
 	      React.createElement(UserMenu, null)
 	    );
 	  }
@@ -27194,19 +27194,15 @@
 	
 	    return React.createElement(
 	      'form',
-	      { className: 'navbar-form navbar-left', onSubmit: this.handleSearch },
+	      { className: 'navbar-form', role: 'search', onSubmit: this.handleSearch },
 	      React.createElement(
 	        'div',
-	        { className: 'form-group' },
-	        React.createElement('input', { type: 'text', name: 'program',
+	        { className: 'input-group' },
+	        React.createElement('input', { className: 'search-input', type: 'text', name: 'program',
 	          onChange: this.nameChanged,
 	          placeholder: "Search " + this.props.searchParam,
-	          value: this.state.name })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'form-group' },
-	        React.createElement('input', { type: 'text',
+	          value: this.state.name }),
+	        React.createElement('input', { className: 'search-input', type: 'text',
 	          onChange: this.locationChanged,
 	          value: this.state.location,
 	          placeholder: 'Location',
@@ -27225,9 +27221,17 @@
 	              transitionLeaveTimeout: 500 },
 	            locations
 	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'input-group-btn' },
+	          React.createElement(
+	            'button',
+	            { type: 'submit', className: 'btn btn-default' },
+	            React.createElement('i', { className: 'glyphicon glyphicon-search' })
+	          )
 	        )
-	      ),
-	      React.createElement('input', { type: 'submit', className: 'btn btn-success btn-sm', value: 'Search' })
+	      )
 	    );
 	  }
 	
@@ -29735,6 +29739,11 @@
 	  displayName: 'Dashboard',
 	
 	
+	  searchPrograms: function () {
+	    var params = { "location": "", "name": "" };
+	    ApiUtil.fetchPrograms(params);
+	  },
+	
 	  searchCompany: function () {
 	    var params = { "location": "", "name": "" };
 	    ApiUtil.fetchCompanies(params);
@@ -29782,7 +29791,7 @@
 	                  null,
 	                  React.createElement(
 	                    'a',
-	                    { className: 'btn btn-lg btn-primary', href: '/#/programs', role: 'button' },
+	                    { className: 'btn btn-lg btn-primary', onClick: this.searchPrograms, role: 'button' },
 	                    'Search'
 	                  )
 	                )

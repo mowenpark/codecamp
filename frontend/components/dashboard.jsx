@@ -3,6 +3,11 @@ var React = require('react'),
 
 var Dashboard = React.createClass({
 
+  searchPrograms: function () {
+    var params = {"location": "", "name": ""};
+    ApiUtil.fetchPrograms(params);
+  },
+
   searchCompany: function () {
     var params = {"location": "", "name": ""};
     ApiUtil.fetchCompanies(params);
@@ -26,7 +31,7 @@ var Dashboard = React.createClass({
                   <p>Codecamp helps you find the web development bootcamp that is
                     right for you. Locations, descriptions and reviews are available
                     for bootcamps around the US. Click below to begin your first search.</p>
-                  <p><a className="btn btn-lg btn-primary" href="/#/programs" role="button">Search</a></p>
+                  <p><a className="btn btn-lg btn-primary" onClick={this.searchPrograms} role="button">Search</a></p>
                 </div>
               </div>
           </div>

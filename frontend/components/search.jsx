@@ -95,15 +95,13 @@ var Search = React.createClass({
       }
 
     return (
-      <form className="navbar-form navbar-left" onSubmit={this.handleSearch}>
-        <div className="form-group">
-          <input type="text" name="program"
+      <form className="navbar-form" role="search" onSubmit={this.handleSearch}>
+        <div className="input-group">
+          <input className="search-input" type="text" name="program"
             onChange={this.nameChanged}
             placeholder={"Search " + this.props.searchParam}
             value={this.state.name} />
-        </div>
-        <div className="form-group">
-          <input type="text"
+          <input className="search-input" type="text"
             onChange={this.locationChanged}
             value={this.state.location}
             placeholder="Location"
@@ -119,8 +117,10 @@ var Search = React.createClass({
                 {locations}
               </ReactCSSTransitionGroup>
             </div>
+            <div className="input-group-btn">
+              <button type="submit" className="btn btn-default"><i className="glyphicon glyphicon-search"></i></button>
+            </div>
         </div>
-        <input type="submit" className="btn btn-success btn-sm" value="Search" />
       </form>
     );
   }
