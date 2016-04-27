@@ -29634,43 +29634,36 @@
 	  render: function () {
 	    var companies = this.state.companies.map(function (company, index) {
 	      var name = company.name;
-	      var about = company.about;
-	      var locations = company.locations.map(function (location, index2) {
-	        return React.createElement(
-	          'li',
-	          { key: index2 },
-	          location
-	        );
-	      });
+	      var about = company.about.slice(0, 300) + "...";
 	      var logo = company.logo;
 	      return React.createElement(
 	        'div',
-	        { className: 'jumbotron',
-	          key: index },
+	        { className: 'thumbnail', key: index },
+	        React.createElement('img', { className: 'card-img-top', src: logo, alt: 'Company logo' }),
 	        React.createElement(
-	          'h1',
-	          null,
+	          'div',
+	          { className: 'card-block' },
+	          React.createElement(
+	            'h4',
+	            { className: 'card-title' },
+	            name
+	          ),
+	          React.createElement(
+	            'p',
+	            { className: 'card-text' },
+	            about
+	          ),
 	          React.createElement(
 	            'a',
-	            { href: "/#/companies/" + company.id },
-	            name
+	            { href: '#', className: 'btn btn-primary' },
+	            'Button'
 	          )
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          about
-	        ),
-	        React.createElement(
-	          'ul',
-	          null,
-	          locations
 	        )
 	      );
 	    });
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'card-columns' },
 	      companies
 	    );
 	  }

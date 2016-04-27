@@ -24,27 +24,23 @@ var Companies = React.createClass({
   render: function() {
     var companies = this.state.companies.map(function (company, index) {
       var name = company.name;
-      var about = company.about;
-      var locations = company.locations.map(function (location, index2) {
-        return (<li key={index2}>{location}</li>);
-      });
+      var about = company.about.slice(0,300) + "...";
       var logo = company.logo;
       return (
-        <div className="jumbotron"
-          key={ index }>
-          <h1><a href={"/#/companies/" + company.id}>{name}</a></h1>
-          <p>{about}</p>
-          <ul>
-            {locations}
-          </ul>
-        </div>
+          <div className="thumbnail" key={index}>
+            <img className="card-img-top" src={logo} alt="Company logo"/>
+            <div className="card-block">
+              <h4 className="card-title">{name}</h4 >
+              <p className="card-text">{about}</p>
+              <a href="#" className="btn btn-primary">Button</a>
+            </div>
+          </div>
       );
     });
     return (
-      <div >
+      <div className="card-columns">
         {companies}
       </div>
-
     );
   }
 

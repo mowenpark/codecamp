@@ -5,6 +5,10 @@
 @import url('http://fonts.googleapis.com/css?family=Raleway:400,200');
 @import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 
+* {
+  outline: none !important;
+}
+
 html,body {
   min-height:100%;
   height: 100%;
@@ -251,6 +255,6 @@ border-bottom: 1px dotted #555;
   height: 34px !important;
 }
 
-.search-input:focus {
-  outline: none;
+.company-list-item {
+  padding: 30px 48px !important;
 }

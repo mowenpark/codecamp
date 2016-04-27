@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -33,6 +33,10 @@ gem 'faker'
 gem 'newrelic_rpm'
 
 gem 'figaro'
+
+# Elasticsearch
+# gem 'elasticsearch-rails'
+# gem 'elasticsearch-model'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,7 +51,8 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'faker'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+  gem 'bcrypt-ruby', '~> 3.0.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

@@ -15,6 +15,8 @@
 #  rating            :integer          not null
 #
 
+require 'elasticsearch/model'
+
 class Review < ActiveRecord::Base
 
   validates :title, :pros, :cons, :comments, :rating, :enrollment_status, presence: true
