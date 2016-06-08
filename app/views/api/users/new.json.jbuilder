@@ -16,5 +16,6 @@ json.following do
     json.title follow.title
     json.logo follow.company.logo
     json.id follow.company.id
+    json.program_id follow.id
   end
 end

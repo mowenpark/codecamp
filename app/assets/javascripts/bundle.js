@@ -19960,15 +19960,6 @@
 	                'Profile'
 	              )
 	            ),
-	            React.createElement(
-	              'li',
-	              null,
-	              React.createElement(
-	                'a',
-	                { href: "/#/users/" + this.state.currentUser.id },
-	                'Settings'
-	              )
-	            ),
 	            React.createElement('li', { className: 'divider' }),
 	            React.createElement(
 	              'li',
@@ -20117,12 +20108,21 @@
 			});
 		},
 	
-		toggleFollow: function (id) {
+		follow: function (id) {
 			$.ajax({
-				type: "POST",
+				type: 'POST',
 				url: "/api/follows",
 				data: { "id": id },
-				success: function (data) {}
+				success: function () {}
+			});
+		},
+	
+		unFollow: function (id) {
+			$.ajax({
+				url: '/api/follows/' + id,
+				type: 'POST',
+				data: { _method: 'delete' },
+				success: function () {}
 			});
 		}
 	
@@ -28086,27 +28086,34 @@
 	var ProgramsStore = __webpack_require__(197),
 	    ApiUtil = __webpack_require__(163),
 	    SearchPanel = __webpack_require__(199),
-	    Errors = __webpack_require__(169);
+	    Errors = __webpack_require__(169),
+	    CurrentUserStore = __webpack_require__(188);
 	
 	var Headers = React.createClass({
 	  displayName: 'Headers',
 	
 	  getInitialState: function () {
 	    return {
-	      followStatus: false
+	      followStatus: false,
+	      currentUser: CurrentUserStore.all()
 	    };
 	  },
 	
-	  componentDidMount: function () {
-	    this.token = $(".glyphicon-heart-empty").hover(function () {
-	      $(this).addClass('glyphicon-heart'), $(this).removeClass('glyphicon-heart-empty');
-	    }, function () {
-	      $(this).removeClass('glyphicon-heart'), $(this).addClass('glyphicon-heart-empty');
-	    });
-	  },
-	
-	  follow: function (id) {
-	    ApiUtil.toggleFollow();
+	  follow: function (pane, event) {
+	    event.preventDefault();
+	    if (this.state.currentUser.id === undefined) {
+	      $(event.currentTarget).popover("show");
+	    } else if (pane.followed) {
+	      ApiUtil.unFollow(pane.id);
+	      pane.followed = false;
+	      $(event.target).removeClass('glyphicon-heart');
+	      $(event.target).addClass('glyphicon-heart-empty');
+	    } else {
+	      ApiUtil.follow(pane.id);
+	      pane.followed = true;
+	      $(event.target).removeClass('glyphicon-heart-empty');
+	      $(event.target).addClass('glyphicon-heart');
+	    }
 	  },
 	
 	  render: function () {
@@ -28129,9 +28136,14 @@
 	          className: klass + " thumbnail",
 	          onClick: that.props.onTabChosen.bind(null, index) },
 	        React.createElement(
-	          'div',
-	          {
-	            onClick: that.follow.bind(null, pane.id),
+	          'a',
+	          { 'data-toggle': 'popover', 'data-trigger': 'focus',
+	            tabIndex: '0',
+	            role: 'button',
+	            'data-content': 'Click the \'Login\' button in the top right-hand corner to sign in as a Guest.',
+	            'data-container': 'body',
+	            title: 'You must be logged in to Follow a Program.',
+	            onClick: that.follow.bind(null, pane),
 	            className: 'follow' },
 	          React.createElement('span', { className: follow, 'aria-hidden': 'true' })
 	        ),
@@ -28197,7 +28209,7 @@
 	          { className: 'row' },
 	          React.createElement(
 	            'div',
-	            { className: 'col-md-4' },
+	            { className: 'col-md-4', id: 'left' },
 	            React.createElement(Headers, {
 	              selectedPane: this.state.selectedPane,
 	              onTabChosen: this.selectTab,
@@ -28205,7 +28217,7 @@
 	          ),
 	          React.createElement(
 	            'div',
-	            { className: 'col-md-8' },
+	            { className: 'col-md-8', id: 'right' },
 	            React.createElement(SearchPanel, {
 	              languages: pane.languages,
 	              location: pane.location,
@@ -28248,14 +28260,16 @@
 	var Reviews = __webpack_require__(200),
 	    ReviewForm = __webpack_require__(201),
 	    ReviewsStore = __webpack_require__(202),
-	    ApiUtil = __webpack_require__(163);
+	    ApiUtil = __webpack_require__(163),
+	    CurrentUserStore = __webpack_require__(188);
 	
 	var SearchPanel = React.createClass({
 	  displayName: 'SearchPanel',
 	
 	  getInitialState: function () {
 	    return {
-	      reviews: ReviewsStore.all()
+	      reviews: ReviewsStore.all(),
+	      currentUser: CurrentUserStore.all()
 	    };
 	  },
 	
@@ -28282,6 +28296,14 @@
 	    ApiUtil.fetchLanguages(params);
 	  },
 	
+	  handleClick: function (event) {
+	    if (this.state.currentUser.id === undefined) {
+	      $(event.target).popover("show");
+	    } else {
+	      console.log("dude");
+	    }
+	  },
+	
 	  render: function () {
 	    var that = this;
 	    var ratings = this.state.reviews.map(function (review) {
@@ -28300,12 +28322,14 @@
 	    var languages = this.props.languages.map(function (language, index) {
 	      return React.createElement(
 	        'button',
-	        { type: 'button', onClick: that.searchLanguage.bind(null, language), className: 'btn btn-info', key: index },
+	        { type: 'button',
+	          onClick: that.searchLanguage.bind(null, language),
+	          className: 'btn btn-info',
+	          key: index },
 	        '#',
 	        language.name
 	      );
 	    });
-	
 	    return React.createElement(
 	      'div',
 	      null,
@@ -28375,8 +28399,19 @@
 	              { className: 'blog-post-title' },
 	              'Reviews',
 	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'btn btn-primary review-button btn-sm', 'data-toggle': 'modal', 'data-target': '#myModal' },
+	                'a',
+	                { type: 'button',
+	                  tabIndex: '0',
+	                  className: 'btn btn-primary review-button btn-sm',
+	                  'data-toggle': this.state.currentUser.id === undefined ? "popover" : "modal",
+	                  'data-target': '#myModal',
+	                  'data-placement': 'left',
+	                  'data-trigger': 'focus',
+	                  role: 'button',
+	                  'data-content': 'Click the \'Login\' button in the top right-hand corner to sign in as a Guest.',
+	                  'data-container': 'body',
+	                  title: 'You must be logged in to leave a Review.',
+	                  onClick: this.handleClick },
 	                'Add review'
 	              )
 	            ),
@@ -28806,6 +28841,10 @@
 	    this.token2.remove();
 	  },
 	
+	  unFollow: function (id) {
+	    ApiUtil.unFollow(id);
+	  },
+	
 	  renderCurrentUser: function () {
 	    this.setState({ currentUser: CurrentUserStore.all() });
 	  },
@@ -28816,6 +28855,7 @@
 	
 	  render: function () {
 	    var id = parseInt(this.props.params.id);
+	    var that = this;
 	    if (this.state.currentUser.id === id) {
 	      var followings = this.state.currentUser.following.map(function (follow, idx) {
 	        return React.createElement(
@@ -28839,7 +28879,7 @@
 	              follow.title
 	            )
 	          ),
-	          React.createElement('div', { style: { display: "table-cell" }, className: 'glyphicon glyphicon-remove' })
+	          React.createElement('div', { style: { display: "table-cell" }, onClick: that.unFollow.bind(null, follow.program_id), className: 'glyphicon glyphicon-remove' })
 	        );
 	      });
 	      var feed = this.state.currentUser.feed.map(function (feedItem, index) {
@@ -29259,7 +29299,7 @@
 	              ),
 	              React.createElement('textarea', { valueLink: this.linkState('name'), className: 'form-control',
 	                rows: '1',
-	                placeholder: 'Please enter your full name.' })
+	                placeholder: '' })
 	            ),
 	            React.createElement(
 	              'div',
@@ -29271,7 +29311,7 @@
 	              ),
 	              React.createElement('textarea', { valueLink: this.linkState('password'), className: 'form-control',
 	                rows: '1',
-	                placeholder: 'At least 6 characters long.' })
+	                placeholder: 'At least 6 characters' })
 	            ),
 	            React.createElement(
 	              'div',
@@ -29283,7 +29323,7 @@
 	              ),
 	              React.createElement('textarea', { valueLink: this.linkState('password'), className: 'form-control',
 	                rows: '1',
-	                placeholder: 'One more time with feeling.' })
+	                placeholder: '' })
 	            ),
 	            React.createElement(
 	              'div',
@@ -29295,7 +29335,7 @@
 	              ),
 	              React.createElement('textarea', { valueLink: this.linkState('email'), className: 'form-control',
 	                rows: '1',
-	                placeholder: 'A valid email please.' })
+	                placeholder: '' })
 	            ),
 	            React.createElement(
 	              'div',
@@ -29307,7 +29347,7 @@
 	              ),
 	              React.createElement('textarea', { valueLink: this.linkState('email'), className: 'form-control',
 	                rows: '1',
-	                placeholder: 'You can do it!' })
+	                placeholder: '' })
 	            ),
 	            React.createElement(
 	              'div',
@@ -29319,7 +29359,7 @@
 	              ),
 	              React.createElement('textarea', { valueLink: this.linkState('location'), className: 'form-control',
 	                rows: '1',
-	                placeholder: 'e.g. Mill Valley, California (US)' })
+	                placeholder: 'e.g. San Francisco' })
 	            ),
 	            React.createElement(
 	              'div',
@@ -29331,7 +29371,7 @@
 	              ),
 	              React.createElement('textarea', { valueLink: this.linkState('bio'), className: 'form-control',
 	                rows: '1',
-	                placeholder: 'I don\'t care.' })
+	                placeholder: '' })
 	            )
 	          ),
 	          React.createElement(
@@ -29637,34 +29677,33 @@
 	      var about = company.about.slice(0, 300) + "...";
 	      var logo = company.logo;
 	      return React.createElement(
-	        'div',
-	        { className: 'thumbnail', key: index },
-	        React.createElement('img', { className: 'card-img-top', src: logo, alt: 'Company logo' }),
+	        'a',
+	        { href: "#/companies/" + company.id, key: index },
 	        React.createElement(
 	          'div',
-	          { className: 'card-block' },
+	          { className: 'pin' },
+	          React.createElement('img', { src: logo }),
 	          React.createElement(
-	            'h4',
-	            { className: 'card-title' },
+	            'h3',
+	            null,
 	            name
 	          ),
 	          React.createElement(
 	            'p',
-	            { className: 'card-text' },
+	            null,
 	            about
-	          ),
-	          React.createElement(
-	            'a',
-	            { href: '#', className: 'btn btn-primary' },
-	            'Button'
 	          )
 	        )
 	      );
 	    });
 	    return React.createElement(
 	      'div',
-	      { className: 'card-columns' },
-	      companies
+	      { id: 'wrapper' },
+	      React.createElement(
+	        'div',
+	        { id: 'columns' },
+	        companies
+	      )
 	    );
 	  }
 	
@@ -30144,23 +30183,37 @@
 	var React = __webpack_require__(147);
 	
 	var Footer = React.createClass({
-	  displayName: "Footer",
+	  displayName: 'Footer',
 	
+	
+	  backToTop: function () {
+	    $('html,body').animate({ scrollTop: 0 }, 'slow');
+	  },
 	
 	  render: function () {
 	    return React.createElement(
-	      "footer",
-	      { className: "footer" },
+	      'footer',
+	      { className: 'footer' },
 	      React.createElement(
-	        "div",
-	        { className: "container" },
+	        'div',
+	        { className: 'container' },
 	        React.createElement(
-	          "p",
-	          { className: "text-muted" },
+	          'p',
+	          { className: 'pull-right text-muted', onClick: this.backToTop },
 	          React.createElement(
-	            "a",
-	            { href: "https://www.linkedin.com/in/mowenpark" },
-	            "About"
+	            'a',
+	            { href: 'javascript:;' },
+	            'Back to top'
+	          )
+	        ),
+	        React.createElement(
+	          'p',
+	          { className: 'text-muted' },
+	          '© 2016 Company, Inc. · ',
+	          React.createElement(
+	            'a',
+	            { href: 'https://www.linkedin.com/in/mowenpark' },
+	            'About'
 	          )
 	        )
 	      )

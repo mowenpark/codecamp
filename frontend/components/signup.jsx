@@ -34,7 +34,7 @@ var SignUp = React.createClass({
     					<label>Full Name</label>
               <textarea valueLink={this.linkState('name')} className="form-control"
                 rows="1"
-                placeholder="Please enter your full name.">
+                placeholder="">
               </textarea>
     				</div>
 
@@ -42,7 +42,7 @@ var SignUp = React.createClass({
     					<label>Password</label>
               <textarea valueLink={this.linkState('password')} className="form-control"
                 rows="1"
-                placeholder="At least 6 characters long.">
+                placeholder="At least 6 characters">
               </textarea>
     				</div>
 
@@ -50,7 +50,7 @@ var SignUp = React.createClass({
     					<label>Repeat Password</label>
               <textarea valueLink={this.linkState('password')} className="form-control"
                 rows="1"
-                placeholder="One more time with feeling.">
+                placeholder="">
               </textarea>
     				</div>
 
@@ -58,7 +58,7 @@ var SignUp = React.createClass({
     					<label>Email Address</label>
               <textarea valueLink={this.linkState('email')} className="form-control"
                 rows="1"
-                placeholder="A valid email please.">
+                placeholder="">
               </textarea>
     				</div>
 
@@ -66,7 +66,7 @@ var SignUp = React.createClass({
     					<label>Repeat Email Address</label>
                 <textarea valueLink={this.linkState('email')} className="form-control"
                   rows="1"
-                  placeholder="You can do it!">
+                  placeholder="">
                 </textarea>
     				</div>
 
@@ -74,7 +74,7 @@ var SignUp = React.createClass({
     					<label>Your Location</label>
                 <textarea valueLink={this.linkState('location')} className="form-control"
                   rows="1"
-                  placeholder="e.g. Mill Valley, California (US)">
+                  placeholder="e.g. San Francisco">
                 </textarea>
     				</div>
 
@@ -82,7 +82,7 @@ var SignUp = React.createClass({
     					<label>A quick bio about yourself</label>
               <textarea valueLink={this.linkState('bio')} className="form-control"
                 rows="1"
-                placeholder="I don't care.">
+                placeholder="">
               </textarea>
     				</div>
 

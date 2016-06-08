@@ -27,19 +27,20 @@ var Companies = React.createClass({
       var about = company.about.slice(0,300) + "...";
       var logo = company.logo;
       return (
-          <div className="thumbnail" key={index}>
-            <img className="card-img-top" src={logo} alt="Company logo"/>
-            <div className="card-block">
-              <h4 className="card-title">{name}</h4 >
-              <p className="card-text">{about}</p>
-              <a href="#" className="btn btn-primary">Button</a>
-            </div>
+        <a href={"#/companies/" + company.id} key={index}>
+          <div className="pin">
+              <img src={logo}></img>
+              <h3>{name}</h3>
+              <p>{about}</p>
           </div>
+        </a>
       );
     });
     return (
-      <div className="card-columns">
-        {companies}
+      <div id="wrapper">
+	       <div id="columns">
+           {companies}
+         </div>
       </div>
     );
   }

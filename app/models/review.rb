@@ -15,7 +15,6 @@
 #  rating            :integer          not null
 #
 
-require 'elasticsearch/model'
 
 class Review < ActiveRecord::Base
 

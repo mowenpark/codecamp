@@ -122,13 +122,23 @@ var ApiUtil = {
 			});
 	},
 
-	toggleFollow: function (id) {
+	follow: function (id) {
 		$.ajax({
-			type: "POST",
+			type: 'POST',
 			url: "/api/follows",
 			data: {"id": id},
-			success: function( data ) {
+			success: function() {
 			}
+		});
+	},
+
+	unFollow: function (id) {
+		$.ajax({
+			url: '/api/follows/'+id,
+			type: 'POST',
+			data: {_method: 'delete'},
+			success: function() {
+			},
 		});
 	}
 

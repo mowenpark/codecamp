@@ -3,12 +3,14 @@ var React = require('react');
 var Reviews = require('./reviews'),
     ReviewForm = require('./review_form'),
     ReviewsStore = require('../stores/reviews'),
-    ApiUtil = require('../util/api_util');
+    ApiUtil = require('../util/api_util'),
+    CurrentUserStore = require("../stores/current_user");
 
 var SearchPanel = React.createClass({
   getInitialState: function () {
     return {
-      reviews: ReviewsStore.all()
+      reviews: ReviewsStore.all(),
+      currentUser: CurrentUserStore.all()
     };
   },
 
@@ -35,6 +37,14 @@ var SearchPanel = React.createClass({
     ApiUtil.fetchLanguages(params);
   },
 
+  handleClick: function (event) {
+    if (this.state.currentUser.id === undefined) {
+      $(event.target).popover("show");
+    } else {
+      console.log("dude");
+    }
+  },
+
   render: function() {
     var that = this;
     var ratings = this.state.reviews.map( function (review) {
@@ -55,9 +65,12 @@ var SearchPanel = React.createClass({
       );
     }
     var languages = this.props.languages.map(function (language, index) {
-      return (<button type="button" onClick={that.searchLanguage.bind(null, language)} className="btn btn-info" key={index}>#{language.name}</button>);
+      return (
+        <button type="button"
+          onClick={that.searchLanguage.bind(null, language)}
+          className="btn btn-info"
+          key={index}>#{language.name}</button>);
     });
-
     return (
         <div >
           <div className="blog-header">
@@ -85,9 +98,20 @@ var SearchPanel = React.createClass({
               </div>
               <div className="blog-post">
                 <h2 className="blog-post-title">Reviews
-                  <button type="button" className="btn btn-primary review-button btn-sm" data-toggle="modal" data-target="#myModal">
-                    Add review
-                  </button>
+                <a type="button"
+                  tabIndex="0"
+                  className="btn btn-primary review-button btn-sm"
+                  data-toggle={this.state.currentUser.id === undefined ? "popover" : "modal"}
+                  data-target="#myModal"
+                  data-placement="left"
+                  data-trigger="focus"
+                  role="button"
+                  data-content="Click the 'Login' button in the top right-hand corner to sign in as a Guest."
+                  data-container="body"
+                  title="You must be logged in to leave a Review."
+                  onClick={this.handleClick}>
+                  Add review
+                </a>
                 </h2>
                 <Reviews reviews={this.state.reviews}/>
                 <ReviewForm programID={this.props.id}/>

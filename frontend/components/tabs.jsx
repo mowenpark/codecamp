@@ -3,24 +3,32 @@ var React = require('react');
 var ProgramsStore = require('../stores/program'),
     ApiUtil = require('../util/api_util'),
     SearchPanel = require('./search_panel'),
-    Errors = require("./errors");
+    Errors = require("./errors"),
+    CurrentUserStore = require("../stores/current_user");
 
 var Headers = React.createClass({
   getInitialState: function () {
     return{
-      followStatus: false
+      followStatus: false,
+      currentUser: CurrentUserStore.all()
     };
   },
 
-  componentDidMount: function () {
-    this.token = $(".glyphicon-heart-empty")
-      .hover(
-        function(){ $(this).addClass('glyphicon-heart'), $(this).removeClass('glyphicon-heart-empty') },
-        function(){ $(this).removeClass('glyphicon-heart'), $(this).addClass('glyphicon-heart-empty') });
-  },
-
-  follow: function (id) {
-    ApiUtil.toggleFollow();
+  follow: function (pane, event) {
+    event.preventDefault();
+    if (this.state.currentUser.id === undefined) {
+      $(event.currentTarget).popover("show");
+    } else if (pane.followed) {
+      ApiUtil.unFollow(pane.id);
+      pane.followed = false;
+      $(event.target).removeClass('glyphicon-heart');
+      $(event.target).addClass('glyphicon-heart-empty');
+    } else {
+      ApiUtil.follow(pane.id);
+      pane.followed = true;
+      $(event.target).removeClass('glyphicon-heart-empty');
+      $(event.target).addClass('glyphicon-heart');
+    }
   },
 
   render: function () {
@@ -41,11 +49,16 @@ var Headers = React.createClass({
               key={ index }
               className={klass + " thumbnail"}
               onClick={that.props.onTabChosen.bind(null, index)}>
-              <div
-                onClick={that.follow.bind(null, pane.id)}
+              <a data-toggle="popover" data-trigger="focus"
+                tabIndex="0"
+                role="button"
+                data-content="Click the 'Login' button in the top right-hand corner to sign in as a Guest."
+                data-container="body"
+                title="You must be logged in to Follow a Program."
+                onClick={that.follow.bind(null, pane)}
                 className="follow">
                 <span className={follow} aria-hidden="true"></span>
-              </div>
+              </a>
                 <img className="media-object" src={logo} >
                 </img>
               <div className="caption" >
@@ -94,14 +107,14 @@ var Tabs = React.createClass({
         <div className="container">
           <Errors />
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-4" id="left">
               <Headers
                 selectedPane={this.state.selectedPane}
                 onTabChosen={this.selectTab}
                 panes={this.state.panes}>
               </Headers>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-8" id="right">
               <SearchPanel
                 languages={pane.languages}
                 location={pane.location}

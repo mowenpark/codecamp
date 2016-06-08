@@ -48,7 +48,6 @@ var UserMenu = React.createClass({
               aria-expanded="false">User <i className="ion-ios-arrow-down"></i></a>
             <ul className="dropdown-menu">
               <li><a href={"/#/users/" + this.state.currentUser.id}>Profile</a></li>
-              <li><a href={"/#/users/" + this.state.currentUser.id}>Settings</a></li>
               <li className="divider"></li>
               <li><a onClick={this.logoutUser}>Logout</a></li>
             </ul>

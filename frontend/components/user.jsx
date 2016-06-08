@@ -29,6 +29,10 @@ var User = React.createClass({
     this.token2.remove();
   },
 
+  unFollow: function (id) {
+    ApiUtil.unFollow(id);
+  },
+
   renderCurrentUser: function () {
     this.setState({currentUser: CurrentUserStore.all()});
   },
@@ -39,6 +43,7 @@ var User = React.createClass({
 
   render: function() {
     var id = parseInt(this.props.params.id);
+    var that = this;
     if (this.state.currentUser.id === id) {
       var followings = this.state.currentUser.following.map(function (follow, idx) {
         return (
@@ -51,7 +56,7 @@ var User = React.createClass({
             <div className="media-body">
               <h4 className="media-heading">{follow.title}</h4>
             </div>
-            <div style={{display: "table-cell"}} className="glyphicon glyphicon-remove"></div>
+            <div style={{display: "table-cell"}} onClick={that.unFollow.bind(null, follow.program_id)} className="glyphicon glyphicon-remove"></div>
           </div>
         );
       });

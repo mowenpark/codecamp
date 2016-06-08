@@ -5,7 +5,7 @@ var CompanyStore = require('../stores/companies'),
 
 var Company = React.createClass({
   getInitialState: function () {
-    return{
+    return {
       company: {}
     };
   },
