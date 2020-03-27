@@ -16,7 +16,7 @@ csv.each do |row|
   hash_row = row.to_hash
   name = hash_row["name"].strip
   locations = hash_row["locations"].split(";").map { |location| location.strip }
-  logo = hash_row["logo"].delete("\"")
+  logo = Faker::Company.logo
   about = hash_row["about"].delete("\n").strip
   languages = hash_row["languages"].split(",").map { |location| location.strip }
 
