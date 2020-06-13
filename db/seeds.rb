@@ -56,8 +56,8 @@ User.create({
 20.times do
   name = Faker::Name.name
   email = Faker::Internet.safe_email
-  password = Faker::Internet.password(8)
-  profile_pic = Faker::Avatar.image(name, "144x144")
+  password = Faker::Internet.password(min_length: 8)
+  profile_pic = Faker::Avatar.image(size: "144x144")
   bio = Faker::Lorem.paragraph
   location = "#{Faker::Address.city}, #{Faker::Address.state} (US)"
   User.create({
