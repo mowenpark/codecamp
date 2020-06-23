@@ -1,4 +1,4 @@
-class AddReviewFormColumns < ActiveRecord::Migration
+class AddReviewFormColumns < ActiveRecord::Migration[4.2]
   def change
     add_column :reviews, :employee_status, :boolean, null: false
     rename_column :reviews, :body, :pros
